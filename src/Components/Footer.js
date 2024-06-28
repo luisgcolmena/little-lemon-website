@@ -5,7 +5,7 @@ function Footer () {
   return (
     <footer className='footer'>
       <img src={ logo } alt="Little Lemon logo"/>
-      <div>
+      <div className='footer-element'>
         <h4>Doormat Navigation</h4>
         <ul>
           <li><a href="/">Home</a></li>
@@ -17,7 +17,7 @@ function Footer () {
         </ul>
       </div>
 
-      <div>
+      <div className='footer-element'>
         <h4>Contact</h4>
         <ul>
           <li><a href="/">Address</a></li>
@@ -26,7 +26,7 @@ function Footer () {
         </ul>
       </div>
 
-      <div>
+      <div className='footer-element'>
         <h4>Social Media Links</h4>
         <ul>
           <li><a href="/">Instagram</a></li>
