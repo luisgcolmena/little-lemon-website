@@ -1,8 +1,10 @@
+import '../Styles/Footer.css'
+import logo from '../assets/vertical-logo.png'
 
 function Footer () {
   return (
-    <>
-      <img src="" alt="Little Lemon logo"/>
+    <footer className='footer'>
+      <img src={ logo } alt="Little Lemon logo"/>
       <div>
         <h4>Doormat Navigation</h4>
         <ul>
@@ -31,7 +33,7 @@ function Footer () {
           <li><a href="/">facebook</a></li>
           <li><a href="/">Twitter</a></li></ul>
       </div>
-    </>
+    </footer>
   )
 }
 

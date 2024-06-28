@@ -1,7 +1,8 @@
+import '../Styles/Nav.css'
 
-export default function Nav () {
+function Nav () {
   return (
-    <nav>
+    <nav className="nav-bar">
       <ul>
         <li><a href="/">Home</a></li>
         <li><a href="/">About</a></li>
@@ -14,3 +15,5 @@ export default function Nav () {
 
   )
 }
+
+export default Nav
