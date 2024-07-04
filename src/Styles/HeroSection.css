@@ -1,0 +1,18 @@
+.hero-section {
+  /* width: 70%; */
+  height: 380px;
+  background-color: var(--primary-green);
+  padding: 0 15%;
+}
+.hero-section-container {
+  display: flex;
+}
+.hero-section-text {
+  display: flex;
+  flex-direction: column;
+}
+.hero-section-container img {
+  width: 35%;
+  height: 90%;
+  align-self: center;
+}

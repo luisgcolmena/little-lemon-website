@@ -1,9 +1,10 @@
+import HeroSection from "./HeroSection"
+import '../Styles/Main.css'
 
 function Main() {
   return (
     <main>
-      This is the Main section
-      <section>Hero Section</section>
+      <HeroSection></HeroSection> 
       <section>Select Date and Time</section>
       <section>Contact Information</section>
       <section>Summary</section>
