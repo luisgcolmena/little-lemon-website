@@ -1,9 +1,9 @@
 .header {
   display: flex;
   background-color:white;
-  height: 100px;
-  width: 920px;
-  justify-content: center;
+  height: 10vh;
+  width: 60%;
+  justify-content: space-between;
   align-items: center;
   margin: 0 auto;
 }
