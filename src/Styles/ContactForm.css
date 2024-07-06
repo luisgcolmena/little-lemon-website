@@ -1,0 +1,35 @@
+.contact-form {
+  border: 1px solid red;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  flex-direction: column;
+
+}
+.contact-form h1 {
+  font-family: 'Karla';
+  font-size: 44px;
+  font-weight: bold;
+}
+.contact-form p {
+  font-family: 'Karla';
+  font-size: 20px;
+}
+.contact-form-item {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 30px;
+  gap: 10px;
+}
+.contact-form-item label {
+  font-family: 'Karla';
+  font-size: 25px;
+  font-weight: bold;
+}
+.contact-form-item input {
+  width: 80%;
+  height: 40px;
+  border-radius: 8px;
+  background-color: var(--secondary-gray);
+}

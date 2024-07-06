@@ -9,7 +9,7 @@ function HeroSection () {
         <div className='hero-section-text'>
           <h1>Reserve a Table</h1>
           <p>Plan an intimate dinner, a celebration with friends, or a family meal with us. Reserve your table now and look forward to a delightful meal and warm atmosphere!</p>
-          <button className='reservation-button'>Reserve a Table</button>
+          {/* <button className='reservation-button'>Reserve a Table</button> */}
         </div>
         <img src={ logo } alt='restaurant tables'/>
       </div>
