@@ -1,0 +1,11 @@
+.summary-section {
+  width: 60%;
+}
+.summary-container {
+  display: flex;
+  flex-direction: column;
+}
+.summary-item {
+  display: flex;
+  justify-content: space-between;
+}
