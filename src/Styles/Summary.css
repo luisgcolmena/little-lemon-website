@@ -1,11 +1,39 @@
 .summary-section {
+  width: 100%;
+  height: 65vh;
+  background-color: var(--primary-green);
+  display: flex;
+  justify-content: center;
+
+}
+.summary-section-container {
   width: 60%;
+  margin-top: 30px;
+}
+.summary-section-container h1 {
+  font-family: 'Karla';
+  font-size: 5vh;
+  font-weight: bold;
+  margin-bottom: 0;
 }
 .summary-container {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 }
 .summary-item {
   display: flex;
   justify-content: space-between;
+  font-family: 'Karla';
+  font-size: 2.5vh;
+  border-bottom: 1px solid black;
+}
+.summary-item > p:first-child {
+  color: var(--primary-yellow);
+}
+.summary-item p  {
+  font-weight: bold;
+}
+.summary-notes {
+  font-size: 2vh;
 }
