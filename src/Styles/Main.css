@@ -6,3 +6,8 @@ main {
   align-items: center;
   margin: 0;
 }
+/* @media (max-width: 430px) {
+  main {
+    
+  }
+} */

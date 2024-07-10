@@ -72,3 +72,28 @@
   text-align: start;
   font-family: 'Karla';
 }
+
+/* Media Queries  */
+
+
+@media (max-width:430px) {
+  .contact-form {
+    width: 90%;
+  }
+  .contact-form h1 {
+    font-size: 4vh;
+  }
+  .contact-form p {
+    font-size: 1.5vh;
+  }
+  .contact-form-texts {
+    display: flex;
+    flex-direction: column;
+  }
+  .contact-form-item textarea {
+    width: 90%;
+  }
+  .inputs {
+    width: 90%;
+  }
+}

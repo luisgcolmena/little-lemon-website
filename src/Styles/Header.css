@@ -11,3 +11,11 @@
   width: 226px;
   height: 62px;
 }
+
+/* Media Queries */
+
+/* @media (max-width: 430px) {
+  header {
+    border: 1px solid red;
+  }
+} */
