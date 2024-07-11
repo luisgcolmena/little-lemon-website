@@ -14,8 +14,11 @@
 
 /* Media Queries */
 
-/* @media (max-width: 430px) {
-  header {
+@media (max-width: 430px) {
+  .header {
+    width: 428px;
     border: 1px solid red;
+    align-items: center;
+    justify-content: center;
   }
-} */
+}

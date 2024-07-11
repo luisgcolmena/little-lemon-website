@@ -5,6 +5,7 @@
   flex-direction: column;
   border-top: 1px solid #dddddd;
   margin-top: 20px;
+  padding-bottom: 50px;
   gap: 20px;
 }
 .contact-form h1 {
@@ -78,10 +79,14 @@
 
 @media (max-width:430px) {
   .contact-form {
-    width: 90%;
+    width: auto;
+    padding: 25px;
+    margin: 0;
+    border: 1px solid green;
   }
   .contact-form h1 {
-    font-size: 4vh;
+    font-size: 3.5vh;
+    margin-top: 0px;
   }
   .contact-form p {
     font-size: 1.5vh;
@@ -92,6 +97,9 @@
   }
   .contact-form-item textarea {
     width: 90%;
+  }
+  .contact-form-item label {
+    font-size: 2.25vh;
   }
   .inputs {
     width: 90%;

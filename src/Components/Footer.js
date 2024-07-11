@@ -33,6 +33,7 @@ function Footer () {
           <li><a href="/">facebook</a></li>
           <li><a href="/">Twitter</a></li></ul>
       </div>
+
     </footer>
   )
 }

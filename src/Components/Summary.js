@@ -28,6 +28,7 @@ function Summary() {
           </div>
         </div>
       </div>
+      <button className='reservation-button'>Confirm reservation</button>
     </section>
   )
 }
