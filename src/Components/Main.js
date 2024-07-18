@@ -1,6 +1,6 @@
 import HeroSection from "./HeroSection"
 import '../Styles/Main.css'
-import SelectReservation from "./SelectReservation"
+import BookingPage from "./BookingPage"
 import ContactForm from "./ContactForm"
 import Summary from "./Summary"
 
@@ -8,7 +8,7 @@ function Main() {
   return (
     <main>
       <HeroSection></HeroSection>
-      <SelectReservation></SelectReservation>
+      <BookingPage></BookingPage>
       <ContactForm></ContactForm>
       <Summary></Summary>
     </main>

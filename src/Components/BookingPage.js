@@ -1,6 +1,6 @@
-import '../Styles/SelectReservation.css'
+import '../Styles/BookingPage.css'
 
-function SelectReservation () {
+function BookingPage () {
   return (
     <section className='selection-section'>
       <h1>Select Date </h1>
@@ -15,4 +15,4 @@ function SelectReservation () {
   )
 }
 
-export default SelectReservation
+export default BookingPage
