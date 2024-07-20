@@ -4,8 +4,64 @@
 .intro-section {
   background-color: var(--primary-green);
   width: 100%;
-  height: 35vh;
+  height: 40vh;
+  padding-bottom: 15px;
+  padding-top: 20px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+.intro-section-container {
+  width: 60%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+.intro-section-text {
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+}
+.intro-section-text h1 {
+  font-size: 4vw;
+  color: var(--primary-yellow);
+  font-family: 'Markazi Text';
+  margin: 0;
+}
+.intro-section-text h3 {
+  font-size: 3vw;
+  color: var(--primary-gray);
+  font-family: 'Markazi Text';
+  margin: 0;
+}
+.intro-section-text p {
+  color: var(--primary-gray);
+  font-family: 'Karla';
+  font-size: 2vh;
+}
+.intro-img-container {
+  width: 50%;
+  height: 45vh;
+  position: relative;
+  top: 20px;
+  overflow: hidden;
+  box-shadow: 0px 5px 15px rgb(54, 54, 54);
+  border-radius: 8px;
+}
+.intro-section img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+  align-self: center;
+}
+.yellow-button {
+  width: 50%;
+  height: 48px;
+  background-color: var(--primary-yellow);
+  border-radius: 8px;
+  border: none;
+  font-family: 'Karla';
+  font-size: 2vh;
+  font-weight: bold;
+  box-shadow: 0px 5px 15px rgb(54, 54, 54);
 }

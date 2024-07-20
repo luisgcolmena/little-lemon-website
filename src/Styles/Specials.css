@@ -1,4 +1,25 @@
 .specials-container {
   border: 1px solid blue;
-  margin: 10px;
+  margin-top: 10vh;
+  width: 60%;
+}
+.specials-texts {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.specials-texts h1 {
+  font-family: 'Markazi Text';
+  font-size: 3.5vw;
+  margin: 0;
+}
+.specials-texts button {
+  width: 30%,;
+}
+.specials-cards-container {
+  padding-top: 3vh;
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
 }

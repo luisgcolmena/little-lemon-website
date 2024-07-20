@@ -1,0 +1,36 @@
+.specials-card {
+  background-color: var(--primary-gray);
+  border-radius: 16px;
+  width: 30%;
+}
+.specials-card img {
+  width: 100%;
+  height: 50%;
+  filter: brightness(0.75);
+  border-top-left-radius: inherit;
+  border-top-right-radius: inherit;
+}
+.specials-card-texts {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  font-family: 'Karla';
+  padding: 10px;
+}
+.specials-card-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.specials-card-title strong {
+  font-family: 'Markazi Text';
+  font-size: 24px;
+}
+.specials-card-title b {
+  color: chocolate;
+  font-size: 16px;
+}
+.specials-card-texts p {
+  color: var(--primary-green);
+  font-size: 16px;
+}
