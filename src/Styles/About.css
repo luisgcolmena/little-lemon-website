@@ -1,0 +1,57 @@
+.about-section {
+  background-color: var(--primary-black);
+  color: white;
+  font-family: 'Karla';
+  width: 100%;
+  padding: 15vh 0;
+}
+
+.about-container {
+  margin: 10px;
+  width: 60%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.about-texts {
+  width: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.about-titles {
+  display: block;
+}
+.about-titles h1 {
+  font-size: 4vw;
+  color: var(--primary-yellow);
+  font-family: 'Markazi Text';
+  margin: 0;
+}
+.about-titles h2 {
+  font-size: 2.5vw;
+  color: var(--primary-green);
+  font-family: 'Markazi Text';
+  margin: 0;
+}
+.about-imgs-container {
+  width: 50%;
+  height: 30vh;
+  position: relative;
+}
+.about-imgs-container img {
+  width: 400px;
+  position: absolute;
+  box-shadow: 0px 5px 15px rgb(54, 54, 54);
+}
+.about-front-logo {
+  top: 80px;
+  right: 70px;
+  z-index: 3;
+}
+.about-back-logo {
+  bottom: 80px;
+  left: 150px;
+  z-index: 2;
+}

@@ -1,16 +1,16 @@
 import '../Styles/SpecialsCard.css'
-import logo from '../assets/bruchetta.png'
 
-function SpecialsCard() {
+function SpecialsCard({name, price, description, img_url}) {
+  const imgUrl = img_url
   return (
     <article className='specials-card'>
-      <img src={ logo } />
+      <img src={ imgUrl } />
       <div className='specials-card-texts'>
         <div className='specials-card-title'>
-          <strong>Greek salad</strong>
-          <b>$12.99</b>
+          <strong>{ name }</strong>
+          <b>${ price }</b>
         </div>
-        <p>The famous greek salad of crispy lettuce, peppers, olives and our Chicago style feta cheese, garnished with crunchy garlic and rosemary croutons. </p>
+        <p>{ description }</p>
         <p>Order a delivery</p>
       </div>
 

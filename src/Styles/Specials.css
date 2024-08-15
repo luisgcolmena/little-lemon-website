@@ -1,6 +1,5 @@
 .specials-container {
-  border: 1px solid blue;
-  margin-top: 10vh;
+  margin: 10vh 0;
   width: 60%;
 }
 .specials-texts {
@@ -15,7 +14,7 @@
   margin: 0;
 }
 .specials-texts button {
-  width: 30%,;
+  width: 20%;
 }
 .specials-cards-container {
   padding-top: 3vh;

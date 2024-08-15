@@ -1,7 +1,7 @@
 import '../Styles/HomePage.css'
 import Specials from './Specials'
-import CustomersSay from './CustomersSay'
-import Chicago from './Chicago'
+import Testimonials from './Testimonials'
+import About from './About'
 import logo from '../assets/restauranfood.jpg'
 
 function HomePage() {
@@ -21,8 +21,8 @@ function HomePage() {
         </div>
       </section>
       <Specials></Specials>
-      <CustomersSay></CustomersSay>
-      <Chicago></Chicago>
+      <Testimonials></Testimonials>
+      <About></About>
     </main>
   )
 }
