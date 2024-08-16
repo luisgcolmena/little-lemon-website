@@ -1,7 +1,7 @@
 .testimonials-section {
   background-color: var(--primary-gray);
   width: 100%;
-  height: 50vh;                                                  
+  height: 50vh;
   padding: 10vh 0;
   display: flex;
   align-items: center;
@@ -16,9 +16,9 @@
 }
 .testimonials-container h1 {
   font-family: 'Markazi Text';
-  font-size: 3.5vw;
+  font-size: 4vw;
   margin: 0;
-  padding: 5vh;
+  padding-bottom: 8vh;
   color: var(--primary-green);
 }
 .testimonials-cards-container {
@@ -29,3 +29,6 @@
 .testimony-description {
   font-size: 2vw;
 }
+
+/*-------Media Queries-------*/
+

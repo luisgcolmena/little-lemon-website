@@ -8,14 +8,13 @@ import { Route, Routes } from "react-router-dom"
 function App() {
   return (
     <>
-      <Header></Header>
-
+      <Header />
       <Routes>
         <Route path="/" element={ <HomePage /> } />
         <Route path="/reserve-a-table" element={ <Main /> } />
       </Routes>
 
-      <Footer></Footer>
+      <Footer />
     </>
   );
 }
