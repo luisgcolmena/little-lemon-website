@@ -2,16 +2,36 @@ import '../Styles/BookingPage.css'
 
 function BookingPage () {
   return (
-    <section className='selection-section'>
-      <h1>Select Date </h1>
-      <button>Date: 25/07/2024</button>
-      <h1>Select Time and Table</h1>
-      <p>Select your preferred table area: cozy indoor seating or delightful outdoor dining in the open air.</p>
-      <button>Time: 13:00</button>
-      <p>Select the number of diners:</p>
-      <button>N° Diners</button>
-      <button>Occasion</button>
-    </section>
+    <form className='booking-form'>
+      <label htmlFor='date-input'>Date</label>
+      <input type='date' id='date-input'/>
+
+      <label htmlFor='time'>Time</label>
+      <select id='time'>
+        <option>12:00</option>
+        <option>13:00</option>
+        <option>14:00</option>
+        <option>18:00</option>
+        <option>19:00</option>
+        <option>20:00</option>
+      </select>
+
+      <label htmlFor='guests'>Guests</label>
+      <input
+        type='number'
+        placeholder='1'
+        min={1}
+        max={10}
+        id='guests'/>
+
+        <label>Occasion</label>
+        <select placeholder='Select Occasion'>
+          <option>Birthday</option>
+          <option>Anniversary</option>
+          <option>Engagement</option>
+          <option selected>Simple meal</option>
+        </select>
+    </form>
   )
 }
 

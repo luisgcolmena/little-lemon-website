@@ -1,5 +1,5 @@
 import Header from "./Components/Header"
-import Main from "./Components/Main"
+import Reservations from "./Components/Reservations"
 import Footer from "./Components/Footer"
 import HomePage from "./Components/HomePage"
 import './App.css'
@@ -11,7 +11,7 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={ <HomePage /> } />
-        <Route path="/reserve-a-table" element={ <Main /> } />
+        <Route path="/reserve-a-table" element={ <Reservations /> } />
       </Routes>
 
       <Footer />

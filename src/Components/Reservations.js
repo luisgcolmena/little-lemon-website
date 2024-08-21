@@ -1,10 +1,10 @@
 import HeroSection from "./HeroSection"
-import '../Styles/Main.css'
+import '../Styles/Reservations.css'
 import BookingPage from "./BookingPage"
 import ContactForm from "./ContactForm"
 import Summary from "./Summary"
 
-function Main() {
+function Reservations() {
   return (
     <main>
       <HeroSection></HeroSection>
@@ -15,4 +15,4 @@ function Main() {
   )
 }
 
-export default Main
+export default Reservations
