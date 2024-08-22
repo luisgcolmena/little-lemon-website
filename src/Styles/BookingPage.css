@@ -1,12 +1,46 @@
 .booking-form {
   height: 40vh;
   width: 60%;
-  border: 1px solid red;
+  /* border: 1px solid red; */
   font-family: 'Karla';
   margin-top: 5vh;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-rows: 1fr 1fr;
+  gap: 10px;
+}
+.date-input {
+  border: 1px solid green;
+  width: 15vw;
+}
+.date-input input {
+  padding: 5px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: var(--primary-yellow);
+}
+.time-input {
+  border: 1px solid red;
+  width: 15vw;
+}
+.time-input select {
+  width: 10vw;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: var(--primary-yellow);
+  color: var(--primary-black);
+}
+.guests-input {
+  border: 1px solid blue;
+  width: 15vw;
+}
+.ocassion-input {
+  border: 1px solid rgb(255, 208, 0);
+  width: 15vw;
 }
 
 /* Media Queries */
