@@ -1,0 +1,59 @@
+.booking-form {
+  height: 40vh;
+  width: 60%;
+  font-family: 'Karla';
+  margin-top: 5vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.booking-form input {
+  /* background-color: var(--primary-gray); */
+  font-family: 'Karla';
+  padding: 5px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 0.5px solid gray;
+}
+.booking-form select {
+  /* background-color: var(--primary-gray); */
+  font-family: 'Karla';
+  padding: 5px;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  border: 0.5px solid gray;
+}
+.div-input {
+  width: 23vw;
+  height: 5vh;
+  display: flex;
+  padding: 8px 15px;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 8px;
+  border: 2px solid var(--primary-gray);
+  /* background-color: var(--primary-gray); */
+  /* box-shadow: 0px 1px 3px rgb(54, 54, 54); */
+}
+/* .div-input h3 {
+  align-self: ;
+} */
+.booking-form button {
+  width: 25vw;
+  height: 5vh;
+  padding: 5px;
+  box-shadow: 0px 2px 5px rgb(54, 54, 54);
+  margin-top: 20px;
+}
+
+/* Media Queries */
+
+@media (max-width:430px) {
+  .selection-section {
+    width: 428px;
+    border: 1px solid red;
+    }
+  }
