@@ -1,13 +1,15 @@
 import { useState } from 'react'
 import '../Styles/BookingForm.css'
 
-function BookingForm () {
+function BookingForm (dispatch) {
 
   const [date, setDate] = useState("")
-  const [time, setTime] = useState("")
   const [guests, setGuests] = useState(1)
   const [ocassion, setOcassion] = useState("")
 
+  const handleSubmit = (e) => {
+    e.preventDefault()
+  }
 
   return (
     <form className='booking-form'>
@@ -18,7 +20,10 @@ function BookingForm () {
           type='date'
           id='date-input'
           value={date}
-          onChange={(e)=> setDate(e.target.value)}
+          onChange={(e)=> {
+            setDate(e.target.value)
+            dispatch(e.target.value)
+          }}
         />
       </div>
 
@@ -26,8 +31,10 @@ function BookingForm () {
         <label htmlFor='time'><h3>Time</h3></label>
         <select
           id='time'
-          value={time}
-          onChange={(e)=> setTime(e.target.value)}
+          value={[12,13,14]}
+          onChange={(e)=> {
+            /* setAvailableTimes(e.target.value) */
+          }}
         >
           <option>12:00</option>
           <option>13:00</option>
@@ -66,7 +73,12 @@ function BookingForm () {
         </select>
       </div>
 
-      <button type='submit' className='yellow-button'>Make your reservation!</button>
+      <button 
+        type='submit'
+        className='yellow-button'
+        onSubmit={handleSubmit}>
+          Make your reservation!
+      </button>
     </form>
   )
 }

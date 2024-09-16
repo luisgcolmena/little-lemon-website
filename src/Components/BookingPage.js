@@ -1,11 +1,15 @@
 import '../Styles/BookingPage.css'
 import BookingForm from './BookingForm'
 
-function BookingPage () {
+
+function BookingPage (dispatch) {
+
   return (
     <>
       <h1 className='booking-title'>Book a table</h1>
-      <BookingForm />
+      <BookingForm
+        dispatch={dispatch}
+      />
     </>
   )
 }
