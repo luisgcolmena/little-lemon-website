@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import '../Styles/BookingForm.css'
 
-function BookingForm (dispatch) {
+function BookingForm ({dispatch, availableTimes}) {
 
   const [date, setDate] = useState("")
   const [guests, setGuests] = useState(1)
@@ -23,6 +23,7 @@ function BookingForm (dispatch) {
           onChange={(e)=> {
             setDate(e.target.value)
             dispatch(e.target.value)
+            console.log(e.target.value)
           }}
         />
       </div>
@@ -31,17 +32,15 @@ function BookingForm (dispatch) {
         <label htmlFor='time'><h3>Time</h3></label>
         <select
           id='time'
-          value={[12,13,14]}
+          /* value={[12,13,14]}
           onChange={(e)=> {
-            /* setAvailableTimes(e.target.value) */
-          }}
+            setAvailableTimes(e.target.value)
+          }} */
         >
-          <option>12:00</option>
-          <option>13:00</option>
-          <option>14:00</option>
-          <option>18:00</option>
-          <option>19:00</option>
-          <option>20:00</option>
+          {
+            availableTimes.map((hour) => <option>{hour}</option>)
+          }
+
         </select>
       </div>
 
