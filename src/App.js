@@ -1,8 +1,8 @@
-import Header from "./Components/Header"
-import Reservations from "./Components/Reservations"
-import Footer from "./Components/Footer"
-import HomePage from "./Components/HomePage"
 import './App.css'
+import Header from "./Components/Header"
+import HomePage from "./Components/HomePage"
+import BookingPage from "./Views/BookingPage"
+import Footer from "./Components/Footer"
 import { Route, Routes } from "react-router-dom"
 
 function App() {
@@ -11,9 +11,8 @@ function App() {
       <Header />
       <Routes>
         <Route path="/" element={ <HomePage /> } />
-        <Route path="/reserve-a-table" element={ <Reservations /> } />
+        <Route path="/bookings" element={ <BookingPage /> } />
       </Routes>
-
       <Footer />
     </>
   );

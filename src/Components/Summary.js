@@ -1,11 +1,19 @@
 import '../Styles/Summary.css'
 
-function Summary() {
+function Summary({formData}) {
   return (
     <section className='summary-section'>
       <div className='summary-section-container'>
         <h1>Reservation Summary</h1>
         <div className='summary-container'>
+          <div className='summary-item'>
+            <p>Name:</p>
+            <p>{formData.name ? formData.name : ''}</p>
+          </div>
+          <div className='summary-item'>
+            <p>email:</p>
+            <p>{formData.email ? formData.email : ''}</p>
+          </div>
           <div className='summary-item'>
             <p>Date:</p>
             <p>25/07/2024</p>
@@ -28,7 +36,6 @@ function Summary() {
           </div>
         </div>
       </div>
-      <button className='reservation-button'>Confirm reservation</button>
     </section>
   )
 }

@@ -1,14 +1,4 @@
-.booking-form {
-  height: 40vh;
-  width: 60%;
-  font-family: 'Karla';
-  margin-top: 5vh;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 10px;
-}
-.booking-form input {
+input {
   /* background-color: var(--primary-gray); */
   font-family: 'Karla';
   padding: 5px;
@@ -17,7 +7,7 @@
   font-weight: bold;
   border: 0.5px solid gray;
 }
-.booking-form select {
+select {
   /* background-color: var(--primary-gray); */
   font-family: 'Karla';
   padding: 5px;

@@ -1,6 +1,5 @@
 import '../Styles/Testimony.css'
 import femalelogo from '../assets/avatar-female.png'
-import malelogo from '../assets/avatar-male.png'
 
 function Testimony({rating, name, description}) {
   return (
@@ -9,7 +8,7 @@ function Testimony({rating, name, description}) {
         {`${rating}/5 stars`}
       </h3>
       <div className='testimony-card-title'>
-        <img src= { femalelogo }/>
+        <img src= { femalelogo } alt='female generic logo'/>
         <h3 className='testimony-name'>
           {name}
         </h3>

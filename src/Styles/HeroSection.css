@@ -72,18 +72,3 @@
     display: none;
   }
 }
-
-
-
-
-@media (min-width: 431px) and (max-width: 1830px) {
-
-  .hero-section-text h1 {
-    color: red;
-  }
-  .hero-section-text p {
-    color: var(--primary-gray);
-    font-family: 'Karla';
-    font-size: 2vh;
-  }
-}

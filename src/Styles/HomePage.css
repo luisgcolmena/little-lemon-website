@@ -65,3 +65,7 @@
   font-weight: bold;
   box-shadow: 0px 5px 15px rgb(54, 54, 54);
 }
+.yellow-button:hover {
+  cursor: pointer;
+  background-color: #daba19;
+}

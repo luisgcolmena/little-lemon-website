@@ -1,3 +1,18 @@
+main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+}
+.booking-page-form {
+  width: 100%;
+  font-family: 'Karla';
+  margin-top: 5vh;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
 .booking-title {
   font-family: 'Karla';
   font-size: 5vh;
