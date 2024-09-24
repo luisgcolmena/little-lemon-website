@@ -1,43 +1,50 @@
 import '../Styles/Summary.css'
 
-function Summary({formData}) {
+function Summary({formData, availableTimes}) {
   return (
     <section className='summary-section'>
       <div className='summary-section-container'>
         <h1>Reservation Summary</h1>
         <div className='summary-container'>
+
           <div className='summary-item'>
             <p>Name:</p>
-            <p>{formData.name ? formData.name : ''}</p>
+            <p>{formData.name ? formData.name : 'Full Name'}</p>
           </div>
+
           <div className='summary-item'>
             <p>email:</p>
-            <p>{formData.email ? formData.email : ''}</p>
+            <p>{formData.email ? formData.email : 'exaxmple@gmail.com'}</p>
           </div>
+
+          <div className='summary-item'>
+            <p>Phone Number:</p>
+            <p>{formData.phoneNumber && formData.phoneNumber}</p>
+          </div>
+
           <div className='summary-item'>
             <p>Date:</p>
-            <p>25/07/2024</p>
+            <p>{formData.date ? formData.date : 'dd-mm-aaaa'}</p>
           </div>
+
           <div className='summary-item'>
-            <p>Table:</p>
-            <p>Outside / 13:00</p>
+            <p>Time:</p>
+            <p>{/* {avial ? formData.date : 'dd-mm-aaaa'} */}</p>
           </div>
+
           <div className='summary-item'>
-            <p>N° Diners:</p>
-            <p>5</p>
+            <p>N° Guests:</p>
+            <p>{availableTimes ? formData.guests : 'dd-mm-aaaa'}</p>
           </div>
-          <div className='summary-item'>
-            <p>Notes:</p>
-            <p className='summary-notes'>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-          </div>
+
           <div className='summary-item'>
             <p>Occasion:</p>
-            <p>Birthday</p>
+            <p>{formData.ocassion && formData.ocassion}</p>
           </div>
         </div>
       </div>
     </section>
   )
 }
-
+                 
 export default Summary

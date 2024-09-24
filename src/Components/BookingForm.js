@@ -24,8 +24,8 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
           name='time'
           id='time'
           value={availableTimes}
-          /* onChange={handleChange} */
-          onChange={(e) => handleChange(e)}
+          onChange={handleChange}
+          /* onChange={(e) => handleChange(e)} */
         >
           {
             availableTimes.map((hour, index) => <option key={index}>{hour}</option>)

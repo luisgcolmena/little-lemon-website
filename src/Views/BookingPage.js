@@ -29,8 +29,10 @@ function BookingPage () {
   const [formData, setFormData] = useState({
     name: '',
     date: '',
+    phoneNumber: '+56 ',
     guests: 1,
-    ocassion:""
+    ocassion:'',
+    notes: 'Additional Notes (Opcional)'
     //Falta agregar los estados del Contact Form
   })
 
@@ -64,8 +66,14 @@ function BookingPage () {
           handleChange={handleChange}
         />
 
-        <ContactForm formData={formData} handleChange={handleChange}/>
-        <Summary formData={formData} handleChange={handleChange}/>
+        <ContactForm
+          formData={formData} handleChange={handleChange}/>
+        
+        <Summary
+          formData={formData}
+          handleChange={handleChange}
+          availableTimes={availableTimes}
+        />
         <button 
           type='submit'
           className='yellow-button'
