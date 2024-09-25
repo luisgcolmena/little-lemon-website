@@ -24,11 +24,13 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
           name='time'
           id='time'
           value={availableTimes}
-          onChange={handleChange}
+          /* onChange={handleChange} */
           /* onChange={(e) => handleChange(e)} */
         >
           {
-            availableTimes.map((hour, index) => <option key={index}>{hour}</option>)
+            availableTimes.map((hour, index) => (
+            <option  key={index}>{hour}</option>
+            ))
           }
 
         </select>
@@ -53,6 +55,7 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
         <select
           name='ocassion'
           id='ocassion'
+          data-testid='ocassion-select'
           placeholder='Select Occasion'
           value={formData.ocassion}
           onChange={handleChange}

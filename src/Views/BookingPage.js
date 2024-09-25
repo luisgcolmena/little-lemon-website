@@ -33,7 +33,6 @@ function BookingPage () {
     guests: 1,
     ocassion:'',
     notes: 'Additional Notes (Opcional)'
-    //Falta agregar los estados del Contact Form
   })
 
   //Inicializar el estado de los horarios con useReducer para relacionarlo con la fecha
