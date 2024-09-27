@@ -31,7 +31,7 @@ function BookingPage () {
     date: '',
     phoneNumber: '+56 ',
     guests: 1,
-    ocassion:'',
+    ocassion:'Birthday',
     notes: 'Additional Notes (Opcional)'
   })
 
