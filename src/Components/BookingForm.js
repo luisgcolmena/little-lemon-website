@@ -20,7 +20,7 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
 
       <div className='time div-input'>
         <label htmlFor='time'><h3>Time</h3></label>
-        <select 
+        <select
           name='time'
           id='time'
           data-testid='time-select'

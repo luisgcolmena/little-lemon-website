@@ -1,5 +1,5 @@
 import { render, screen, within } from '@testing-library/react'
-import BookingPage from './Views/BookingPage.js'
+import { BookingPage } from './Views/BookingPage.js'
 import BookingForm from './Components/BookingForm.js'
 
 test('Booking Page title test', () => {
@@ -53,4 +53,11 @@ test('Testing initializeTimes reducer initial state', () => {
     expect(selectOptions[2]).toHaveTextContent('14:00')
     expect(selectOptions[3]).toHaveTextContent('15:00')
     expect(selectOptions[4]).toHaveTextContent('16:00')
+})
+
+test('updateTimes useReducer test', () => {
+
+  render ( <BookingPage />)
+
+
 })

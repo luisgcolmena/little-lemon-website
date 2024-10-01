@@ -48,7 +48,7 @@ function BookingPage () {
       [name]: value
     })
   }
-  
+
   const handleSubmit = (e) => {
     e.preventDefault()
     }
@@ -67,13 +67,13 @@ function BookingPage () {
 
         <ContactForm
           formData={formData} handleChange={handleChange}/>
-        
+
         <Summary
           formData={formData}
           handleChange={handleChange}
           availableTimes={availableTimes}
         />
-        <button 
+        <button
           type='submit'
           className='yellow-button'
           onSubmit={handleSubmit}>
