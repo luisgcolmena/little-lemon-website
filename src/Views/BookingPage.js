@@ -9,18 +9,18 @@ import { useState, useReducer } from 'react'
 const initializeTimes = ['12:00', '13:00', '14:00', '15:00', '16:00']
 
 const updateTimes = (times, date) => {
- /*  if (date) {
+  if (date) {
     return times
-  } */
+  }
 
-  switch(date) {
+  /* switch(date) {
     case '2024-09-25':
       return ['14:00', '15:00', '16:00', '20:00', '23:00']
     case '2024-09-20':
       return ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00']
     default:
       return ['12:00', '13:00', '14:00', '15:00', '16:00']
-  }
+  } */
 }
 
 function BookingPage () {

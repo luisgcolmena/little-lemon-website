@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react'
+import { render, screen, within } from '@testing-library/react'
 import BookingPage from './Views/BookingPage.js'
 import BookingForm from './Components/BookingForm.js'
 
@@ -46,7 +46,11 @@ test('Testing initializeTimes reducer initial state', () => {
     expect(selectOcassionArray[4]).toHaveTextContent('16:00') */
 
     const selectElement = screen.getByTestId('time-select')
-    const selectOptions = screen.getAllByRole('option', {}, {container: selectElement})
+    const selectOptions = within(selectElement).getAllByRole('option')
     expect(selectOptions).toHaveLength(5)
     expect(selectOptions[0]).toHaveTextContent('12:00')
+    expect(selectOptions[1]).toHaveTextContent('13:00')
+    expect(selectOptions[2]).toHaveTextContent('14:00')
+    expect(selectOptions[3]).toHaveTextContent('15:00')
+    expect(selectOptions[4]).toHaveTextContent('16:00')
 })
