@@ -9,12 +9,12 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
         <input
           name='date'
           type='date'
-          id='date-input'A
+          id='date-input'
           value={formData.date}
-          onChange={(e)=> {
+          /* onChange={(e)=> {
             handleChange(e)
             dispatch(e.target.value)
-          }}
+          }} */
         />
       </div>
 
@@ -24,15 +24,19 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
           name='time'
           id='time'
           data-testid='time-select'
-          value={availableTimes}
-          /* onChange={handleChange} */
-          /* onChange={(e) => handleChange(e)} */
+          value={formData.selectedHour}
+          onChange={handleChange}
         >
-          {
+          <option>{'18:00'}</option>
+          <option>{'13:00'}</option>
+          <option>{'14:00'}</option>
+          {/* {
             availableTimes.map((hour, index) => (
-            <option  key={index}>{hour}</option>
+            <option  key={index} value={hour}>
+              {hour}
+            </option>
             ))
-          }
+          } */}
 
         </select>
       </div>
@@ -60,7 +64,7 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
           placeholder='Select Occasion'
           value={formData.ocassion}
           onChange={handleChange}
-          >
+        >
           <option>Birthday</option>
           <option>Anniversary</option>
           <option>Engagement</option>

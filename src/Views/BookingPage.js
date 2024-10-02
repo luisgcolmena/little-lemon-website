@@ -29,8 +29,9 @@ function BookingPage () {
   const [formData, setFormData] = useState({
     name: '',
     date: '',
+    selectedHour: '17:00',
     phoneNumber: '+56 ',
-    guests: 1,
+    guests: 7,
     ocassion:'Birthday',
     notes: 'Additional Notes (Opcional)'
   })
