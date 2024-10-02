@@ -2,6 +2,14 @@ import '../Styles/BookingForm.css'
 
 function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
 
+            /* {
+            availableTimes.map((hour, index) => (
+            <option  key={index} value={hour}>
+              {hour}
+            </option>
+            ))
+          } */
+
   return (
     <>
       <div className='date div-input'>
@@ -11,6 +19,7 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
           type='date'
           id='date-input'
           value={formData.date}
+          onChange={handleChange}
           /* onChange={(e)=> {
             handleChange(e)
             dispatch(e.target.value)
@@ -25,19 +34,17 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
           id='time'
           data-testid='time-select'
           value={formData.selectedHour}
-          onChange={handleChange}
+          onChange={(e) => {
+            console.log(formData.selectedHour)
+            console.log(`Imprimiendo directo del onChange: ${e.target.value}`)
+            handleChange(e)
+            }
+          }
         >
-          <option>{'18:00'}</option>
+          <option selected>{'12:00'}</option>
           <option>{'13:00'}</option>
           <option>{'14:00'}</option>
-          {/* {
-            availableTimes.map((hour, index) => (
-            <option  key={index} value={hour}>
-              {hour}
-            </option>
-            ))
-          } */}
-
+          <option>{'15:00'}</option>
         </select>
       </div>
 
@@ -51,7 +58,12 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
             min={1}
             max={10}
             id='guests'
-            onChange={handleChange}
+            /* onChange={handleChange} */
+            onChange={(e) => {
+              console.log(formData.guests)
+              handleChange(e)
+              }
+            }
             />
       </div>
 
@@ -63,7 +75,11 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
           data-testid='ocassion-select'
           placeholder='Select Occasion'
           value={formData.ocassion}
-          onChange={handleChange}
+          onChange={(e) => {
+            console.log(formData.ocassion)
+            handleChange(e)
+            }
+          }
         >
           <option>Birthday</option>
           <option>Anniversary</option>
