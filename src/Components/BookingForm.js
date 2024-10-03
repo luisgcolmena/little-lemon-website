@@ -1,6 +1,6 @@
 import '../Styles/BookingForm.css'
 
-function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
+function BookingForm ({dispatch, availableTimes, formData, setFormData, handleChange}) {
 
             /* {
             availableTimes.map((hour, index) => (
@@ -86,6 +86,23 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
           <option>Engagement</option>
           <option selected>Simple meal</option>
         </select>
+      </div>
+
+     <div className='div-input'>
+        <label htmlFor='horas'>Horilla</label>
+        <select
+          name='hora'
+          id='horas'
+          value={formData.horilla}
+          onChange={(e) => setFormData(e.target.value)}
+        >
+          <option value=''>Selecciona una horilla</option>
+          <option value='18:00' >18:00</option>
+          <option value='19:00'>19:00</option>
+          <option value='20:00'>20:00</option>
+          <option value='21:00'>21:00</option>
+        </select>
+
       </div>
     </>
   )

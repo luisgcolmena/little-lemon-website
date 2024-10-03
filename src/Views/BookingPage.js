@@ -33,7 +33,8 @@ function BookingPage () {
     phoneNumber: '+56 ',
     guests: '7',
     ocassion:'Birthday',
-    notes: 'Additional Notes (Opcional)'
+    notes: 'Additional Notes (Opcional)',
+    horilla: ''
   })
 
   //Inicializar el estado de los horarios con useReducer para relacionarlo con la fecha
@@ -44,6 +45,7 @@ function BookingPage () {
   const handleChange = (e) => {
     const {name, value} = e.target
     console.log(`Valor dentro del handleChange: ${value}`)
+    console.log(e)
     setFormData({
       ...formData,
       [name]: value
@@ -63,6 +65,7 @@ function BookingPage () {
           dispatch={dispatch}
           availableTimes={availableTimes}
           formData={formData}
+          setFormData={setFormData}
           handleChange={handleChange}
         />
 
