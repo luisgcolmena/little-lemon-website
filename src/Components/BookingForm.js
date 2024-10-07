@@ -2,14 +2,6 @@ import '../Styles/BookingForm.css'
 
 function BookingForm ({dispatch, availableTimes, formData, setFormData, handleChange}) {
 
-            /* {
-            availableTimes.map((hour, index) => (
-            <option  key={index} value={hour}>
-              {hour}
-            </option>
-            ))
-          } */
-
   return (
     <>
       <div className='date div-input'>
@@ -19,11 +11,10 @@ function BookingForm ({dispatch, availableTimes, formData, setFormData, handleCh
           type='date'
           id='date-input'
           value={formData.date}
-          onChange={handleChange}
-          /* onChange={(e)=> {
+          onChange={(e)=> {
             handleChange(e)
             dispatch(e.target.value)
-          }} */
+          }}
         />
       </div>
 
@@ -33,18 +24,16 @@ function BookingForm ({dispatch, availableTimes, formData, setFormData, handleCh
           name='time'
           id='time'
           data-testid='time-select'
-          value={formData.selectedHour}
-          onChange={(e) => {
-            console.log(formData.selectedHour)
-            console.log(`Imprimiendo directo del onChange: ${e.target.value}`)
-            handleChange(e)
-            }
-          }
+          value={formData.time}
+          onChange={handleChange}
         >
-          <option selected>{'12:00'}</option>
-          <option>{'13:00'}</option>
-          <option>{'14:00'}</option>
-          <option>{'15:00'}</option>
+          {
+            availableTimes.map((hour, index) => {
+              return (
+                <option key={index} value={hour}>{ hour }</option>
+              )
+            })
+          }
         </select>
       </div>
 
@@ -58,12 +47,7 @@ function BookingForm ({dispatch, availableTimes, formData, setFormData, handleCh
             min={1}
             max={10}
             id='guests'
-            /* onChange={handleChange} */
-            onChange={(e) => {
-              console.log(formData.guests)
-              handleChange(e)
-              }
-            }
+            onChange={handleChange}
             />
       </div>
 
@@ -75,34 +59,13 @@ function BookingForm ({dispatch, availableTimes, formData, setFormData, handleCh
           data-testid='ocassion-select'
           placeholder='Select Occasion'
           value={formData.ocassion}
-          onChange={(e) => {
-            console.log(formData.ocassion)
-            handleChange(e)
-            }
-          }
+          onChange={handleChange}
         >
           <option>Birthday</option>
           <option>Anniversary</option>
           <option>Engagement</option>
           <option selected>Simple meal</option>
         </select>
-      </div>
-
-     <div className='div-input'>
-        <label htmlFor='horas'>Horilla</label>
-        <select
-          name='hora'
-          id='horas'
-          value={formData.horilla}
-          onChange={(e) => setFormData(e.target.value)}
-        >
-          <option value=''>Selecciona una horilla</option>
-          <option value='18:00' >18:00</option>
-          <option value='19:00'>19:00</option>
-          <option value='20:00'>20:00</option>
-          <option value='21:00'>21:00</option>
-        </select>
-
       </div>
     </>
   )

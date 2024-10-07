@@ -29,7 +29,7 @@ function BookingPage () {
   const [formData, setFormData] = useState({
     name: '',
     date: '',
-    selectedHour: '',
+    time: '00:00',
     phoneNumber: '+56 ',
     guests: '7',
     ocassion:'Birthday',
@@ -45,7 +45,6 @@ function BookingPage () {
   const handleChange = (e) => {
     const {name, value} = e.target
     console.log(`Valor dentro del handleChange: ${value}`)
-    console.log(e)
     setFormData({
       ...formData,
       [name]: value
@@ -70,11 +69,11 @@ function BookingPage () {
         />
 
         <ContactForm
-          formData={formData} handleChange={handleChange}/>
+          formData={formData}
+        />
 
         <Summary
           formData={formData}
-          handleChange={handleChange}
           availableTimes={availableTimes}
         />
         <button
