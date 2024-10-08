@@ -1,6 +1,6 @@
 import '../Styles/BookingForm.css'
 
-function BookingForm ({dispatch, availableTimes, formData, setFormData, handleChange}) {
+function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
 
   return (
     <>
@@ -64,7 +64,7 @@ function BookingForm ({dispatch, availableTimes, formData, setFormData, handleCh
           <option>Birthday</option>
           <option>Anniversary</option>
           <option>Engagement</option>
-          <option selected>Simple meal</option>
+          <option>Simple meal</option>
         </select>
       </div>
     </>

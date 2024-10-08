@@ -19,7 +19,9 @@ function Summary({formData, availableTimes}) {
 
           <div className='summary-item'>
             <p>Phone Number:</p>
-            <p>{formData.phoneNumber && formData.phoneNumber}</p>
+            <p>{formData.phoneNumber &&
+                `+56 ${formData.phoneNumber}`
+                }</p>
           </div>
 
           <div className='summary-item'>
@@ -29,7 +31,7 @@ function Summary({formData, availableTimes}) {
 
           <div className='summary-item'>
             <p>Time:</p>
-            <p>{/* {avial ? formData.date : 'dd-mm-aaaa'} */}</p>
+            <p>{availableTimes ? formData.time : 'dd-mm-aaaa'}</p>
           </div>
 
           <div className='summary-item'>
@@ -46,5 +48,5 @@ function Summary({formData, availableTimes}) {
     </section>
   )
 }
-                 
+
 export default Summary

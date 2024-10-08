@@ -6,10 +6,38 @@ import ContactForm from "../Components/ContactForm"
 import Summary from "../Components/Summary"
 import { useState, useReducer } from 'react'
 
-const initializeTimes = ['12:00', '13:00', '14:00', '15:00', '16:00']
+// API del curso para obtener listado de horas de acuerdo a la fecha.
+const seededRandom = function (seed) {
+  var m = 2**35 - 31
+  var a = 185852
+  var s = seed % m
+  return function () {
+      return (s = s * a % m) / m
+  };
+}
+const fetchAPI = function(date) {
+  let result = []
+  let random = seededRandom(date.getDate())
 
-const updateTimes = (times, date) => {
+  for(let i = 17; i <= 23; i++) {
+      if(random() < 0.5) {
+          result.push(i + ':00')
+      }
+      if(random() < 0.5) {
+          result.push(i + ':30')
+      }
+  }
+  return result;
+};
+const submitAPI = function(formData) {
+  return true;
+};
+
+export const initializeTimes = ['12:00', '13:00', '14:00', '15:00', '16:00']
+
+export const updateTimes = (times, date) => {
   if (date) {
+
     return times
   }
 
@@ -25,16 +53,20 @@ const updateTimes = (times, date) => {
 
 function BookingPage () {
 
+  const todayDate = new Date(2024, 10, 25)
+  console.log(todayDate)
+  console.log(fetchAPI(todayDate))
+
   //Inicializar el estado de los campos de los forms de la pagina
   const [formData, setFormData] = useState({
     name: '',
     date: '',
     time: '00:00',
     phoneNumber: '+56 ',
+    email: '',
     guests: '7',
     ocassion:'Birthday',
-    notes: 'Additional Notes (Opcional)',
-    horilla: ''
+    notes: 'Additional Notes (Opcional)'
   })
 
   //Inicializar el estado de los horarios con useReducer para relacionarlo con la fecha
@@ -53,23 +85,37 @@ function BookingPage () {
 
   const handleSubmit = (e) => {
     e.preventDefault()
+    alert((
+      `Nombre: ${formData.name}
+      Fecha: ${formData.date}
+      Hora: ${formData.time}
+      `
+      /* name: formData.name,
+      date: formData.date,
+      time: formData.time,
+      phoneNumber: formData.phoneNumber,
+      email: formData.email,
+      guests: formData.guests,
+      ocassion:formData.ocassion,
+      notes: formData.notes */
+    ))
     }
 
   return (
     <main>
       <HeroSection />
-      <form className='booking-page-form'>
+      <form onSubmit={handleSubmit} className='booking-page-form'>
         <h1 className='booking-title'>Book a table!</h1>
         <BookingForm
           dispatch={dispatch}
           availableTimes={availableTimes}
           formData={formData}
-          setFormData={setFormData}
           handleChange={handleChange}
         />
 
         <ContactForm
           formData={formData}
+          handleChange={handleChange}
         />
 
         <Summary
@@ -79,7 +125,7 @@ function BookingPage () {
         <button
           type='submit'
           className='yellow-button'
-          onSubmit={handleSubmit}>
+        >
             Make your reservation!
         </button>
       </form>

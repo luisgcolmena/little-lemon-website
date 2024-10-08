@@ -6,7 +6,7 @@ function ContactForm ({formData, handleChange}) {
     <div className='contact-form'>
       <h1>Contact Information</h1>
       <p>You will receive an email to notify you that your reservation has been successful, and we will contact you 15 minutes before the scheduled time to confirm the reservation.</p>
-      
+
       <div className='contact-form-texts'>
         <div className='contact-form-item'>
           <label>Full Name</label>
@@ -16,7 +16,7 @@ function ContactForm ({formData, handleChange}) {
             placeholder='Boop'
             value={formData.name}
             className='inputs'
-            onChange={(e) => handleChange(e)}
+            onChange={handleChange}
           />
         </div>
 
@@ -28,17 +28,18 @@ function ContactForm ({formData, handleChange}) {
           placeholder='email@gmail.com'
           className='inputs'
           value={formData.email}
-          onChange={(e) => handleChange(e)}
+          onChange={handleChange}
         />
         </div>
 
         <div className='contact-form-item'>
         <label>Phone Number</label>
         <input
-          name='phone-number'
+          name='phoneNumber'
           type='number'
           placeholder='+56'
           className='inputs'
+          onChange={handleChange}
         />
         </div>
       </div>
