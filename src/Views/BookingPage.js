@@ -33,29 +33,24 @@ const submitAPI = function(formData) {
   return true;
 };
 
-export const initializeTimes = ['12:00', '13:00', '14:00', '15:00', '16:00']
+export const initializeTimes2 = ['12:00', '13:00', '14:00', '15:00', '16:00']
+export const initializeTimes = fetchAPI(new Date())
 
 export const updateTimes = (times, date) => {
-  if (date) {
 
-    return times
+  console.log(`Estado antes: ${date}`)
+  const dateObject = new Date(date)
+  const timesByDate = fetchAPI(dateObject)
+
+  console.log(`Estado después: ${timesByDate}`)
+
+  if (date) {
+    return timesByDate
   }
 
-  /* switch(date) {
-    case '2024-09-25':
-      return ['14:00', '15:00', '16:00', '20:00', '23:00']
-    case '2024-09-20':
-      return ['12:00', '13:00', '14:00', '15:00', '16:00', '17:00']
-    default:
-      return ['12:00', '13:00', '14:00', '15:00', '16:00']
-  } */
 }
 
 function BookingPage () {
-
-  const todayDate = new Date(2024, 10, 25)
-  console.log(todayDate)
-  console.log(fetchAPI(todayDate))
 
   //Inicializar el estado de los campos de los forms de la pagina
   const [formData, setFormData] = useState({
@@ -76,7 +71,6 @@ function BookingPage () {
 
   const handleChange = (e) => {
     const {name, value} = e.target
-    console.log(`Valor dentro del handleChange: ${value}`)
     setFormData({
       ...formData,
       [name]: value
