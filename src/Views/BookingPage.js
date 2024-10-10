@@ -69,6 +69,10 @@ function BookingPage () {
     updateTimes,
     initializeTimes)
 
+  const submitForm = (data) => {
+      submitAPI(data)
+  }
+
   const handleChange = (e) => {
     const {name, value} = e.target
     setFormData({
@@ -79,21 +83,20 @@ function BookingPage () {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    alert((
-      `Nombre: ${formData.name}
-      Fecha: ${formData.date}
-      Hora: ${formData.time}
-      `
-      /* name: formData.name,
+    const formDataSubmit = {
+      name: formData.name,
       date: formData.date,
       time: formData.time,
       phoneNumber: formData.phoneNumber,
       email: formData.email,
       guests: formData.guests,
-      ocassion:formData.ocassion,
-      notes: formData.notes */
-    ))
+      ocassion: formData.ocassion,
+      notes: formData.notes
     }
+    submitForm(formDataSubmit)
+  }
+
+
 
   return (
     <main>

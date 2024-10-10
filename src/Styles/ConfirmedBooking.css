@@ -1,0 +1,14 @@
+.confirmation-container {
+  width: 60%;
+  height: 30vh;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.confirmation-title {
+  font-size: 5vh;
+  width: 60%;
+  font-family: 'Karla';
+}
