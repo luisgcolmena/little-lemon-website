@@ -5,6 +5,7 @@ import BookingForm from '../Components/BookingForm'
 import ContactForm from "../Components/ContactForm"
 import Summary from "../Components/Summary"
 import { useState, useReducer } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // API del curso para obtener listado de horas de acuerdo a la fecha.
 const seededRandom = function (seed) {
@@ -33,7 +34,6 @@ const submitAPI = function(formData) {
   return true;
 };
 
-export const initializeTimes2 = ['12:00', '13:00', '14:00', '15:00', '16:00']
 export const initializeTimes = fetchAPI(new Date())
 
 export const updateTimes = (times, date) => {
@@ -69,6 +69,8 @@ function BookingPage () {
     updateTimes,
     initializeTimes)
 
+  const navigate = useNavigate()
+
   const submitForm = (data) => {
       submitAPI(data)
   }
@@ -94,6 +96,10 @@ function BookingPage () {
       notes: formData.notes
     }
     submitForm(formDataSubmit)
+
+    if (submitForm) {
+      navigate('/confirmation')
+    }
   }
 
 
