@@ -1,6 +1,17 @@
 import '../Styles/BookingForm.css'
+import { useState } from 'react'
 
 function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
+
+  const [errors, setErrors] = useState({
+    dateError: false,
+  })
+
+  const validateInputs = () => {
+    if (formData.date < new Date()) {
+      console.log('Tenemos un problemilla')
+    }
+  }
 
   return (
     <>
@@ -15,7 +26,24 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
             handleChange(e)
             dispatch(e.target.value)
           }}
+          onBlur={(e) => {
+            if (!e.target.value) {
+              setErrors({
+                ...errors,
+                dateError: 
+
+              })
+            }
+            !e.target.value ? 
+            setErrors({...errors, dateError: true})
+              : ''}
+          required
+          min={new Date().toISOString().split('T')[0]}
         />
+        {
+          errors.dateError &&
+          <h1>Qué pasó perrillojuan!!</h1>
+        }
       </div>
 
       <div className='time div-input'>

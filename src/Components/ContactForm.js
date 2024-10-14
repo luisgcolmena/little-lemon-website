@@ -29,6 +29,7 @@ function ContactForm ({formData, handleChange}) {
           className='inputs'
           value={formData.email}
           onChange={handleChange}
+          required
         />
         </div>
 

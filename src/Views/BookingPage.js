@@ -38,11 +38,8 @@ export const initializeTimes = fetchAPI(new Date())
 
 export const updateTimes = (times, date) => {
 
-  console.log(`Estado antes: ${date}`)
   const dateObject = new Date(date)
   const timesByDate = fetchAPI(dateObject)
-
-  console.log(`Estado después: ${timesByDate}`)
 
   if (date) {
     return timesByDate
@@ -59,7 +56,7 @@ function BookingPage () {
     time: '00:00',
     phoneNumber: '+56 ',
     email: '',
-    guests: '7',
+    guests: '1',
     ocassion:'Birthday',
     notes: 'Additional Notes (Opcional)'
   })
