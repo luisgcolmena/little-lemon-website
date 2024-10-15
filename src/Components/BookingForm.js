@@ -22,6 +22,7 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
           type='date'
           id='date-input'
           value={formData.date}
+          className={errors.dateError ? 'input-error' : ''}
           onChange={(e)=> {
             handleChange(e)
             dispatch(e.target.value)
@@ -30,19 +31,22 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
             if (!e.target.value) {
               setErrors({
                 ...errors,
-                dateError: 
-
+                dateError: true
+              })
+            } else if (e.target.value) {
+              setErrors({
+                ...errors,
+                dateError: false
               })
             }
-            !e.target.value ? 
-            setErrors({...errors, dateError: true})
-              : ''}
+          }}
           required
           min={new Date().toISOString().split('T')[0]}
         />
+        
         {
           errors.dateError &&
-          <h1>Qué pasó perrillojuan!!</h1>
+          <p className='error-text'>You need to select a date.</p>
         }
       </div>
 
