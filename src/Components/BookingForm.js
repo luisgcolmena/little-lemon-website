@@ -15,14 +15,14 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
 
   return (
     <>
-      <div className='date div-input'>
+      <div className={errors.dateError ? 'date div-input input-error' : 'date div-input'}>
         <label htmlFor='date-input'><h3>Date</h3></label>
         <input
           name='date'
           type='date'
           id='date-input'
           value={formData.date}
-          className={errors.dateError ? 'input-error' : ''}
+          /* className={errors.dateError ? 'input-error' : ''} */
           onChange={(e)=> {
             handleChange(e)
             dispatch(e.target.value)
@@ -43,12 +43,12 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
           required
           min={new Date().toISOString().split('T')[0]}
         />
-        
+
+      </div>
         {
           errors.dateError &&
           <p className='error-text'>You need to select a date.</p>
         }
-      </div>
 
       <div className='time div-input'>
         <label htmlFor='time'><h3>Time</h3></label>

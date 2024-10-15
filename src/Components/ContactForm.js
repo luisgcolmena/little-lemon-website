@@ -1,11 +1,18 @@
+import { useState } from 'react'
 import '../Styles/ContactForm.css'
 
 function ContactForm ({formData, handleChange}) {
 
+  const [requiredError, setRequiredError] = useState(false)
+
+  const [errors, setErrors] = useState({
+    nameError: false,
+  })
+
   return (
     <div className='contact-form'>
       <h1>Contact Information</h1>
-      <p>You will receive an email to notify you that your reservation has been successful, and we will contact you 15 minutes before the scheduled time to confirm the reservation.</p>
+      <p className='contact-form-description'>You will receive an email to notify you that your reservation has been successful, and we will contact you 15 minutes before the scheduled time to confirm the reservation.</p>
 
       <div className='contact-form-texts'>
         <div className='contact-form-item'>
@@ -15,9 +22,20 @@ function ContactForm ({formData, handleChange}) {
             type='text'
             placeholder='Boop'
             value={formData.name}
-            className='inputs'
+            className={requiredError ? 'contact-form-inputs contact-input-error' : 'contact-form-inputs'}
             onChange={handleChange}
+            onBlur={(e) => {
+              if (!e.target.value) {
+                setRequiredError(true)
+              } else if (e.target.value) {
+                setRequiredError(false)
+              }
+            }}
           />
+        {
+          requiredError &&
+          <p className='contact-error-text'>This field is required.</p>
+        }
         </div>
 
         <div className='contact-form-item'>
@@ -26,7 +44,7 @@ function ContactForm ({formData, handleChange}) {
           name='email'
           type='email'
           placeholder='email@gmail.com'
-          className='inputs'
+          className='contact-form-inputs'
           value={formData.email}
           onChange={handleChange}
           required
@@ -39,7 +57,7 @@ function ContactForm ({formData, handleChange}) {
           name='phoneNumber'
           type='number'
           placeholder='+56'
-          className='inputs'
+          className='contact-form-inputs'
           onChange={handleChange}
         />
         </div>
@@ -47,7 +65,11 @@ function ContactForm ({formData, handleChange}) {
 
       <div className='contact-form-item'>
         <label>Additional Notes</label>
-        <textarea type='text' placeholder='Additional notes' className='notes'></textarea>
+        <textarea
+          type='text'
+          placeholder='Additional notes'
+          className='contact-form-inputs notes'
+        ></textarea>
       </div>
 
     </div>

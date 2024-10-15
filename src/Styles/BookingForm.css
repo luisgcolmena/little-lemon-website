@@ -17,9 +17,8 @@ select {
   border: 0.5px solid gray;
 }
 .div-input {
-  position: relative;
-  width: 25vw;
-  height: 6vh;
+  width: 22vw;
+  height: 5vh;
   display: flex;
   padding: 8px 15px;
   justify-content: space-between;
@@ -43,12 +42,10 @@ select {
   border: 1px solid red;
 }
 .error-text {
-  position: absolute;
   margin: 0;
-  top: 0px;
-  right: 22px;
-  font-size: 1.3vh;
+  font-size: 15px;
   font-weight: bold;
+  color: red;
 }
 
 /* Media Queries */
