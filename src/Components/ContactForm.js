@@ -3,8 +3,6 @@ import '../Styles/ContactForm.css'
 
 function ContactForm ({formData, handleChange}) {
 
-  const [requiredError, setRequiredError] = useState(false)
-
   const [nameError, setNameError] = useState({
     required: false,
     length: false,
@@ -13,8 +11,10 @@ function ContactForm ({formData, handleChange}) {
   const inputValidation = (state) => {
 
     if (state.required) {
+      console.log('O estará entrando aqui?')
       return <p className='contact-error-text'>This field is required.</p>
     } else if (state.length) {
+      console.log('Está entrando aqui?')
       return <p className='contact-error-text'>You must input a name between 3 and 25 characters.</p>
     }
   }
@@ -30,29 +30,26 @@ function ContactForm ({formData, handleChange}) {
           <input
             name='name'
             type='text'
-            placeholder='Boop'
+            placeholder='Luis Gerardillo...'
             value={formData.name}
-            className={nameError.required ?
-              'contact-form-inputs contact-input-error' :
-              nameError.length ?
-              'contact-form-inputs contact-input-error' :
-              'contact-form-inputs'
-            }
+            className={nameError.required ? 'contact-form-inputs contact-input-error' :
+              nameError.length ? 'contact-form-inputs contact-input-error' : 'contact-form-inputs'}
             onChange={handleChange}
             onBlur={(e) => {
               if (!e.target.value) {
                 setNameError({...nameError, required: true})
               } else if (e.target.value) {
-                setRequiredError(false)
+                setNameError({...nameError, required: false})
+                if (e.target.value.length < 3 || e.target.value.length > 25) {
+                  console.log('Comprobando que entra aqui cuando sucede el error')
+                  setNameError({...nameError, length: true})
+                  } else {
+                  console.log('Comprobando que entra aqui cuando ya no hay error')
+                  setNameError({...nameError, length: false})
+                  }
+                }
               }
-              if (e.target.value.length < 3 || e.target.value.length > 25) {
-                console.log('Comprobando que entra aqui cuando sucede el error')
-                setNameError({...nameError, length: true})
-              } else {
-                console.log('Comprobando que entra aqui cuando ya no hay error')
-                setNameError({...nameError, length: false})
-              }
-            }}
+            }
           />
         {
           inputValidation(nameError)
@@ -65,22 +62,22 @@ function ContactForm ({formData, handleChange}) {
           name='email'
           type='email'
           placeholder='email@gmail.com'
-          className={requiredError ? 'contact-form-inputs contact-input-error' : 'contact-form-inputs'}
+          /* className={requiredError ? 'contact-form-inputs contact-input-error' : 'contact-form-inputs'} */
           value={formData.email}
           onChange={handleChange}
-          onBlur={(e) => {
+          /* onBlur={(e) => {
             if (!e.target.value) {
               setRequiredError(true)
             } else if (e.target.value) {
               setRequiredError(false)
             }
-          }}
+          }} */
           required
         />
-        {
+        {/* {
           requiredError &&
           <p className='contact-error-text'>This field is required.</p>
-        }
+        } */}
         </div>
 
         <div className='contact-form-item'>
