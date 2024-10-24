@@ -4,6 +4,7 @@ import HeroSection from "../Components/HeroSection"
 import BookingForm from '../Components/BookingForm'
 import ContactForm from "../Components/ContactForm"
 import Summary from "../Components/Summary"
+import Input from '../Components/Inputs'
 import { useState, useReducer } from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -122,6 +123,15 @@ function BookingPage () {
           formData={formData}
           availableTimes={availableTimes}
         />
+        <Input
+          inputType='date'
+          state={formData.date}
+          handleChange={handleChange}
+          />
+        <Input
+          inputType='text'
+          />
+          
         <button
           type='submit'
           className='yellow-button'

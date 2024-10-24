@@ -31,11 +31,11 @@
   gap: 10px;
   width: 100%;
 }
-.contact-form-item label {
+/* .contact-form-item label {
   font-family: 'Karla';
   font-size: 25px;
   font-weight: bold;
-}
+} */
 .contact-form-inputs {
   border-radius: 8px;
   background-color: var(--primary-gray);
