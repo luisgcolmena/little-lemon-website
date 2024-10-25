@@ -1,0 +1,15 @@
+.div-input label {
+  font-family: 'Karla';
+  font-size: 25px;
+  font-weight: bold;
+  color: red;
+}
+.input-error {
+  border: 1px solid red;
+}
+.error-text {
+  margin: 0;
+  font-size: 15px;
+  font-weight: bold;
+  color: red;
+}

@@ -15,7 +15,7 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
 
   return (
     <>
-      <div className={errors.dateError ? 'date div-input input-error' : 'date div-input'}>
+      <div className={errors.dateError ? 'div-input input-error' : 'div-input'}>
         <label htmlFor='date-input'><h3>Date</h3></label>
         <input
           name='date'
