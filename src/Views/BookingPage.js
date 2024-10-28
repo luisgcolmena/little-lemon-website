@@ -57,7 +57,7 @@ function BookingPage () {
     time: '00:00',
     phoneNumber: '+56 ',
     email: '',
-    guests: '1',
+    guests: '',
     ocassion:'Birthday',
     notes: 'Additional Notes (Opcional)'
   })
@@ -123,19 +123,49 @@ function BookingPage () {
           formData={formData}
           availableTimes={availableTimes}
         />
+
         <Input
-          inputType='date'
+          inputConfig={{
+            tag: 'input',
+            type: 'date',
+            name: 'date',
+            id: 'date',
+            state: formData.date
+          }}
           state={formData.date}
           handleChange={handleChange}
           dispatch={dispatch}
           />
+
         <Input
-          inputType='name'
-          state={formData.name}
+          inputConfig={{
+            tag: 'select',
+            type: 'time',
+            name: 'time',
+            id: 'time',
+            state: formData.time,
+            options: availableTimes
+          }}
+          handleChange={handleChange}
           />
 
-        {/* <Input
-          inputType={}
+        <Input
+          inputConfig={{
+            tag: 'input',
+            type: 'number',
+            name: 'guests',
+            id: 'guests',
+            state: formData.guests,
+            range: [1,10]
+          }}
+          handleChange={handleChange}
+          />
+
+          {/* <Input
+            tag='select'
+            inputType='ocassion'
+            state={formData.ocassion}
+            handleChange={handleChange}
           /> */}
 
         <button

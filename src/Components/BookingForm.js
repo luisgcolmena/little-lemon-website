@@ -75,10 +75,10 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
             type='number'
             name='guests'
             value={formData.guests}
+            id='guests'
             placeholder='1'
             min={1}
             max={10}
-            id='guests'
             onChange={handleChange}
             />
       </div>

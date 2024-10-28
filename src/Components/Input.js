@@ -1,7 +1,7 @@
 import '../Styles/Input.css'
 import { useState } from "react"
 
-function Input({inputType, state, handleChange, dispatch}) {
+function Input({inputConfig,handleChange,dispatch}) {
 
   const [errors, setErrors] = useState({
     date: false,
@@ -11,9 +11,13 @@ function Input({inputType, state, handleChange, dispatch}) {
 
   // Variable creada para asignar propiedades condicionales al input.
   let addiotnalAtt = {}
-  if (inputType === 'date') {
+  if (inputConfig.type === 'date') {
     addiotnalAtt = {
-      min: new Date().toISOString().split('T')[0]
+      min: new Date().toISOString().split('T')[0]}
+    } else if (inputConfig.type === 'number') {
+      addiotnalAtt = {
+        min: inputConfig.range[0],
+        max: inputConfig.range[1]
     }
 
   }
@@ -51,14 +55,63 @@ function Input({inputType, state, handleChange, dispatch}) {
   return (
     <>
       <div className={
-        errors[inputType] ? 'div-input input-error' : 'div-input'}>
-        <label htmlFor={inputType}>
-          <h4>{`${inputType.charAt(0).toUpperCase()}${inputType.slice(1).toLowerCase()}`}</h4>
+        errors[inputConfig.name] ? 'div-input input-error' : 'div-input'}>
+        {/* Label para todo tipo de Input */}
+        <label htmlFor={inputConfig.id}>
+          <h4>{`${inputConfig.name.charAt(0).toUpperCase()}${inputConfig.name.slice(1).toLowerCase()}`}</h4>
         </label>
-        <input
+
+        {/* Renderizado condicional para cada tipo de tag */}
+
+        {/* Tag:INPUT */}
+        {inputConfig.tag && inputConfig.tag==='input' &&
+          <input
+          type={inputConfig.type}
+          name={inputConfig.name}
+          id={inputConfig.id}
+          /* placeholder={placeHolder} */
+          value={inputConfig.state}
+          onChange={(e) => {
+            if (inputConfig.type === 'date') {
+              handleChange(e)
+              dispatch(e.target.value)
+            } else {
+              handleChange(e)
+            }
+          }}
+          onBlur={handleBlur}
+          {...addiotnalAtt}
+          >
+        </input>}
+
+        {/* Tag:SELECT */}
+        {inputConfig.tag && inputConfig.tag==='select' &&
+          <select
+          type={inputConfig.type}
+          name={inputConfig.name}
+          id={inputConfig.id}
+          /* placeholder={placeHolder} */
+          value={inputConfig.state}
+          onChange={handleChange}
+          onBlur={handleBlur}
+          {...addiotnalAtt}
+          >
+            {
+              inputConfig.options.map((option,index) => {
+                return (
+                  <option key={index} value={option}>{ option }</option>
+                )
+              })
+            }
+        </select>}
+
+        {/* Tag:TEXTAREA */}
+        {/* {tag && tag==='textarea' &&
+          <textarea
           name={inputType}
           type={inputType}
           id={inputType}
+          placeholder={placeHolder}
           value={state}
           onChange={(e) => {
             if (inputType === 'date') {
@@ -71,10 +124,10 @@ function Input({inputType, state, handleChange, dispatch}) {
           onBlur={handleBlur}
           {...addiotnalAtt}
           >
-        </input>
+        </textarea>} */}
       </div>
       {
-        errors[inputType] &&
+        errors[inputConfig.name] &&
         <p className='error-text'>You need to select a date.</p>
       }
     </>
