@@ -14,30 +14,31 @@
   font-weight: bold;
   margin-bottom: 0;
 }
-.contact-form-description {
+.contact-form p {
   font-family: 'Karla';
   font-size: 20px;
   color: var(--dark-gray);
 }
-.contact-form-texts {
+.contact-form-divs {
   display: flex;
   justify-content: flex-start;
   gap: 20px;
 }
-.contact-form-item {
+.contact-form-input {
   display: flex;
   flex-direction: column;
   padding-bottom: 30px;
   gap: 10px;
   width: 100%;
 }
-/* .contact-form-item label {
+.contact-form label {
   font-family: 'Karla';
   font-size: 25px;
   font-weight: bold;
   color: blue;
-} */
-.contact-form-inputs {
+}
+.contact-form input,
+.contact-form textarea {
   border-radius: 8px;
   background-color: var(--primary-gray);
   border: 0.5px solid var(--secondary-gray);
@@ -52,14 +53,14 @@
 .contact-form-item input::placeholder {
   font-family: 'Karla';
 }
-.contact-form-item textarea {
+/* .contact-form-item textarea {
   border-radius: 8px;
   background-color: var(--primary-gray);
   border: 0.5px solid var(--secondary-gray);
   font-size: 2vh;
   padding-left: 15px;
   resize: none;
-}
+} */
 
 .notes {
   width: 97%;
@@ -73,7 +74,7 @@
   text-align: start;
   font-family: 'Karla';
 }
-.contact-input-error {
+/* .contact-input-error {
   border: 1px solid red;
 }
 .contact-error-text {
@@ -81,7 +82,7 @@
   font-size: 15px;
   font-weight: bold;
   color: red;
-}
+} */
 /* Media Queries  */
 
 

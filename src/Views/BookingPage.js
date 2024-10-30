@@ -7,6 +7,7 @@ import Summary from "../Components/Summary"
 import Input from '../Components/Input'
 import { useState, useReducer } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { type } from '@testing-library/user-event/dist/type'
 
 // API del curso para obtener listado de horas de acuerdo a la fecha.
 const seededRandom = function (seed) {
@@ -57,7 +58,7 @@ function BookingPage () {
     time: '00:00',
     phoneNumber: '+56 ',
     email: '',
-    guests: '',
+    guests: '1',
     ocassion:'Birthday',
     notes: 'Additional Notes (Opcional)'
   })
@@ -114,6 +115,57 @@ function BookingPage () {
           handleChange={handleChange}
         />
 
+        {/* <div className='booking-form'>
+          <Input
+          inputConfig={{
+              tag: 'input',
+              type: 'date',
+              name: 'date',
+              id: 'date',
+              state: formData.date
+            }}
+            state={formData.date}
+            handleChange={handleChange}
+            dispatch={dispatch}
+            />
+
+          <Input
+            inputConfig={{
+              tag: 'select',
+              name: 'time',
+              id: 'time',
+              state: formData.time,
+              options: availableTimes
+            }}
+            handleChange={handleChange}
+            />
+
+          <Input
+            inputConfig={{
+              tag: 'input',
+              type: 'number',
+              name: 'guests',
+              id: 'guests',
+              state: formData.guests,
+              range: [1,10],
+            }}
+            handleChange={handleChange}
+            />
+
+            <Input
+              inputConfig={{
+                tag: 'select',
+                name: 'ocassion',
+                id: 'ocassion',
+                state: formData.ocassion,
+                options: ['Birthday','Anniversary','Engagement','Simple meal'],
+                placeHolder: 'Select Occasion'
+              }}
+              handleChange={handleChange}
+            />
+        </div> */}
+
+
         <ContactForm
           formData={formData}
           handleChange={handleChange}
@@ -123,50 +175,6 @@ function BookingPage () {
           formData={formData}
           availableTimes={availableTimes}
         />
-
-        <Input
-          inputConfig={{
-            tag: 'input',
-            type: 'date',
-            name: 'date',
-            id: 'date',
-            state: formData.date
-          }}
-          state={formData.date}
-          handleChange={handleChange}
-          dispatch={dispatch}
-          />
-
-        <Input
-          inputConfig={{
-            tag: 'select',
-            type: 'time',
-            name: 'time',
-            id: 'time',
-            state: formData.time,
-            options: availableTimes
-          }}
-          handleChange={handleChange}
-          />
-
-        <Input
-          inputConfig={{
-            tag: 'input',
-            type: 'number',
-            name: 'guests',
-            id: 'guests',
-            state: formData.guests,
-            range: [1,10]
-          }}
-          handleChange={handleChange}
-          />
-
-          {/* <Input
-            tag='select'
-            inputType='ocassion'
-            state={formData.ocassion}
-            handleChange={handleChange}
-          /> */}
 
         <button
           type='submit'

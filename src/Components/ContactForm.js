@@ -1,5 +1,6 @@
-import { useState } from 'react'
 import '../Styles/ContactForm.css'
+import Input from './Input'
+import { useState } from 'react'
 
 
 const inputValidation = (state) => {
@@ -25,10 +26,11 @@ function ContactForm ({formData, handleChange}) {
   return (
     <div className='contact-form'>
       <h1>Contact Information</h1>
-      <p className='contact-form-description'>You will receive an email to notify you that your reservation has been successful, and we will contact you 15 minutes before the scheduled time to confirm the reservation.</p>
+      <p>You will receive an email to notify you that your reservation has been successful, and we will contact you 15 minutes before the scheduled time to confirm the reservation.</p>
 
-      <div className='contact-form-texts'>
-        <div className='contact-form-item'>
+      <div className='contact-form-divs'>
+
+        <div className='contact-form-input'>
           <label htmlFor='name'>Full Name</label>
           <input
             name='name'
@@ -54,9 +56,9 @@ function ContactForm ({formData, handleChange}) {
               }
             }
           />
-        {
+        {/* {
           inputValidation(nameError)
-        }
+        } */}
         </div>
 
         <div className='contact-form-item'>
@@ -104,6 +106,63 @@ function ContactForm ({formData, handleChange}) {
         ></textarea>
       </div>
 
+      <div className='contact-form-divs'>
+        <Input
+          inputConfig={{
+            tag: 'input',
+            type: 'text',
+            name: 'name',
+            id: 'name',
+            state: formData.name,
+            styles: 'contact-form-input'
+          }}
+          handleChange={handleChange}
+        >
+          Full name
+        </Input>
+
+        <Input
+          inputConfig={{
+            tag: 'input',
+            type: 'email',
+            name: 'email',
+            id: 'email',
+            state: formData.email,
+            styles: 'contact-form-input'
+          }}
+          handleChange={handleChange}
+        >
+          email
+        </Input>
+
+        <Input
+          inputConfig={{
+            tag: 'input',
+            type: 'number',
+            name: 'phoneNumber',
+            id: 'phoneNumber',
+            state: formData.phoneNumber,
+            range: [10**8,10**9],
+            styles: 'contact-form-input'
+          }}
+          handleChange={handleChange}
+        >
+          Phone number
+        </Input>
+      </div>
+
+      <Input
+        inputConfig={{
+          tag: 'textarea',
+          type: 'text',
+          name: 'notes',
+          id: 'notes',
+          state: formData.notes,
+          styles: 'contact-form-input'
+        }}
+      >
+        Additional notes
+      </Input>
     </div>
   )
 }

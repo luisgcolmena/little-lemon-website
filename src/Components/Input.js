@@ -1,7 +1,7 @@
 import '../Styles/Input.css'
 import { useState } from "react"
 
-function Input({inputConfig,handleChange,dispatch}) {
+function Input({children,inputConfig,handleChange,dispatch}) {
 
   const [errors, setErrors] = useState({
     date: false,
@@ -55,10 +55,10 @@ function Input({inputConfig,handleChange,dispatch}) {
   return (
     <>
       <div className={
-        errors[inputConfig.name] ? 'div-input input-error' : 'div-input'}>
+        errors[inputConfig.name] ? `${inputConfig.styles} input-error` : `${inputConfig.styles}`}>
         {/* Label para todo tipo de Input */}
         <label htmlFor={inputConfig.id}>
-          <h4>{`${inputConfig.name.charAt(0).toUpperCase()}${inputConfig.name.slice(1).toLowerCase()}`}</h4>
+          <h4>{/* {`${inputConfig.name.charAt(0).toUpperCase()}${inputConfig.name.slice(1).toLowerCase()}`} */}{ children }</h4>
         </label>
 
         {/* Renderizado condicional para cada tipo de tag */}
@@ -69,7 +69,7 @@ function Input({inputConfig,handleChange,dispatch}) {
           type={inputConfig.type}
           name={inputConfig.name}
           id={inputConfig.id}
-          /* placeholder={placeHolder} */
+          placeholder={inputConfig.placeHolder}
           value={inputConfig.state}
           onChange={(e) => {
             if (inputConfig.type === 'date') {
@@ -87,14 +87,13 @@ function Input({inputConfig,handleChange,dispatch}) {
         {/* Tag:SELECT */}
         {inputConfig.tag && inputConfig.tag==='select' &&
           <select
-          type={inputConfig.type}
-          name={inputConfig.name}
-          id={inputConfig.id}
-          /* placeholder={placeHolder} */
-          value={inputConfig.state}
-          onChange={handleChange}
-          onBlur={handleBlur}
-          {...addiotnalAtt}
+            name={inputConfig.name}
+            id={inputConfig.id}
+            placeholder={inputConfig.placeHolder}
+            value={inputConfig.state}
+            onChange={handleChange}
+            onBlur={handleBlur}
+            {...addiotnalAtt}
           >
             {
               inputConfig.options.map((option,index) => {
@@ -106,25 +105,18 @@ function Input({inputConfig,handleChange,dispatch}) {
         </select>}
 
         {/* Tag:TEXTAREA */}
-        {/* {tag && tag==='textarea' &&
+        {inputConfig.tag && inputConfig.tag==='textarea' &&
           <textarea
-          name={inputType}
-          type={inputType}
-          id={inputType}
-          placeholder={placeHolder}
-          value={state}
-          onChange={(e) => {
-            if (inputType === 'date') {
-              handleChange(e)
-              dispatch(e.target.value)
-            } else {
-              handleChange(e)
-            }
-          }}
+          name={inputConfig.name}
+          type={inputConfig.type}
+          id={inputConfig.id}
+          placeholder={inputConfig.placeHolder}
+          value={inputConfig.state}
+          onChange={handleChange}
           onBlur={handleBlur}
           {...addiotnalAtt}
           >
-        </textarea>} */}
+        </textarea>}
       </div>
       {
         errors[inputConfig.name] &&
