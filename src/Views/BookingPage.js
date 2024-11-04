@@ -6,6 +6,7 @@ import ContactForm from "../Components/ContactForm"
 import Summary from "../Components/Summary"
 import { useState, useReducer } from 'react'
 import { useNavigate } from 'react-router-dom'
+import useInputValidation from '../hooks/useInputValidation'
 
 // API del curso para obtener listado de horas de acuerdo a la fecha.
 const seededRandom = function (seed) {
@@ -48,6 +49,8 @@ export const updateTimes = (times, date) => {
 }
 
 function BookingPage () {
+
+  useInputValidation()
 
   //Inicializar el estado de los campos de los forms de la pagina
   const [formData, setFormData] = useState({

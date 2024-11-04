@@ -56,9 +56,10 @@
 .contact-form-item input:focus {
   border: 1px solid red;
 }
-.contact-form-item input::placeholder,
-.contact-form-item textarea::placeholder{
+.contact-form-div input::placeholder,
+.contact-form-div textarea::placeholder {
   font-family: 'Karla';
+  font-weight: normal;
 }
 .contact-form textarea {
   width: 96%;
@@ -66,6 +67,11 @@
   resize: none;
   white-space: pre-wrap;
   overflow-wrap: break-word;
+}
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
 }
 /* .notes {
   width: 97%;

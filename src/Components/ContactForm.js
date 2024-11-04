@@ -67,7 +67,8 @@ function ContactForm ({formData, handleChange}) {
             id: 'phoneNumber',
             state: formData.phoneNumber,
             range: [10**8,10**9],
-            styles: 'contact-form-div'
+            styles: 'contact-form-div',
+            placeHolder: '9 7630 2016'
           }}
           handleChange={handleChange}
         >
