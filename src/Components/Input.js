@@ -9,19 +9,6 @@ function Input({children,inputConfig,handleChange,dispatch}) {
     email: false
   })
 
-  // Variable creada para asignar propiedades condicionales al input.
-  let addiotnalAtt = {}
-  if (inputConfig.type === 'date') {
-    addiotnalAtt = {
-      min: new Date().toISOString().split('T')[0]}
-    } else if (inputConfig.type === 'number') {
-      addiotnalAtt = {
-        min: inputConfig.range[0],
-        max: inputConfig.range[1]
-    }
-
-  }
-
   const handleBlur = (e) => {
     if (!e.target.value) {
       setErrors({
@@ -36,8 +23,32 @@ function Input({children,inputConfig,handleChange,dispatch}) {
     }
   }
 
+  //Variable creada para asignar las propiedades base de cada tipo de input.
+  const baseAtt ={
+    type: inputConfig.type,
+    name: inputConfig.name,
+    id: inputConfig.id,
+    value: inputConfig.state,
+    placeholder: inputConfig.placeHolder,
+    onChange: handleChange,
+    onBlur: handleBlur
+  }
 
-/*   (e) => {
+  // Variable creada para asignar propiedades condicionales al input.
+  let addiotnalAtt = {}
+  if (inputConfig.type === 'date') {
+    addiotnalAtt = {
+      min: new Date().toISOString().split('T')[0]}
+    } else if (inputConfig.type === 'number') {
+      addiotnalAtt = {
+        min: inputConfig.range[0],
+        max: inputConfig.range[1]
+    }
+
+  }
+
+
+  /* const handleOnBLur = (e) => {
     if (!e.target.value) {
       setNameError({...nameError, required: true})
     } else if (e.target.value) {
@@ -66,11 +77,7 @@ function Input({children,inputConfig,handleChange,dispatch}) {
         {/* Tag:INPUT */}
         {inputConfig.tag && inputConfig.tag==='input' &&
           <input
-          type={inputConfig.type}
-          name={inputConfig.name}
-          id={inputConfig.id}
-          placeholder={inputConfig.placeHolder}
-          value={inputConfig.state}
+          {...baseAtt}
           onChange={(e) => {
             if (inputConfig.type === 'date') {
               handleChange(e)
@@ -79,7 +86,6 @@ function Input({children,inputConfig,handleChange,dispatch}) {
               handleChange(e)
             }
           }}
-          onBlur={handleBlur}
           {...addiotnalAtt}
           >
         </input>}
@@ -87,12 +93,7 @@ function Input({children,inputConfig,handleChange,dispatch}) {
         {/* Tag:SELECT */}
         {inputConfig.tag && inputConfig.tag==='select' &&
           <select
-            name={inputConfig.name}
-            id={inputConfig.id}
-            placeholder={inputConfig.placeHolder}
-            value={inputConfig.state}
-            onChange={handleChange}
-            onBlur={handleBlur}
+            {...baseAtt}
             {...addiotnalAtt}
           >
             {
@@ -107,13 +108,7 @@ function Input({children,inputConfig,handleChange,dispatch}) {
         {/* Tag:TEXTAREA */}
         {inputConfig.tag && inputConfig.tag==='textarea' &&
           <textarea
-          name={inputConfig.name}
-          type={inputConfig.type}
-          id={inputConfig.id}
-          placeholder={inputConfig.placeHolder}
-          value={inputConfig.state}
-          onChange={handleChange}
-          onBlur={handleBlur}
+          {...baseAtt}
           {...addiotnalAtt}
           >
         </textarea>}

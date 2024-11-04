@@ -4,10 +4,8 @@ import HeroSection from "../Components/HeroSection"
 import BookingForm from '../Components/BookingForm'
 import ContactForm from "../Components/ContactForm"
 import Summary from "../Components/Summary"
-import Input from '../Components/Input'
 import { useState, useReducer } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { type } from '@testing-library/user-event/dist/type'
 
 // API del curso para obtener listado de horas de acuerdo a la fecha.
 const seededRandom = function (seed) {
@@ -60,7 +58,7 @@ function BookingPage () {
     email: '',
     guests: '1',
     ocassion:'Birthday',
-    notes: 'Additional Notes (Opcional)'
+    notes: ''
   })
 
   //Inicializar el estado de los horarios con useReducer para relacionarlo con la fecha
