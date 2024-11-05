@@ -1,8 +1,8 @@
 import { useState } from "react";
 
-function useInputValidation () { 
+function useInputValidation () {
 
-  const [error, setError] = useState(true)
+  const [error, setError] = useState(false)
 
   if (error) {
     return alert('Boop!')

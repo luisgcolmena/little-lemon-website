@@ -14,7 +14,7 @@
   font-weight: bold;
   margin-bottom: 0;
 }
-.contact-form p {
+.contact-form > p {
   font-family: 'Karla';
   font-size: 20px;
   color: var(--dark-gray);

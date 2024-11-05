@@ -1,5 +1,11 @@
 import '../Styles/Input.css'
 import { useState } from "react"
+import useInputBlur from '../hooks/useInputBlur'
+
+//Funciones para realizar validaciones de los inputs
+const validateRequired = (value) => {
+  return value ? false : "This field is required???"
+}
 
 function Input({children,inputConfig,handleChange,dispatch}) {
 
@@ -8,6 +14,8 @@ function Input({children,inputConfig,handleChange,dispatch}) {
     name: false,
     email: false
   })
+
+  const onBlurValidation = useInputBlur(validateRequired)
 
   const handleBlur = (e) => {
     if (!e.target.value) {
@@ -31,7 +39,7 @@ function Input({children,inputConfig,handleChange,dispatch}) {
     value: inputConfig.state,
     placeholder: inputConfig.placeHolder,
     onChange: handleChange,
-    onBlur: handleBlur
+    onBlur: () => onBlurValidation.handleBlur(inputConfig.state)
   }
 
   // Variable creada para asignar propiedades condicionales al input.
@@ -66,10 +74,13 @@ function Input({children,inputConfig,handleChange,dispatch}) {
   return (
     <>
       <div className={
-        errors[inputConfig.name] ? `${inputConfig.styles} input-error` : `${inputConfig.styles}`}>
+        onBlurValidation.requiredError === false ?
+        `${inputConfig.styles} input-error` :
+        `${inputConfig.styles}`}>
+
         {/* Label para todo tipo de Input */}
         <label htmlFor={inputConfig.id}>
-          <h4>{/* {`${inputConfig.name.charAt(0).toUpperCase()}${inputConfig.name.slice(1).toLowerCase()}`} */}{ children }</h4>
+          <h4>{ children }</h4>
         </label>
 
         {/* Renderizado condicional para cada tipo de tag */}
@@ -86,6 +97,7 @@ function Input({children,inputConfig,handleChange,dispatch}) {
               handleChange(e)
             }
           }}
+          /* onBlur={() => onBlurValidation.handleBlur(inputConfig.state)} */
           {...addiotnalAtt}
           >
         </input>}
@@ -112,10 +124,14 @@ function Input({children,inputConfig,handleChange,dispatch}) {
           {...addiotnalAtt}
           >
         </textarea>}
+        {
+        onBlurValidation.requiredError && inputConfig.styles==='contact-form-div' &&
+        <p className='error-text'>{onBlurValidation.requiredError}</p>
+      }
       </div>
       {
-        errors[inputConfig.name] &&
-        <p className='error-text'>You need to select a date.</p>
+        onBlurValidation.requiredError && inputConfig.styles==='booking-input' &&
+        <p className='error-text'>{onBlurValidation.requiredError}</p>
       }
     </>
   )

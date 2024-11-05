@@ -50,7 +50,7 @@ export const updateTimes = (times, date) => {
 
 function BookingPage () {
 
-  useInputValidation()
+  /* useInputValidation() */
 
   //Inicializar el estado de los campos de los forms de la pagina
   const [formData, setFormData] = useState({
@@ -102,70 +102,18 @@ function BookingPage () {
     }
   }
 
-
-
   return (
     <main>
       <HeroSection />
       <form onSubmit={handleSubmit} className='booking-page-form'>
         <h1 className='booking-title'>Book a table!</h1>
+
         <BookingForm
           dispatch={dispatch}
           availableTimes={availableTimes}
           formData={formData}
           handleChange={handleChange}
         />
-
-        {/* <div className='booking-form'>
-          <Input
-          inputConfig={{
-              tag: 'input',
-              type: 'date',
-              name: 'date',
-              id: 'date',
-              state: formData.date
-            }}
-            state={formData.date}
-            handleChange={handleChange}
-            dispatch={dispatch}
-            />
-
-          <Input
-            inputConfig={{
-              tag: 'select',
-              name: 'time',
-              id: 'time',
-              state: formData.time,
-              options: availableTimes
-            }}
-            handleChange={handleChange}
-            />
-
-          <Input
-            inputConfig={{
-              tag: 'input',
-              type: 'number',
-              name: 'guests',
-              id: 'guests',
-              state: formData.guests,
-              range: [1,10],
-            }}
-            handleChange={handleChange}
-            />
-
-            <Input
-              inputConfig={{
-                tag: 'select',
-                name: 'ocassion',
-                id: 'ocassion',
-                state: formData.ocassion,
-                options: ['Birthday','Anniversary','Engagement','Simple meal'],
-                placeHolder: 'Select Occasion'
-              }}
-              handleChange={handleChange}
-            />
-        </div> */}
-
 
         <ContactForm
           formData={formData}
