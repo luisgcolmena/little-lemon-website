@@ -52,9 +52,15 @@ function Input({children,inputConfig,handleChange,dispatch}) {
         min: inputConfig.range[0],
         max: inputConfig.range[1]
     }
-
   }
 
+ const classError = () => {
+  console.log('Booooop')
+  return (
+    onBlurValidation.requiredError === null ? `${inputConfig.styles}`: 
+      onBlurValidation.requiredError === false ? `${inputConfig.styles}` : `${inputConfig.styles}`
+  )
+ }
 
   /* const handleOnBLur = (e) => {
     if (!e.target.value) {
@@ -73,10 +79,9 @@ function Input({children,inputConfig,handleChange,dispatch}) {
 
   return (
     <>
-      <div className={
-        onBlurValidation.requiredError === false ?
-        `${inputConfig.styles} input-error` :
-        `${inputConfig.styles}`}>
+      <div className={classError()}>
+
+        
 
         {/* Label para todo tipo de Input */}
         <label htmlFor={inputConfig.id}>
@@ -88,6 +93,7 @@ function Input({children,inputConfig,handleChange,dispatch}) {
         {/* Tag:INPUT */}
         {inputConfig.tag && inputConfig.tag==='input' &&
           <input
+          className={classError()}
           {...baseAtt}
           onChange={(e) => {
             if (inputConfig.type === 'date') {
@@ -105,8 +111,9 @@ function Input({children,inputConfig,handleChange,dispatch}) {
         {/* Tag:SELECT */}
         {inputConfig.tag && inputConfig.tag==='select' &&
           <select
-            {...baseAtt}
-            {...addiotnalAtt}
+          {...baseAtt}
+          {...addiotnalAtt}
+          className={classError()}
           >
             {
               inputConfig.options.map((option,index) => {
@@ -119,7 +126,8 @@ function Input({children,inputConfig,handleChange,dispatch}) {
 
         {/* Tag:TEXTAREA */}
         {inputConfig.tag && inputConfig.tag==='textarea' &&
-          <textarea
+        <textarea
+          className={classError()}
           {...baseAtt}
           {...addiotnalAtt}
           >
