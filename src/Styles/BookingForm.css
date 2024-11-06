@@ -12,7 +12,7 @@ input, select {
   font-weight: bold;
   border: 0.5px solid gray;
 }
-.booking-form > div {
+.booking-input {
   width: 22vw;
   height: 5vh;
   display: flex;

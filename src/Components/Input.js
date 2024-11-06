@@ -57,8 +57,9 @@ function Input({children,inputConfig,handleChange,dispatch}) {
  const classError = () => {
   console.log('Booooop')
   return (
-    onBlurValidation.requiredError === null ? `${inputConfig.styles}`: 
-      onBlurValidation.requiredError === false ? `${inputConfig.styles}` : `${inputConfig.styles}`
+    inputConfig.styles === 'contact-form-div' ?
+        onBlurValidation.requiredError === null ? `${inputConfig.styles}`:
+          onBlurValidation.requiredError === false ? `${inputConfig.styles}` : `${inputConfig.styles} input-error` : null
   )
  }
 
@@ -79,9 +80,11 @@ function Input({children,inputConfig,handleChange,dispatch}) {
 
   return (
     <>
-      <div className={classError()}>
-
-        
+      <div className={
+        inputConfig.styles === 'booking-input' ?
+        onBlurValidation.requiredError === null ? `${inputConfig.styles}`:
+          onBlurValidation.requiredError === false ? `${inputConfig.styles}` : `${inputConfig.styles} input-error` : null
+      }>
 
         {/* Label para todo tipo de Input */}
         <label htmlFor={inputConfig.id}>
@@ -93,18 +96,20 @@ function Input({children,inputConfig,handleChange,dispatch}) {
         {/* Tag:INPUT */}
         {inputConfig.tag && inputConfig.tag==='input' &&
           <input
-          className={classError()}
-          {...baseAtt}
-          onChange={(e) => {
-            if (inputConfig.type === 'date') {
-              handleChange(e)
-              dispatch(e.target.value)
-            } else {
-              handleChange(e)
-            }
-          }}
-          /* onBlur={() => onBlurValidation.handleBlur(inputConfig.state)} */
-          {...addiotnalAtt}
+            {...baseAtt}
+            className={inputConfig.styles === 'contact-form-div' ?
+              onBlurValidation.requiredError === null ? `${inputConfig.styles}`:
+                onBlurValidation.requiredError === false ? `${inputConfig.styles}` : `${inputConfig.styles} input-error` : null}
+            onChange={(e) => {
+              if (inputConfig.type === 'date') {
+                handleChange(e)
+                dispatch(e.target.value)
+              } else {
+                handleChange(e)
+              }
+            }}
+            /* onBlur={() => onBlurValidation.handleBlur(inputConfig.state)} */
+            {...addiotnalAtt}
           >
         </input>}
 
@@ -113,7 +118,7 @@ function Input({children,inputConfig,handleChange,dispatch}) {
           <select
           {...baseAtt}
           {...addiotnalAtt}
-          className={classError()}
+          /* className={classError()} */
           >
             {
               inputConfig.options.map((option,index) => {
