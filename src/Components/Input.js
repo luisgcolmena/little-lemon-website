@@ -83,7 +83,7 @@ function Input({children,inputConfig,handleChange,dispatch}) {
       <div className={
         inputConfig.styles === 'booking-input' ?
         onBlurValidation.requiredError === null ? `${inputConfig.styles}`:
-          onBlurValidation.requiredError === false ? `${inputConfig.styles}` : `${inputConfig.styles} input-error` : null
+          onBlurValidation.requiredError === false ? `${inputConfig.styles}` : `${inputConfig.styles} input-error` : inputConfig.styles
       }>
 
         {/* Label para todo tipo de Input */}

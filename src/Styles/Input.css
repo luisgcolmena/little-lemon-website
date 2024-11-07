@@ -8,3 +8,6 @@
   color: red;
   text-align: center;
 }
+.contact-form-div.input-error {
+  border: 1px solid red;
+}
