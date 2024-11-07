@@ -1,27 +1,7 @@
 import Input from './Input'
 import '../Styles/ContactForm.css'
-import { useState } from 'react'
-
-
-const inputValidation = (state) => {
-
-  if (state.required) {
-    console.log('O estará entrando aqui?')
-    return <p className='contact-error-text'>This field is required.</p>
-  } else if (state.length) {
-    console.log('Está entrando aqui?')
-    return <p className='contact-error-text'>You must input a name between 3 and 25 characters.</p>
-  }
-}
 
 function ContactForm ({formData, handleChange}) {
-
-  const [nameError, setNameError] = useState({
-    required: false,
-    length: false,
-  })
-
-
 
   return (
     <div className='contact-form'>

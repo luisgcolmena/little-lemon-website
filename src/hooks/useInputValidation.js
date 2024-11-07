@@ -1,11 +1,26 @@
 import { useState } from "react";
 
-function useInputValidation () {
+function useInputValidation(validateFunc) {
 
-  const [error, setError] = useState(false)
+  const [requiredError, setRequiredError] = useState(null)
+  const [lengthError, setLengthError] = useState(null)
 
-  if (error) {
-    return alert('Boop!')
+  const handleBlur = (value) => {
+    const newError = validateFunc(value)
+    setRequiredError(newError)
+  }
+
+  const handleLength = (value) => {
+    const newError = validateFunc(value)
+    setLengthError(newError)
+  }
+
+  return {
+    requiredError,
+    lengthError,
+    handleBlur,
+    handleLength
   }
 }
+
 export default useInputValidation
