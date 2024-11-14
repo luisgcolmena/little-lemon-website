@@ -3,18 +3,17 @@ import { useState } from "react"
 import useInputValidation from '../hooks/useInputValidation'
 
 //Funciones para realizar validaciones de los inputs
-const validateRequired = (value) => {
+/* const validateRequired = (value) => {
   return value ? false : "This field is required."
 }
 
 const validateLength = (value) => {
   return (value.length > 25) || (value.length < 3) ? 'String between 3 and 25' : false
-}
+} */
 
 function Input({children,inputConfig,handleChange,dispatch}) {
 
-  const onBlurValidation = useInputValidation(validateRequired)
-  const lengthValidation = useInputValidation(validateLength)
+  const [error, handleBlur] = useInputValidation()
 
   //Variable creada para asignar las propiedades base de cada tipo de input.
   const baseAtt ={
@@ -24,7 +23,7 @@ function Input({children,inputConfig,handleChange,dispatch}) {
     value: inputConfig.state,
     placeholder: inputConfig.placeHolder,
     onChange: handleChange,
-    onBlur: () => onBlurValidation.handleBlur(inputConfig.state)
+    onBlur: handleBlur
   }
 
   // Variable creada para asignar propiedades condicionales al input.
@@ -41,10 +40,10 @@ function Input({children,inputConfig,handleChange,dispatch}) {
 
   return (
     <>
-      <div className={
-        inputConfig.styles === 'booking-input' ?
+      <div className={ inputConfig.styles
+        /* inputConfig.styles === 'booking-input' ?
         onBlurValidation.requiredError === null ? `${inputConfig.styles}`:
-          onBlurValidation.requiredError === false ? `${inputConfig.styles}` : `${inputConfig.styles} input-error` : inputConfig.styles
+          onBlurValidation.requiredError === false ? `${inputConfig.styles}` : `${inputConfig.styles} input-error` : inputConfig.styles */
       }>
 
         {/* Label para todo tipo de Input */}
@@ -58,9 +57,10 @@ function Input({children,inputConfig,handleChange,dispatch}) {
         {inputConfig.tag && inputConfig.tag==='input' &&
           <input
             {...baseAtt}
-            className={inputConfig.styles === 'contact-form-div' ?
+            className={ inputConfig.styles
+              /* inputConfig.styles === 'contact-form-div' ?
               onBlurValidation.requiredError === null ? `${inputConfig.styles}`:
-                onBlurValidation.requiredError === false ? `${inputConfig.styles}` : `${inputConfig.styles} input-error` : null}
+                onBlurValidation.requiredError === false ? `${inputConfig.styles}` : `${inputConfig.styles} input-error` : null */}
             onChange={(e) => {
               if (inputConfig.type === 'date') {
                 handleChange(e)
@@ -102,7 +102,7 @@ function Input({children,inputConfig,handleChange,dispatch}) {
           onBlurValidation.requiredError &&
           inputConfig.styles==='contact-form-div' &&
           !(inputConfig.name === 'notes') &&
-          <p className='error-text'>{onBlurValidation.requiredError}</p>
+          <p className='error-text'>{error}</p>
           }
       </div>
       {
