@@ -38,13 +38,32 @@ function Input({children,inputConfig,handleChange,dispatch}) {
     }
   }
 
+  const inputElement = (
+    <input
+    {...baseAtt}
+    {...addiotnalAtt}
+    >
+    </input>
+  )
+  const selectElement = (
+    <select
+    {...baseAtt}
+    {...addiotnalAtt}
+    >
+    </select>
+  )
+  const textareaElement = (
+    <textarea
+    {...baseAtt}
+    {...addiotnalAtt}
+    >
+    </textarea>
+  )
+
+
   return (
     <>
-      <div className={ inputConfig.styles
-        /* inputConfig.styles === 'booking-input' ?
-        onBlurValidation.requiredError === null ? `${inputConfig.styles}`:
-          onBlurValidation.requiredError === false ? `${inputConfig.styles}` : `${inputConfig.styles} input-error` : inputConfig.styles */
-      }>
+      <div className={ inputConfig.styles}>
 
         {/* Label para todo tipo de Input */}
         <label htmlFor={inputConfig.id}>
@@ -57,10 +76,7 @@ function Input({children,inputConfig,handleChange,dispatch}) {
         {inputConfig.tag && inputConfig.tag==='input' &&
           <input
             {...baseAtt}
-            className={ inputConfig.styles
-              /* inputConfig.styles === 'contact-form-div' ?
-              onBlurValidation.requiredError === null ? `${inputConfig.styles}`:
-                onBlurValidation.requiredError === false ? `${inputConfig.styles}` : `${inputConfig.styles} input-error` : null */}
+            className={ inputConfig.styles}
             onChange={(e) => {
               if (inputConfig.type === 'date') {
                 handleChange(e)
@@ -99,17 +115,13 @@ function Input({children,inputConfig,handleChange,dispatch}) {
           </textarea>}
 
           {
-          onBlurValidation.requiredError &&
-          inputConfig.styles==='contact-form-div' &&
-          !(inputConfig.name === 'notes') &&
+          error &&
           <p className='error-text'>{error}</p>
           }
       </div>
       {
-        onBlurValidation.requiredError &&
-        inputConfig.styles==='booking-input' &&
-        !(inputConfig.name === 'notes') &&
-        <p className='error-text'>{onBlurValidation.requiredError}</p>
+        error &&
+        <p className='error-text'>{error}</p>
       }
     </>
   )

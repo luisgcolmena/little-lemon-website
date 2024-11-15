@@ -1,18 +1,7 @@
 import '../Styles/BookingForm.css'
 import Input from './Input'
-import { useState } from 'react'
 
 function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
-
-  const [errors, setErrors] = useState({
-    dateError: false,
-  })
-
-  const validateInputs = () => {
-    if (formData.date < new Date()) {
-      console.log('Tenemos un problemilla')
-    }
-  }
 
   return (
     <div className='booking-form'>
