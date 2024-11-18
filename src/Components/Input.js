@@ -1,19 +1,24 @@
 import '../Styles/Input.css'
-import { useState } from "react"
 import useInputValidation from '../hooks/useInputValidation'
 
-//Funciones para realizar validaciones de los inputs
-/* const validateRequired = (value) => {
-  return value ? false : "This field is required."
-}
+function Input({wrapper,children,inputConfig,handleChange,dispatch}) {
 
-const validateLength = (value) => {
-  return (value.length > 25) || (value.length < 3) ? 'String between 3 and 25' : false
-} */
+  const {errors, handleBlur} = useInputValidation()
+  console.log(errors)
 
-function Input({children,inputConfig,handleChange,dispatch}) {
-
-  const [error, handleBlur] = useInputValidation()
+  const reducerOnChange = (e) => {
+    if (inputConfig.type === 'date') {
+      handleChange(e)
+      dispatch(e.target.value)
+    } else {
+      handleChange(e)
+    }
+  }
+  const inputClass = () => {
+    return Object.keys(errors).length === 0 ? 
+      inputConfig.styles : `${inputConfig.styles} input-error`
+      
+  }
 
   //Variable creada para asignar las propiedades base de cada tipo de input.
   const baseAtt ={
@@ -21,58 +26,83 @@ function Input({children,inputConfig,handleChange,dispatch}) {
     name: inputConfig.name,
     id: inputConfig.id,
     value: inputConfig.state,
+    className: !wrapper ? inputClass() : '',
     placeholder: inputConfig.placeHolder,
-    onChange: handleChange,
+    onChange: reducerOnChange,
     onBlur: handleBlur
   }
 
   // Variable creada para asignar propiedades condicionales al input.
-  let addiotnalAtt = {}
+  let additionalAtt = {}
   if (inputConfig.type === 'date') {
-    addiotnalAtt = {
+    additionalAtt = {
       min: new Date().toISOString().split('T')[0]}
     } else if (inputConfig.type === 'number') {
-      addiotnalAtt = {
+      additionalAtt = {
         min: inputConfig.range[0],
         max: inputConfig.range[1]
     }
   }
 
-  const inputElement = (
-    <input
-    {...baseAtt}
-    {...addiotnalAtt}
-    >
-    </input>
-  )
-  const selectElement = (
-    <select
-    {...baseAtt}
-    {...addiotnalAtt}
-    >
-    </select>
-  )
-  const textareaElement = (
-    <textarea
-    {...baseAtt}
-    {...addiotnalAtt}
-    >
-    </textarea>
-  )
+  let inputElement = {}
+  switch(inputConfig.tag) {
+    case 'input':
+      inputElement =  (<input {...baseAtt}{...additionalAtt}></input>
+      )
+      break
 
+    case 'select':
+      inputElement = (<select {...baseAtt} {...additionalAtt}>
+          {
+            inputConfig.options.map((option,index) => {
+              return (
+                <option key={index} value={option}>{ option }</option>
+              )})
+          }
+        </select>
+      )
+      break
 
-  return (
+    case 'textarea':
+      inputElement = (<textarea {...baseAtt} {...additionalAtt}></textarea>)
+      break
+
+    default:
+      break
+  }
+
+  
+
+  return wrapper ? (
     <>
-      <div className={ inputConfig.styles}>
-
-        {/* Label para todo tipo de Input */}
+      <div className={ inputClass() }>
+          <label htmlFor={inputConfig.id}>
+            <h4>{ children }</h4>
+          </label>
+          {inputElement}
+      </div>
+      {
+        errors[inputConfig.name] &&
+        <p className='error-text'>{ errors[inputConfig.name] }</p>
+      }
+    </>
+  ) : (
+    <div className={ inputConfig.styles }>
         <label htmlFor={inputConfig.id}>
           <h4>{ children }</h4>
         </label>
+        { inputElement }
+        {
+        errors[inputConfig.name] &&
+        <p className='error-text'>{ errors[inputConfig.name] }</p>
+        }
+    </div>
+  )
+    {/* <>
+      <div className={ inputConfig.styles}>
 
-        {/* Renderizado condicional para cada tipo de tag */}
+        {inputElement}
 
-        {/* Tag:INPUT */}
         {inputConfig.tag && inputConfig.tag==='input' &&
           <input
             {...baseAtt}
@@ -89,12 +119,10 @@ function Input({children,inputConfig,handleChange,dispatch}) {
           >
           </input>}
 
-          {/* Tag:SELECT */}
           {inputConfig.tag && inputConfig.tag==='select' &&
           <select
           {...baseAtt}
           {...addiotnalAtt}
-          /* className={classError()} */
           >
             {
               inputConfig.options.map((option,index) => {
@@ -105,7 +133,7 @@ function Input({children,inputConfig,handleChange,dispatch}) {
             }
           </select>}
 
-          {/* Tag:TEXTAREA */}
+          
           {inputConfig.tag && inputConfig.tag==='textarea' &&
           <textarea
             className={inputConfig.styles}
@@ -123,8 +151,8 @@ function Input({children,inputConfig,handleChange,dispatch}) {
         error &&
         <p className='error-text'>{error}</p>
       }
-    </>
-  )
+    </> */}
+  
 }
 
 export default Input

@@ -20,6 +20,7 @@ function ContactForm ({formData, handleChange}) {
             placeHolder: 'Luis Gerardo'
           }}
           handleChange={handleChange}
+          wrapper={ false }
         >
           Full name
         </Input>
@@ -35,6 +36,7 @@ function ContactForm ({formData, handleChange}) {
             placeHolder: 'example@email.com'
           }}
           handleChange={handleChange}
+          wrapper={ false }
         >
           Email
         </Input>
@@ -51,6 +53,7 @@ function ContactForm ({formData, handleChange}) {
             placeHolder: '9 7630 2016'
           }}
           handleChange={handleChange}
+          wrapper={ false }
         >
           Phone number
         </Input>
@@ -67,6 +70,7 @@ function ContactForm ({formData, handleChange}) {
           placeHolder: 'Additional notes (Optional)'
         }}
         handleChange={handleChange}
+        wrapper={ false }
       >
         Additional notes
       </Input>

@@ -17,6 +17,7 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
           state={formData.date}
           handleChange={handleChange}
           dispatch={dispatch}
+          wrapper={true}
       >
         Date
       </Input>
@@ -31,6 +32,7 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
           styles: 'booking-input'
         }}
         handleChange={handleChange}
+        wrapper={true}
         >
           Time
         </Input>
@@ -46,6 +48,7 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
               styles: 'booking-input'
             }}
             handleChange={handleChange}
+            wrapper={true}
           >
             Guests
           </Input>
@@ -61,38 +64,10 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
                 styles: 'booking-input'
               }}
               handleChange={handleChange}
+              wrapper={true}
             >
               Ocassion
             </Input>
-      {/* <div className={errors.dateError ? 'div-input input-error' : 'div-input'}>
-        <label htmlFor='date-input'><h3>Date</h3></label>
-        <input
-          name='date'
-          type='date'
-          id='date-input'
-          value={formData.date}
-          className={errors.dateError ? 'input-error' : ''}
-          onChange={(e)=> {
-            handleChange(e)
-            dispatch(e.target.value)
-          }}
-          onBlur={(e) => {
-            if (!e.target.value) {
-              setErrors({
-                ...errors,
-                dateError: true
-              })
-            } else if (e.target.value) {
-              setErrors({
-                ...errors,
-                dateError: false
-              })
-            }
-          }}
-          required
-          min={new Date().toISOString().split('T')[0]}
-        />
-      </div> */}
     </div>
   )
 }
