@@ -14,10 +14,20 @@ function Input({wrapper,children,inputConfig,handleChange,dispatch}) {
       handleChange(e)
     }
   }
-  const inputClass = () => {
-    return Object.keys(errors).length === 0 ? 
-      inputConfig.styles : `${inputConfig.styles} input-error`
-      
+  const inputClass = (name) => {
+    if (Object.keys(errors).length === 0) {
+      console.log('No hay error')
+      return inputConfig.styles
+    } else if ( errors[name] === '') {
+      console.log('Tampoco hay error')
+      return inputConfig.styles
+    } else {
+      return `${inputConfig.styles} input-error`
+    }
+
+    /* return Object.keys(errors).length === 0 ?
+      inputConfig.styles :
+      `${inputConfig.styles} input-error` */
   }
 
   //Variable creada para asignar las propiedades base de cada tipo de input.
@@ -26,7 +36,7 @@ function Input({wrapper,children,inputConfig,handleChange,dispatch}) {
     name: inputConfig.name,
     id: inputConfig.id,
     value: inputConfig.state,
-    className: !wrapper ? inputClass() : '',
+    className: !wrapper ? inputClass(inputConfig.name) : '',
     placeholder: inputConfig.placeHolder,
     onChange: reducerOnChange,
     onBlur: handleBlur
@@ -71,11 +81,9 @@ function Input({wrapper,children,inputConfig,handleChange,dispatch}) {
       break
   }
 
-  
-
   return wrapper ? (
     <>
-      <div className={ inputClass() }>
+      <div className={ inputClass(inputConfig.name) }>
           <label htmlFor={inputConfig.id}>
             <h4>{ children }</h4>
           </label>
