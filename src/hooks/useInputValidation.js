@@ -20,19 +20,13 @@ const validateFunc = (name, value) => {
 
 function useInputValidation() {
 
-  const [errors, setError] = useState({})
+  const [errors, setError] = useState('')
 
   const handleBlur = (e) => {
     const {name, value} = e.target
     const newError = validateFunc(name, value)
-    setError((prevError) => {
-      return (
-        {...prevError,
-          [name] : newError}
-      )
+    setError(newError || '')
     }
-  )
-  }
 
   return {
     errors,

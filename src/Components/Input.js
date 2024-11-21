@@ -16,18 +16,14 @@ function Input({wrapper,children,inputConfig,handleChange,dispatch}) {
   }
   const inputClass = (name) => {
     if (Object.keys(errors).length === 0) {
-      console.log('No hay error')
+
       return inputConfig.styles
     } else if ( errors[name] === '') {
-      console.log('Tampoco hay error')
+
       return inputConfig.styles
     } else {
       return `${inputConfig.styles} input-error`
     }
-
-    /* return Object.keys(errors).length === 0 ?
-      inputConfig.styles :
-      `${inputConfig.styles} input-error` */
   }
 
   //Variable creada para asignar las propiedades base de cada tipo de input.
@@ -90,8 +86,8 @@ function Input({wrapper,children,inputConfig,handleChange,dispatch}) {
           {inputElement}
       </div>
       {
-        errors[inputConfig.name] &&
-        <p className='error-text'>{ errors[inputConfig.name] }</p>
+        errors &&
+        <p className='error-text'>{ errors }</p>
       }
     </>
   ) : (
@@ -101,66 +97,12 @@ function Input({wrapper,children,inputConfig,handleChange,dispatch}) {
         </label>
         { inputElement }
         {
-        errors[inputConfig.name] &&
-        <p className='error-text'>{ errors[inputConfig.name] }</p>
+        errors &&
+        <p className='error-text'>{ errors }</p>
         }
     </div>
   )
-    {/* <>
-      <div className={ inputConfig.styles}>
 
-        {inputElement}
-
-        {inputConfig.tag && inputConfig.tag==='input' &&
-          <input
-            {...baseAtt}
-            className={ inputConfig.styles}
-            onChange={(e) => {
-              if (inputConfig.type === 'date') {
-                handleChange(e)
-                dispatch(e.target.value)
-              } else {
-                handleChange(e)
-              }
-            }}
-            {...addiotnalAtt}
-          >
-          </input>}
-
-          {inputConfig.tag && inputConfig.tag==='select' &&
-          <select
-          {...baseAtt}
-          {...addiotnalAtt}
-          >
-            {
-              inputConfig.options.map((option,index) => {
-                return (
-                  <option key={index} value={option}>{ option }</option>
-                )
-              })
-            }
-          </select>}
-
-          
-          {inputConfig.tag && inputConfig.tag==='textarea' &&
-          <textarea
-            className={inputConfig.styles}
-            {...baseAtt}
-            {...addiotnalAtt}
-            >
-          </textarea>}
-
-          {
-          error &&
-          <p className='error-text'>{error}</p>
-          }
-      </div>
-      {
-        error &&
-        <p className='error-text'>{error}</p>
-      }
-    </> */}
-  
 }
 
 export default Input

@@ -1,5 +1,6 @@
 import '../Styles/BookingForm.css'
 import Input from './Input'
+import {validateFunc} from '../utils/validate'
 
 function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
 
@@ -14,7 +15,6 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
             state: formData.date,
             styles: 'booking-input'
           }}
-          state={formData.date}
           handleChange={handleChange}
           dispatch={dispatch}
           wrapper={true}

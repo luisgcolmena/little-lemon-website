@@ -1,16 +1,17 @@
-export function validate(name, value) {
-  let error = ''
+export const validateFunc = (name, value) => {
+
+  if (name === 'notes') return ''
+
+  if (!value.trim()) return 'Obligatorio hermanazo'
 
   if (name === 'name') {
-    error = '25 max' ? value.length > 25 :
-      '3 min' ? value.length < 3 : ''
-
-    return error
+    if (value < 3) return 'Error de poquilla longitud hermanazo '
+    if (value > 25) return 'Error de muchilla longitud hermanazo'
   }
 
-  if (name === 'date') {
-    error = 'Pick a date' ? value !== 0 : ''
-
-    return error
+  if (name === 'notes') {
+    return value ? 'Boop' : 'Error de notas'
   }
+
+  return ''
 }
