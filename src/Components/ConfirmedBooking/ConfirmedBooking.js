@@ -1,4 +1,4 @@
-import '../Styles/ConfirmedBooking.css'
+import './ConfirmedBooking.css'
 
 function ConfirmedBooking() {
   return (

@@ -1,4 +1,4 @@
-import '../Styles/SpecialsCard.css'
+import './SpecialsCard.css'
 
 function SpecialsCard({name, price, description, img_code}) {
   return (

@@ -1,4 +1,4 @@
-import '../Styles/Specials.css'
+import './Specials.css'
 import SpecialsCard from './SpecialsCard'
 
 function Specials() {

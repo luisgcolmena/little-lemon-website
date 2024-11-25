@@ -1,6 +1,6 @@
 import Nav from "./Nav"
-import logo from '../assets/horizontal-logo.png'
-import '../Styles/Header.css'
+import logo from '../../assets/horizontal-logo.png'
+import './Header.css'
 
 export default function Header () {
   return (

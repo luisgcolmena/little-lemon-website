@@ -1,6 +1,5 @@
-import '../Styles/BookingForm.css'
-import Input from './Input'
-import {validateFunc} from '../utils/validate'
+import './BookingForm.css'
+import Input from '../../Input/Input'
 
 function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
 

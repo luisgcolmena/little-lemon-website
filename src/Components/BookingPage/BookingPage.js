@@ -1,9 +1,8 @@
-import '../Styles/BookingPage.css'
-import '../Styles/BookingForm.css'
-import HeroSection from "../Components/HeroSection"
-import BookingForm from '../Components/BookingForm'
-import ContactForm from "../Components/ContactForm"
-import Summary from "../Components/Summary"
+import './BookingPage.css'
+import HeroSection from './HeroSection/HeroSection'
+import BookingForm from './BookingForm/BookingForm'
+import ContactForm from './ContactForm/ContactForm'
+import Summary from './Summary/Summary'
 import { useState, useReducer } from 'react'
 import { useNavigate } from 'react-router-dom'
 

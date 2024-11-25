@@ -1,5 +1,5 @@
-import logo from '../assets/restaurant.jpg'
-import '../Styles/HeroSection.css'
+import logo from '../../../assets/restaurant.jpg'
+import './HeroSection.css'
 
 function HeroSection () {
 

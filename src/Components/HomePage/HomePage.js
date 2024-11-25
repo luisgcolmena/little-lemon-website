@@ -1,8 +1,8 @@
-import '../Styles/HomePage.css'
-import Specials from './Specials'
-import Testimonials from './Testimonials'
-import About from './About'
-import logo from '../assets/restauranfood.jpg'
+import './HomePage.css'
+import Specials from './Specials/Specials'
+import Testimonials from './Testimonials/Testimonials'
+import About from './About/About'
+import logo from '../../assets/restauranfood.jpg'
 
 function HomePage() {
   return (

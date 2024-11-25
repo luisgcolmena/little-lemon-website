@@ -1,5 +1,5 @@
-import '../Styles/Input.css'
-import useInputValidation from '../hooks/useInputValidation'
+import './Input.css'
+import useInputValidation from '../../hooks/useInputValidation'
 
 function Input({wrapper,children,inputConfig,handleChange,dispatch}) {
 

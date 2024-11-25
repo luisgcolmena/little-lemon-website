@@ -1,4 +1,4 @@
-import '../Styles/Testimonials.css'
+import './Testimonials.css'
 import Testimony from './Testimony'
 
 const testimonialsContent = [{
@@ -21,7 +21,7 @@ const testimonialsContent = [{
 ]
 
 function Testimonials() {
- 
+
   return (
     <section className="testimonials-section">
       <div className="testimonials-container">

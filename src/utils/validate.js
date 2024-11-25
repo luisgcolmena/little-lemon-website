@@ -1,3 +1,7 @@
+const validateName = (name) => {
+  
+}
+
 export const validateFunc = (name, value) => {
 
   if (name === 'notes') return ''

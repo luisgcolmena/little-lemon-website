@@ -1,5 +1,5 @@
-import Input from './Input'
-import '../Styles/ContactForm.css'
+import Input from '../../Input/Input'
+import './ContactForm.css'
 
 function ContactForm ({formData, handleChange}) {
 

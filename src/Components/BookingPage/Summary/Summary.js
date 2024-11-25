@@ -1,4 +1,4 @@
-import '../Styles/Summary.css'
+import './Summary.css'
 
 function Summary({formData, availableTimes}) {
   return (

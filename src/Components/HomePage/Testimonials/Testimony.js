@@ -1,5 +1,5 @@
-import '../Styles/Testimony.css'
-import femalelogo from '../assets/avatar-female.png'
+import './Testimony.css'
+import femalelogo from '../../../assets/avatar-female.png'
 
 function Testimony({rating, name, description}) {
   return (

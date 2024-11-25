@@ -1,9 +1,9 @@
 import './App.css'
-import Header from "./Components/Header"
-import HomePage from "./Components/HomePage"
-import BookingPage from "./Views/BookingPage"
-import ConfirmedBooking from './Views/ConfirmedBooking'
-import Footer from "./Components/Footer"
+import Header from './Components/Header/Header'
+import HomePage from './Components/HomePage/HomePage'
+import BookingPage from "./Components/BookingPage/BookingPage"
+import ConfirmedBooking from './Components/ConfirmedBooking/ConfirmedBooking'
+import Footer from "./Components/Footer/Footer"
 import { Route, Routes } from "react-router-dom"
 
 function App() {
