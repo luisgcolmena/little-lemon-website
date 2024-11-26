@@ -3,7 +3,7 @@ import HeroSection from './HeroSection/HeroSection'
 import BookingForm from './BookingForm/BookingForm'
 import ContactForm from './ContactForm/ContactForm'
 import Summary from './Summary/Summary'
-import { useState, useReducer } from 'react'
+import { useState, useReducer, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // API del curso para obtener listado de horas de acuerdo a la fecha.
@@ -60,6 +60,18 @@ function BookingPage () {
     notes: ''
   })
 
+  //Memorizar los atributos del estado
+  const memoData = useMemo(() => ({
+    name: formData.name,
+    date: formData.date,
+    time: formData.time,
+    phoneNumber: formData.phoneNumber,
+    email: formData.email,
+    guests: formData.guests,
+    ocassion: formData.ocassion,
+    notes: formData.notes
+  }), [formData.date, formData.email, formData.guests, formData.name, formData.notes, formData.ocassion, formData.phoneNumber, formData.time])
+
   //Inicializar el estado de los horarios con useReducer para relacionarlo con la fecha
   const [availableTimes, dispatch] = useReducer(
     updateTimes,
@@ -98,6 +110,8 @@ function BookingPage () {
     }
   }
 
+  console.log('Renderizado de toda la BookingPage')
+
   return (
     <main>
       <HeroSection />
@@ -107,12 +121,12 @@ function BookingPage () {
         <BookingForm
           dispatch={dispatch}
           availableTimes={availableTimes}
-          formData={formData}
+          formData={memoData}
           handleChange={handleChange}
         />
 
         <ContactForm
-          formData={formData}
+          formData={memoData}
           handleChange={handleChange}
         />
 

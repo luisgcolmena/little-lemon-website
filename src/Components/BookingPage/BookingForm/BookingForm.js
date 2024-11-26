@@ -1,7 +1,8 @@
 import './BookingForm.css'
 import Input from '../../Input/Input'
+import { memo } from 'react'
 
-function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
+const BookingForm = memo(function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
 
   return (
     <div className='booking-form'>
@@ -69,6 +70,6 @@ function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
             </Input>
     </div>
   )
-}
+})
 
 export default BookingForm

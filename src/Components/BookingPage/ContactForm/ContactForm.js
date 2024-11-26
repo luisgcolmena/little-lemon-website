@@ -1,7 +1,8 @@
 import Input from '../../Input/Input'
 import './ContactForm.css'
+import { memo } from 'react'
 
-function ContactForm ({formData, handleChange}) {
+const ContactForm = memo(function ContactForm ({formData, handleChange, name}) {
 
   return (
     <div className='contact-form'>
@@ -76,6 +77,6 @@ function ContactForm ({formData, handleChange}) {
       </Input>
     </div>
   )
-}
+})
 
 export default ContactForm

@@ -1,10 +1,11 @@
 import './Input.css'
 import useInputValidation from '../../hooks/useInputValidation'
+import { memo } from 'react'
 
-function Input({wrapper,children,inputConfig,handleChange,dispatch}) {
+const Input = memo(function Input({wrapper,children,inputConfig,handleChange,dispatch}) {
 
   const {errors, handleBlur} = useInputValidation()
-  console.log(errors)
+
 
   const reducerOnChange = (e) => {
     if (inputConfig.type === 'date') {
@@ -77,6 +78,8 @@ function Input({wrapper,children,inputConfig,handleChange,dispatch}) {
       break
   }
 
+  console.log(`Renderizado del input: ${inputConfig.name}. Tiene un error: ${errors}`)
+
   return wrapper ? (
     <>
       <div className={ inputClass(inputConfig.name) }>
@@ -103,6 +106,6 @@ function Input({wrapper,children,inputConfig,handleChange,dispatch}) {
     </div>
   )
 
-}
+})
 
 export default Input
