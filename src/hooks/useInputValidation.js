@@ -7,14 +7,14 @@ const validateFunc = (name, value) => {
   if (!value.trim()) return 'Obligatorio hermanazo'
 
   if (name === 'name') {
-    if (value < 3) return 'Error de poquilla longitud hermanazo '
-    if (value > 25) return 'Error de muchilla longitud hermanazo'
+    if (value.length < 3) return 'Error de poquilla longitud hermanaze'
+    if (value.length > 25) return 'Error de muchilla longitud hermanazo'
   }
 
   if (name === 'notes') {
+    console.log('Error de notillas')
     return value ? 'Boop' : 'Error de notas'
   }
-
   return ''
 }
 

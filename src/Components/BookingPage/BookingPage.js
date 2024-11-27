@@ -3,7 +3,7 @@ import HeroSection from './HeroSection/HeroSection'
 import BookingForm from './BookingForm/BookingForm'
 import ContactForm from './ContactForm/ContactForm'
 import Summary from './Summary/Summary'
-import { useState, useReducer, useMemo } from 'react'
+import { useState, useReducer, useMemo, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 // API del curso para obtener listado de horas de acuerdo a la fecha.
@@ -77,19 +77,21 @@ function BookingPage () {
     updateTimes,
     initializeTimes)
 
+    const memoTimes = useMemo(() => availableTimes, [availableTimes])
+
   const navigate = useNavigate()
 
   const submitForm = (data) => {
       submitAPI(data)
   }
 
-  const handleChange = (e) => {
+  const handleChange = useCallback((e) => {
     const {name, value} = e.target
-    setFormData({
+    setFormData((formData) => ({
       ...formData,
       [name]: value
-    })
-  }
+  }))
+  },[])
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -120,7 +122,7 @@ function BookingPage () {
 
         <BookingForm
           dispatch={dispatch}
-          availableTimes={availableTimes}
+          availableTimes={memoTimes}
           formData={memoData}
           handleChange={handleChange}
         />
@@ -131,8 +133,8 @@ function BookingPage () {
         />
 
         <Summary
-          formData={formData}
-          availableTimes={availableTimes}
+          formData={memoData}
+          availableTimes={memoTimes}
         />
 
         <button

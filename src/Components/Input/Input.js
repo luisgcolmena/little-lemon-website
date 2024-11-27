@@ -78,7 +78,7 @@ const Input = memo(function Input({wrapper,children,inputConfig,handleChange,dis
       break
   }
 
-  console.log(`Renderizado del input: ${inputConfig.name}. Tiene un error: ${errors}`)
+  /* console.log(`Renderizado del input: ${inputConfig.name}. Tiene un error: ${errors}`) */
 
   return wrapper ? (
     <>
