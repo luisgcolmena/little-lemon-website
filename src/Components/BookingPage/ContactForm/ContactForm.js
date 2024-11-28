@@ -2,7 +2,7 @@ import Input from '../../Input/Input'
 import './ContactForm.css'
 import { memo } from 'react'
 
-const ContactForm = memo(function ContactForm ({formData, handleChange, name}) {
+const ContactForm = memo(function ContactForm () {
 
   return (
     <div className='contact-form'>
@@ -16,11 +16,9 @@ const ContactForm = memo(function ContactForm ({formData, handleChange, name}) {
             type: 'text',
             name: 'name',
             id: 'name',
-            state: formData.name,
             styles: 'contact-form-div',
             placeHolder: 'Luis Gerardo'
           }}
-          handleChange={handleChange}
           wrapper={ false }
         >
           Full name
@@ -32,11 +30,9 @@ const ContactForm = memo(function ContactForm ({formData, handleChange, name}) {
             type: 'email',
             name: 'email',
             id: 'email',
-            state: formData.email,
             styles: 'contact-form-div',
             placeHolder: 'example@email.com'
           }}
-          handleChange={handleChange}
           wrapper={ false }
         >
           Email
@@ -48,12 +44,10 @@ const ContactForm = memo(function ContactForm ({formData, handleChange, name}) {
             type: 'number',
             name: 'phoneNumber',
             id: 'phoneNumber',
-            state: formData.phoneNumber,
             range: [10**8,10**9],
             styles: 'contact-form-div',
             placeHolder: '9 7630 2016'
           }}
-          handleChange={handleChange}
           wrapper={ false }
         >
           Phone number
@@ -66,11 +60,9 @@ const ContactForm = memo(function ContactForm ({formData, handleChange, name}) {
           type: 'text',
           name: 'notes',
           id: 'notes',
-          state: formData.notes,
           styles: 'contact-form-div',
           placeHolder: 'Additional notes (Optional)'
         }}
-        handleChange={handleChange}
         wrapper={ false }
       >
         Additional notes

@@ -2,7 +2,7 @@ import './BookingForm.css'
 import Input from '../../Input/Input'
 import { memo } from 'react'
 
-const BookingForm = memo(function BookingForm ({dispatch, availableTimes, formData, handleChange}) {
+const BookingForm = memo(function BookingForm ({dispatch, availableTimes}) {
 
   return (
     <div className='booking-form'>
@@ -12,10 +12,8 @@ const BookingForm = memo(function BookingForm ({dispatch, availableTimes, formDa
             type: 'date',
             name: 'date',
             id: 'date',
-            state: formData.date,
             styles: 'booking-input'
           }}
-          handleChange={handleChange}
           dispatch={dispatch}
           wrapper={true}
       >
@@ -27,11 +25,9 @@ const BookingForm = memo(function BookingForm ({dispatch, availableTimes, formDa
           tag: 'select',
           name: 'time',
           id: 'time',
-          state: formData.time,
           options: availableTimes,
           styles: 'booking-input'
         }}
-        handleChange={handleChange}
         wrapper={true}
         >
           Time
@@ -43,11 +39,9 @@ const BookingForm = memo(function BookingForm ({dispatch, availableTimes, formDa
               type: 'number',
               name: 'guests',
               id: 'guests',
-              state: formData.guests,
               range: [1,10],
               styles: 'booking-input'
             }}
-            handleChange={handleChange}
             wrapper={true}
           >
             Guests
@@ -58,12 +52,10 @@ const BookingForm = memo(function BookingForm ({dispatch, availableTimes, formDa
                 tag: 'select',
                 name: 'ocassion',
                 id: 'ocassion',
-                state: formData.ocassion,
                 options: ['Birthday','Anniversary','Engagement','Simple meal'],
                 placeHolder: 'Select Occasion',
                 styles: 'booking-input'
               }}
-              handleChange={handleChange}
               wrapper={true}
             >
               Ocassion

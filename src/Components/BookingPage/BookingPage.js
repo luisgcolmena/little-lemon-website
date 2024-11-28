@@ -5,6 +5,7 @@ import ContactForm from './ContactForm/ContactForm'
 import Summary from './Summary/Summary'
 import { useState, useReducer, useMemo, useCallback } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { FormProvider } from './FormContext/useFormContext'
 
 // API del curso para obtener listado de horas de acuerdo a la fecha.
 const seededRandom = function (seed) {
@@ -117,33 +118,35 @@ function BookingPage () {
   return (
     <main>
       <HeroSection />
-      <form onSubmit={handleSubmit} className='booking-page-form'>
-        <h1 className='booking-title'>Book a table!</h1>
+      <FormProvider>
+        <form onSubmit={handleSubmit} className='booking-page-form'>
+          <h1 className='booking-title'>Book a table!</h1>
 
-        <BookingForm
-          dispatch={dispatch}
-          availableTimes={memoTimes}
-          formData={memoData}
-          handleChange={handleChange}
-        />
+          <BookingForm
+            dispatch={dispatch}
+            availableTimes={memoTimes}
+            formData={memoData}
+            handleChange={handleChange}
+          />
 
-        <ContactForm
-          formData={memoData}
-          handleChange={handleChange}
-        />
+          <ContactForm
+            formData={memoData}
+            handleChange={handleChange}
+          />
 
-        <Summary
-          formData={memoData}
-          availableTimes={memoTimes}
-        />
+          <Summary
+            formData={memoData}
+            availableTimes={memoTimes}
+          />
 
-        <button
-          type='submit'
-          className='yellow-button'
-        >
-            Make your reservation!
-        </button>
-      </form>
+          <button
+            type='submit'
+            className='yellow-button'
+          >
+              Make your reservation!
+          </button>
+        </form>
+      </FormProvider>
     </main>
   )
 }

@@ -1,11 +1,12 @@
 import './Input.css'
 import useInputValidation from '../../hooks/useInputValidation'
 import { memo } from 'react'
+import { useFormContext } from '../BookingPage/FormContext/useFormContext'
 
-const Input = memo(function Input({wrapper,children,inputConfig,handleChange,dispatch}) {
+const Input = memo(function Input({wrapper,children,inputConfig,dispatch}) {
 
   const {errors, handleBlur} = useInputValidation()
-
+  const {formData , handleChange} = useFormContext
 
   const reducerOnChange = (e) => {
     if (inputConfig.type === 'date') {
@@ -32,7 +33,7 @@ const Input = memo(function Input({wrapper,children,inputConfig,handleChange,dis
     type: inputConfig.type,
     name: inputConfig.name,
     id: inputConfig.id,
-    value: inputConfig.state,
+    value: formData[inputConfig.name],
     className: !wrapper ? inputClass(inputConfig.name) : '',
     placeholder: inputConfig.placeHolder,
     onChange: reducerOnChange,
