@@ -1,6 +1,11 @@
 import './Summary.css'
+import { useFormContext } from '../FormContext/useFormContext'
 
-function Summary({formData, availableTimes}) {
+function Summary({availableTimes}) {
+
+  const {contextValues} = useFormContext()
+  const formData = contextValues
+
   return (
     <section className='summary-section'>
       <div className='summary-section-container'>

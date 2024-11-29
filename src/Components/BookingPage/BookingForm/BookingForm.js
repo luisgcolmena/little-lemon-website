@@ -12,13 +12,12 @@ const BookingForm = memo(function BookingForm ({dispatch, availableTimes}) {
             type: 'date',
             name: 'date',
             id: 'date',
+            label: 'Date',
             styles: 'booking-input'
           }}
           dispatch={dispatch}
           wrapper={true}
-      >
-        Date
-      </Input>
+      />
 
       <Input
         inputConfig={{
@@ -26,12 +25,11 @@ const BookingForm = memo(function BookingForm ({dispatch, availableTimes}) {
           name: 'time',
           id: 'time',
           options: availableTimes,
+          label: 'Time',
           styles: 'booking-input'
         }}
         wrapper={true}
-        >
-          Time
-        </Input>
+        />
 
           <Input
             inputConfig={{
@@ -40,12 +38,11 @@ const BookingForm = memo(function BookingForm ({dispatch, availableTimes}) {
               name: 'guests',
               id: 'guests',
               range: [1,10],
+              label: 'Guests',
               styles: 'booking-input'
             }}
             wrapper={true}
-          >
-            Guests
-          </Input>
+          />
 
             <Input
               inputConfig={{
@@ -53,13 +50,12 @@ const BookingForm = memo(function BookingForm ({dispatch, availableTimes}) {
                 name: 'ocassion',
                 id: 'ocassion',
                 options: ['Birthday','Anniversary','Engagement','Simple meal'],
+                label: 'Ocassion',
                 placeHolder: 'Select Occasion',
                 styles: 'booking-input'
               }}
               wrapper={true}
-            >
-              Ocassion
-            </Input>
+            />
     </div>
   )
 })

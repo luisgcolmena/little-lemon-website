@@ -16,13 +16,12 @@ const ContactForm = memo(function ContactForm () {
             type: 'text',
             name: 'name',
             id: 'name',
+            label: 'Full name',
             styles: 'contact-form-div',
             placeHolder: 'Luis Gerardo'
           }}
           wrapper={ false }
-        >
-          Full name
-        </Input>
+        />
 
         <Input
           inputConfig={{
@@ -30,13 +29,12 @@ const ContactForm = memo(function ContactForm () {
             type: 'email',
             name: 'email',
             id: 'email',
+            label: 'Email',
             styles: 'contact-form-div',
             placeHolder: 'example@email.com'
           }}
           wrapper={ false }
-        >
-          Email
-        </Input>
+        />
 
         <Input
           inputConfig={{
@@ -45,13 +43,12 @@ const ContactForm = memo(function ContactForm () {
             name: 'phoneNumber',
             id: 'phoneNumber',
             range: [10**8,10**9],
+            label: 'Phone number',
             styles: 'contact-form-div',
             placeHolder: '9 7630 2016'
           }}
           wrapper={ false }
-        >
-          Phone number
-        </Input>
+        />
       </div>
 
       <Input
@@ -60,13 +57,12 @@ const ContactForm = memo(function ContactForm () {
           type: 'text',
           name: 'notes',
           id: 'notes',
+          label: 'Additional notes',
           styles: 'contact-form-div',
           placeHolder: 'Additional notes (Optional)'
         }}
         wrapper={ false }
-      >
-        Additional notes
-      </Input>
+      />
     </div>
   )
 })

@@ -30,7 +30,7 @@ const fetchAPI = function(date) {
   }
   return result;
 };
-const submitAPI = function(formData) {
+const submitAPI = function() {
   return true;
 };
 
@@ -49,54 +49,18 @@ export const updateTimes = (times, date) => {
 
 function BookingPage () {
 
-  //Inicializar el estado de los campos de los forms de la pagina
-  const [formData, setFormData] = useState({
-    name: '',
-    date: '',
-    time: '00:00',
-    phoneNumber: '',
-    email: '',
-    guests: '1',
-    ocassion:'Birthday',
-    notes: ''
-  })
-
-  //Memorizar los atributos del estado
-  const memoData = useMemo(() => ({
-    name: formData.name,
-    date: formData.date,
-    time: formData.time,
-    phoneNumber: formData.phoneNumber,
-    email: formData.email,
-    guests: formData.guests,
-    ocassion: formData.ocassion,
-    notes: formData.notes
-  }), [formData.date, formData.email, formData.guests, formData.name, formData.notes, formData.ocassion, formData.phoneNumber, formData.time])
-
   //Inicializar el estado de los horarios con useReducer para relacionarlo con la fecha
   const [availableTimes, dispatch] = useReducer(
     updateTimes,
     initializeTimes)
 
-    const memoTimes = useMemo(() => availableTimes, [availableTimes])
+  const memoTimes = useMemo(() => availableTimes, [availableTimes])
 
   const navigate = useNavigate()
 
-  const submitForm = (data) => {
-      submitAPI(data)
-  }
-
-  const handleChange = useCallback((e) => {
-    const {name, value} = e.target
-    setFormData((formData) => ({
-      ...formData,
-      [name]: value
-  }))
-  },[])
-
   const handleSubmit = (e) => {
     e.preventDefault()
-    const formDataSubmit = {
+    /* const formDataSubmit = {
       name: formData.name,
       date: formData.date,
       time: formData.time,
@@ -105,10 +69,10 @@ function BookingPage () {
       guests: formData.guests,
       ocassion: formData.ocassion,
       notes: formData.notes
-    }
-    submitForm(formDataSubmit)
+    } */
+    const formSubmitted = submitAPI()
 
-    if (submitForm) {
+    if (formSubmitted) {
       navigate('/confirmation')
     }
   }
@@ -125,17 +89,11 @@ function BookingPage () {
           <BookingForm
             dispatch={dispatch}
             availableTimes={memoTimes}
-            formData={memoData}
-            handleChange={handleChange}
           />
 
-          <ContactForm
-            formData={memoData}
-            handleChange={handleChange}
-          />
+          <ContactForm/>
 
           <Summary
-            formData={memoData}
             availableTimes={memoTimes}
           />
 

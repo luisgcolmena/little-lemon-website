@@ -3,10 +3,17 @@ import useInputValidation from '../../hooks/useInputValidation'
 import { memo } from 'react'
 import { useFormContext } from '../BookingPage/FormContext/useFormContext'
 
-const Input = memo(function Input({wrapper,children,inputConfig,dispatch}) {
+const Input = memo(function Input({wrapper,inputConfig,dispatch}) {
 
   const {errors, handleBlur} = useInputValidation()
-  const {formData , handleChange} = useFormContext
+  const {contextValues, contextSetValues} = useFormContext()
+
+  console.log(contextValues[inputConfig.name])
+
+  const handleChange = (e) => {
+    const {name, value} = e.target
+    contextSetValues[name](value)
+  }
 
   const reducerOnChange = (e) => {
     if (inputConfig.type === 'date') {
@@ -28,12 +35,13 @@ const Input = memo(function Input({wrapper,children,inputConfig,dispatch}) {
     }
   }
 
+
   //Variable creada para asignar las propiedades base de cada tipo de input.
   const baseAtt ={
     type: inputConfig.type,
     name: inputConfig.name,
     id: inputConfig.id,
-    value: formData[inputConfig.name],
+    value: (contextValues[inputConfig.name] || ""),
     className: !wrapper ? inputClass(inputConfig.name) : '',
     placeholder: inputConfig.placeHolder,
     onChange: reducerOnChange,
@@ -85,7 +93,7 @@ const Input = memo(function Input({wrapper,children,inputConfig,dispatch}) {
     <>
       <div className={ inputClass(inputConfig.name) }>
           <label htmlFor={inputConfig.id}>
-            <h4>{ children }</h4>
+            <h4>{ inputConfig.label }</h4>
           </label>
           {inputElement}
       </div>
@@ -97,7 +105,7 @@ const Input = memo(function Input({wrapper,children,inputConfig,dispatch}) {
   ) : (
     <div className={ inputConfig.styles }>
         <label htmlFor={inputConfig.id}>
-          <h4>{ children }</h4>
+          <h4>{ inputConfig.label }</h4>
         </label>
         { inputElement }
         {
