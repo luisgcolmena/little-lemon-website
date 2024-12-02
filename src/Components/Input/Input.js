@@ -60,6 +60,7 @@ const Input = memo(function Input({wrapper,inputConfig,dispatch}) {
     }
   }
 
+  //Definir el tipo de input a renderizar
   let inputElement = {}
   switch(inputConfig.tag) {
     case 'input':

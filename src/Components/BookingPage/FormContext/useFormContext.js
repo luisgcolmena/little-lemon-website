@@ -30,7 +30,8 @@ export const FormProvider = ({ children }) => {
     })
   }, []) */
 
-  const contextValues = {
+  const contextValues = useMemo(
+    () => ({
     name: name,
     date: date,
     time: time,
@@ -39,17 +40,19 @@ export const FormProvider = ({ children }) => {
     guests: guests,
     ocassion: ocassion,
     notes: notes
-  }
-  const contextSetValues = {
+  }), [name,date,time,phoneNumber,email,guests,ocassion,notes])
+
+  const contextSetValues = useMemo(
+    () => ({
     name: setName,
     date: setDate,
-    setTime,
-    setPhoneNumber,
-    setEmail,
-    setGuests,
-    setOcassion,
-    setNotes
-  }
+    time: setTime,
+    phoneNumber: setPhoneNumber,
+    email: setEmail,
+    guests: setGuests,
+    ocassion: setOcassion,
+    notes: setNotes
+  }),[])
 
   return(
     <FormContext.Provider value={{contextValues, contextSetValues}}>
