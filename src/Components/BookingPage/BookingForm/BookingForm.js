@@ -1,8 +1,7 @@
 import './BookingForm.css'
 import Input from '../../Input/Input'
-import { memo } from 'react'
 
-const BookingForm = memo(function BookingForm ({dispatch, availableTimes}) {
+const BookingForm = function BookingForm ({dispatch, availableTimes, formValues}) {
 
   return (
     <div className='booking-form'>
@@ -13,6 +12,7 @@ const BookingForm = memo(function BookingForm ({dispatch, availableTimes}) {
             name: 'date',
             id: 'date',
             label: 'Date',
+            state: formValues.date,
             styles: 'booking-input'
           }}
           dispatch={dispatch}
@@ -26,6 +26,7 @@ const BookingForm = memo(function BookingForm ({dispatch, availableTimes}) {
           id: 'time',
           options: availableTimes,
           label: 'Time',
+          state: formValues.time,
           styles: 'booking-input'
         }}
         wrapper={true}
@@ -39,6 +40,7 @@ const BookingForm = memo(function BookingForm ({dispatch, availableTimes}) {
               id: 'guests',
               range: [1,10],
               label: 'Guests',
+              state: formValues.guests,
               styles: 'booking-input'
             }}
             wrapper={true}
@@ -51,6 +53,7 @@ const BookingForm = memo(function BookingForm ({dispatch, availableTimes}) {
                 id: 'ocassion',
                 options: ['Birthday','Anniversary','Engagement','Simple meal'],
                 label: 'Ocassion',
+                state: formValues.ocassion,
                 placeHolder: 'Select Occasion',
                 styles: 'booking-input'
               }}
@@ -58,6 +61,6 @@ const BookingForm = memo(function BookingForm ({dispatch, availableTimes}) {
             />
     </div>
   )
-})
+}
 
 export default BookingForm

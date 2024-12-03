@@ -1,9 +1,6 @@
-import { useState, createContext, useContext } from "react";
+import { useState } from "react"
 
-export const FormContext = createContext()
-
-export const FormProvider = ({ children }) => {
-
+export function useFormValues() {
   const [name, setName] = useState('')
   const [date, setDate] = useState('')
   const [time, setTime] = useState('00:00')
@@ -13,7 +10,7 @@ export const FormProvider = ({ children }) => {
   const [ocassion, setOcassion] = useState('Birthday')
   const [notes, setNotes] = useState('')
 
-  const contextValues = {
+  const formValues = {
     name: name,
     date: date,
     time: time,
@@ -24,7 +21,7 @@ export const FormProvider = ({ children }) => {
     notes: notes
   }
 
-  const contextSetValues = {
+  const formSetValues = {
     name: setName,
     date: setDate,
     time: setTime,
@@ -35,11 +32,7 @@ export const FormProvider = ({ children }) => {
     notes: setNotes
   }
 
-  return(
-    <FormContext.Provider value={{contextValues, contextSetValues}}>
-      { children }
-    </FormContext.Provider>
-  )
+  return { formValues, formSetValues }
 }
 
-export const useFormContext = () => useContext(FormContext)
+export default useFormValues

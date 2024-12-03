@@ -1,9 +1,9 @@
 import './Input.css'
 import useInputValidation from '../../hooks/useInputValidation'
-import { memo } from 'react'
 import { useFormContext } from '../BookingPage/FormContext/useFormContext'
+import { getInputElement } from './InputElement/getInputElement'
 
-const Input = memo(function Input({wrapper,inputConfig,dispatch}) {
+function Input({wrapper,inputConfig,dispatch}) {
 
   const {errors, handleBlur} = useInputValidation()
   const {contextValues, contextSetValues} = useFormContext()
@@ -35,7 +35,6 @@ const Input = memo(function Input({wrapper,inputConfig,dispatch}) {
     }
   }
 
-
   //Variable creada para asignar las propiedades base de cada tipo de input.
   const baseAtt ={
     type: inputConfig.type,
@@ -61,34 +60,8 @@ const Input = memo(function Input({wrapper,inputConfig,dispatch}) {
   }
 
   //Definir el tipo de input a renderizar
-  let inputElement = {}
-  switch(inputConfig.tag) {
-    case 'input':
-      inputElement =  (<input {...baseAtt}{...additionalAtt}></input>
-      )
-      break
 
-    case 'select':
-      inputElement = (<select {...baseAtt} {...additionalAtt}>
-          {
-            inputConfig.options.map((option,index) => {
-              return (
-                <option key={index} value={option}>{ option }</option>
-              )})
-          }
-        </select>
-      )
-      break
-
-    case 'textarea':
-      inputElement = (<textarea {...baseAtt} {...additionalAtt}></textarea>)
-      break
-
-    default:
-      break
-  }
-
-  /* console.log(`Renderizado del input: ${inputConfig.name}. Tiene un error: ${errors}`) */
+  const inputElement = getInputElement(inputConfig, errors, handleBlur)
 
   return wrapper ? (
     <>
@@ -115,7 +88,6 @@ const Input = memo(function Input({wrapper,inputConfig,dispatch}) {
         }
     </div>
   )
-
-})
+}
 
 export default Input

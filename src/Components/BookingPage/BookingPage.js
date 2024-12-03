@@ -3,9 +3,9 @@ import HeroSection from './HeroSection/HeroSection'
 import BookingForm from './BookingForm/BookingForm'
 import ContactForm from './ContactForm/ContactForm'
 import Summary from './Summary/Summary'
-import { useState, useReducer, useMemo, useCallback } from 'react'
+import { useReducer, useMemo } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { FormProvider } from './FormContext/useFormContext'
+import { useFormValues } from '../../hooks/useFormValues'
 
 // API del curso para obtener listado de horas de acuerdo a la fecha.
 const seededRandom = function (seed) {
@@ -54,7 +54,8 @@ function BookingPage () {
     updateTimes,
     initializeTimes)
 
-  const memoTimes = useMemo(() => availableTimes, [availableTimes])
+  const {formValues, formSetValues} = useFormValues()
+  /* const isDisabled = errors ? true : false */
 
   const navigate = useNavigate()
 
@@ -82,29 +83,32 @@ function BookingPage () {
   return (
     <main>
       <HeroSection />
-      <FormProvider>
         <form onSubmit={handleSubmit} className='booking-page-form'>
           <h1 className='booking-title'>Book a table!</h1>
 
           <BookingForm
             dispatch={dispatch}
-            availableTimes={memoTimes}
+            availableTimes={availableTimes}
+            formValues={formValues}
           />
 
-          <ContactForm/>
+          <ContactForm
+            formValues={formValues}
+          />
 
           <Summary
-            availableTimes={memoTimes}
+            availableTimes={availableTimes}
+            formValues={formValues}
           />
 
           <button
             type='submit'
             className='yellow-button'
+            /* disabled={ isDisabled } */
           >
               Make your reservation!
           </button>
         </form>
-      </FormProvider>
     </main>
   )
 }
