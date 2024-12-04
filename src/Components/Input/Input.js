@@ -1,18 +1,11 @@
 import './Input.css'
-import useInputValidation from '../../hooks/useInputValidation'
-import { useFormContext } from '../BookingPage/FormContext/useFormContext'
-import { getInputElement } from './InputElement/getInputElement'
+import { getInputElement } from '../../utils/getInputElement'
+import getInputClass from '../../utils/getInputClass'
 
-function Input({wrapper,inputConfig,dispatch}) {
-
-  const {errors, handleBlur} = useInputValidation()
-  const {contextValues, contextSetValues} = useFormContext()
-
-  console.log(contextValues[inputConfig.name])
+function Input({wrapper,inputConfig,dispatch, errors, handleBlur}) {
 
   const handleChange = (e) => {
-    const {name, value} = e.target
-    contextSetValues[name](value)
+    inputConfig.setState(e.target.value)
   }
 
   const reducerOnChange = (e) => {
@@ -23,25 +16,16 @@ function Input({wrapper,inputConfig,dispatch}) {
       handleChange(e)
     }
   }
-  const inputClass = (name) => {
-    if (Object.keys(errors).length === 0) {
 
-      return inputConfig.styles
-    } else if ( errors[name] === '') {
-
-      return inputConfig.styles
-    } else {
-      return `${inputConfig.styles} input-error`
-    }
-  }
+  const inputClass = getInputClass(inputConfig, errors)
 
   //Variable creada para asignar las propiedades base de cada tipo de input.
   const baseAtt ={
     type: inputConfig.type,
     name: inputConfig.name,
     id: inputConfig.id,
-    value: (contextValues[inputConfig.name] || ""),
-    className: !wrapper ? inputClass(inputConfig.name) : '',
+    value: inputConfig.state,
+    className: !wrapper ? inputClass : '',
     placeholder: inputConfig.placeHolder,
     onChange: reducerOnChange,
     onBlur: handleBlur
@@ -60,12 +44,11 @@ function Input({wrapper,inputConfig,dispatch}) {
   }
 
   //Definir el tipo de input a renderizar
-
-  const inputElement = getInputElement(inputConfig, errors, handleBlur)
+  const inputElement = getInputElement({inputConfig, baseAtt, additionalAtt})
 
   return wrapper ? (
     <>
-      <div className={ inputClass(inputConfig.name) }>
+      <div className={ inputClass }>
           <label htmlFor={inputConfig.id}>
             <h4>{ inputConfig.label }</h4>
           </label>

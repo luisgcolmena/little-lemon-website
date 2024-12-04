@@ -25,7 +25,7 @@ function useInputValidation() {
   const handleBlur = (e) => {
     const {name, value} = e.target
     const newError = validateFunc(name, value)
-    setError(newError || '')
+    setError((prevError) => ({...prevError, name: newError}))
     }
 
   return {

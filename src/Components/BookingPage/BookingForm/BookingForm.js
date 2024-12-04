@@ -1,7 +1,9 @@
 import './BookingForm.css'
 import Input from '../../Input/Input'
 
-const BookingForm = function BookingForm ({dispatch, availableTimes, formValues}) {
+function BookingForm ({dispatch, availableTimes, formStates, errors, handleBlur}) {
+
+  const { formValues, formSetValues } = formStates
 
   return (
     <div className='booking-form'>
@@ -13,10 +15,13 @@ const BookingForm = function BookingForm ({dispatch, availableTimes, formValues}
             id: 'date',
             label: 'Date',
             state: formValues.date,
+            setState: formSetValues.date,
             styles: 'booking-input'
           }}
           dispatch={dispatch}
           wrapper={true}
+          errors={errors}
+          handleBlur={handleBlur}
       />
 
       <Input
@@ -27,38 +32,47 @@ const BookingForm = function BookingForm ({dispatch, availableTimes, formValues}
           options: availableTimes,
           label: 'Time',
           state: formValues.time,
+          setState: formSetValues.time,
           styles: 'booking-input'
         }}
         wrapper={true}
-        />
+        errors={errors}
+        handleBlur={handleBlur}
+      />
 
-          <Input
-            inputConfig={{
-              tag: 'input',
-              type: 'number',
-              name: 'guests',
-              id: 'guests',
-              range: [1,10],
-              label: 'Guests',
-              state: formValues.guests,
-              styles: 'booking-input'
-            }}
-            wrapper={true}
-          />
+      <Input
+        inputConfig={{
+          tag: 'input',
+          type: 'number',
+          name: 'guests',
+          id: 'guests',
+          range: [1,10],
+          label: 'Guests',
+          state: formValues.guests,
+          setState: formSetValues.guests,
+          styles: 'booking-input'
+        }}
+        wrapper={true}
+        errors={errors}
+        handleBlur={handleBlur}
+      />
 
-            <Input
-              inputConfig={{
-                tag: 'select',
-                name: 'ocassion',
-                id: 'ocassion',
-                options: ['Birthday','Anniversary','Engagement','Simple meal'],
-                label: 'Ocassion',
-                state: formValues.ocassion,
-                placeHolder: 'Select Occasion',
-                styles: 'booking-input'
-              }}
-              wrapper={true}
-            />
+      <Input
+        inputConfig={{
+          tag: 'select',
+          name: 'ocassion',
+          id: 'ocassion',
+          options: ['Birthday','Anniversary','Engagement','Simple meal'],
+          label: 'Ocassion',
+          state: formValues.ocassion,
+          setState: formSetValues.ocassion,
+          placeHolder: 'Select Occasion',
+          styles: 'booking-input'
+        }}
+        wrapper={true}
+        errors={errors}
+        handleBlur={handleBlur}
+      />
     </div>
   )
 }

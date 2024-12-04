@@ -3,9 +3,10 @@ import HeroSection from './HeroSection/HeroSection'
 import BookingForm from './BookingForm/BookingForm'
 import ContactForm from './ContactForm/ContactForm'
 import Summary from './Summary/Summary'
-import { useReducer, useMemo } from 'react'
+import { useReducer } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useFormValues } from '../../hooks/useFormValues'
+import useInputValidation from '../../hooks/useInputValidation'
 
 // API del curso para obtener listado de horas de acuerdo a la fecha.
 const seededRandom = function (seed) {
@@ -54,23 +55,15 @@ function BookingPage () {
     updateTimes,
     initializeTimes)
 
+  const {errors, handleBlur} = useInputValidation()
   const {formValues, formSetValues} = useFormValues()
-  /* const isDisabled = errors ? true : false */
+  const formStates = {formValues, formSetValues}
+  const isDisabled = errors ? true : false
 
   const navigate = useNavigate()
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    /* const formDataSubmit = {
-      name: formData.name,
-      date: formData.date,
-      time: formData.time,
-      phoneNumber: formData.phoneNumber,
-      email: formData.email,
-      guests: formData.guests,
-      ocassion: formData.ocassion,
-      notes: formData.notes
-    } */
     const formSubmitted = submitAPI()
 
     if (formSubmitted) {
@@ -89,11 +82,15 @@ function BookingPage () {
           <BookingForm
             dispatch={dispatch}
             availableTimes={availableTimes}
-            formValues={formValues}
+            formStates={formStates}
+            errors={errors}
+            handleBlur={handleBlur}
           />
 
           <ContactForm
-            formValues={formValues}
+            formStates={formStates}
+            error={errors}
+            handleBlur={handleBlur}
           />
 
           <Summary
@@ -104,7 +101,7 @@ function BookingPage () {
           <button
             type='submit'
             className='yellow-button'
-            /* disabled={ isDisabled } */
+            disabled={ isDisabled }
           >
               Make your reservation!
           </button>

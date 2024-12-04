@@ -1,6 +1,8 @@
 import './Summary.css'
 
-function Summary({availableTimes, formData}) {
+function Summary({availableTimes, formValues}) {
+
+  const formData = formValues
 
   return (
     <section className='summary-section'>

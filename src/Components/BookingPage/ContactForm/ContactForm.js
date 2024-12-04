@@ -1,8 +1,9 @@
 import Input from '../../Input/Input'
 import './ContactForm.css'
-import { memo } from 'react'
 
-const ContactForm = memo(function ContactForm () {
+function ContactForm ({formStates, errors, handleBlur}) {
+
+  const { formValues, formSetValues } = formStates
 
   return (
     <div className='contact-form'>
@@ -18,9 +19,13 @@ const ContactForm = memo(function ContactForm () {
             id: 'name',
             label: 'Full name',
             styles: 'contact-form-div',
+            state: formValues.name,
+            setState: formSetValues.name,
             placeHolder: 'Luis Gerardo'
           }}
           wrapper={ false }
+          errors={errors}
+          handleBlur={handleBlur}
         />
 
         <Input
@@ -31,9 +36,13 @@ const ContactForm = memo(function ContactForm () {
             id: 'email',
             label: 'Email',
             styles: 'contact-form-div',
+            state: formValues.email,
+            setState: formSetValues.email,
             placeHolder: 'example@email.com'
           }}
           wrapper={ false }
+          errors={errors}
+          handleBlur={handleBlur}
         />
 
         <Input
@@ -45,9 +54,13 @@ const ContactForm = memo(function ContactForm () {
             range: [10**8,10**9],
             label: 'Phone number',
             styles: 'contact-form-div',
+            state: formValues.phoneNumber,
+            setState: formSetValues.phoneNumber,
             placeHolder: '9 7630 2016'
           }}
           wrapper={ false }
+          errors={errors}
+          handleBlur={handleBlur}
         />
       </div>
 
@@ -59,12 +72,16 @@ const ContactForm = memo(function ContactForm () {
           id: 'notes',
           label: 'Additional notes',
           styles: 'contact-form-div',
+          state: formValues.notes,
+          setState: formSetValues.notes,
           placeHolder: 'Additional notes (Optional)'
         }}
         wrapper={ false }
+        errors={errors}
+        handleBlur={handleBlur}
       />
     </div>
   )
-})
+}
 
 export default ContactForm
