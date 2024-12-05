@@ -20,7 +20,7 @@ function BookingForm ({dispatch, availableTimes, formStates, errors, handleBlur}
           }}
           dispatch={dispatch}
           wrapper={true}
-          errors={errors}
+          error={errors['date']}
           handleBlur={handleBlur}
       />
 
@@ -36,7 +36,7 @@ function BookingForm ({dispatch, availableTimes, formStates, errors, handleBlur}
           styles: 'booking-input'
         }}
         wrapper={true}
-        errors={errors}
+        error={errors['time']}
         handleBlur={handleBlur}
       />
 
@@ -53,7 +53,7 @@ function BookingForm ({dispatch, availableTimes, formStates, errors, handleBlur}
           styles: 'booking-input'
         }}
         wrapper={true}
-        errors={errors}
+        errors={errors['guests']}
         handleBlur={handleBlur}
       />
 
@@ -70,7 +70,7 @@ function BookingForm ({dispatch, availableTimes, formStates, errors, handleBlur}
           styles: 'booking-input'
         }}
         wrapper={true}
-        errors={errors}
+        errors={errors['ocassion']}
         handleBlur={handleBlur}
       />
     </div>

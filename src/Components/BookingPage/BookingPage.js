@@ -89,7 +89,7 @@ function BookingPage () {
 
           <ContactForm
             formStates={formStates}
-            error={errors}
+            errors={errors}
             handleBlur={handleBlur}
           />
 

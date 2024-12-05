@@ -1,8 +1,11 @@
 import './Input.css'
-import { getInputElement } from '../../utils/getInputElement'
+import  getInputElement  from '../../utils/getInputElement'
 import getInputClass from '../../utils/getInputClass'
 
-function Input({wrapper,inputConfig,dispatch, errors, handleBlur}) {
+function Input({wrapper,inputConfig,dispatch, error, handleBlur}) {
+
+
+  console.log(error)
 
   const handleChange = (e) => {
     inputConfig.setState(e.target.value)
@@ -17,8 +20,8 @@ function Input({wrapper,inputConfig,dispatch, errors, handleBlur}) {
     }
   }
 
-  const inputClass = getInputClass(inputConfig, errors)
-
+  const inputClass = getInputClass({inputConfig, error})
+  /* console.log(inputClass) */
   //Variable creada para asignar las propiedades base de cada tipo de input.
   const baseAtt ={
     type: inputConfig.type,
@@ -55,8 +58,8 @@ function Input({wrapper,inputConfig,dispatch, errors, handleBlur}) {
           {inputElement}
       </div>
       {
-        errors &&
-        <p className='error-text'>{ errors }</p>
+        error &&
+        <p className='error-text'>{ error }</p>
       }
     </>
   ) : (
@@ -66,8 +69,8 @@ function Input({wrapper,inputConfig,dispatch, errors, handleBlur}) {
         </label>
         { inputElement }
         {
-        errors &&
-        <p className='error-text'>{ errors }</p>
+        error &&
+        <p className='error-text'>{ error }</p>
         }
     </div>
   )

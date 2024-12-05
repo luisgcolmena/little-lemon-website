@@ -1,13 +1,14 @@
-export const getInputClass = (inputConfig, errors) => {
-  console.log('Error?')
+export const getInputClass = ({inputConfig, errors}) => {
+
+  console.log(errors[inputConfig.name])
   if (Object.keys(errors).length === 0) {
-    console.log('O error aqui?')
     return inputConfig.styles
-  } else if ( errors[inputConfig.name] === '') {
-    return inputConfig.styles
-  } else {
+  } else if ( errors[inputConfig.name] !== '') {
     return `${inputConfig.styles} input-error`
+  } else {
+    return inputConfig.styles
   }
+
 }
 
 export default getInputClass

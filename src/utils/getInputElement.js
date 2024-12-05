@@ -29,3 +29,5 @@ export const getInputElement = ({inputConfig, baseAtt, additionalAtt }) => {
 
     return inputElement
 }
+
+export default getInputElement
