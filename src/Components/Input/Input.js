@@ -2,21 +2,20 @@ import './Input.css'
 import  getInputElement  from '../../utils/getInputElement'
 import getInputClass from '../../utils/getInputClass'
 
-function Input({wrapper,inputConfig,dispatch, error, handleBlur}) {
+function Input({inputConfig,state,dispatch,error,handleBlur}) {
 
-
-  console.log(error)
+  console.log(state)
+  const { inputState, setState} = state
+  /* const { formValues, formSetValues } = formStates */
 
   const handleChange = (e) => {
-    inputConfig.setState(e.target.value)
-  }
+    const {name, value} = e.target
 
-  const reducerOnChange = (e) => {
-    if (inputConfig.type === 'date') {
-      handleChange(e)
-      dispatch(e.target.value)
+    if (name === 'date') {
+      setState(value)
+      dispatch(value)
     } else {
-      handleChange(e)
+      setState(value)
     }
   }
 
@@ -27,10 +26,9 @@ function Input({wrapper,inputConfig,dispatch, error, handleBlur}) {
     type: inputConfig.type,
     name: inputConfig.name,
     id: inputConfig.id,
-    value: inputConfig.state,
-    className: !wrapper ? inputClass : '',
+    value: inputState,
     placeholder: inputConfig.placeHolder,
-    onChange: reducerOnChange,
+    onChange: handleChange,
     onBlur: handleBlur
   }
 
@@ -49,7 +47,12 @@ function Input({wrapper,inputConfig,dispatch, error, handleBlur}) {
   //Definir el tipo de input a renderizar
   const inputElement = getInputElement({inputConfig, baseAtt, additionalAtt})
 
-  return wrapper ? (
+  return (
+    <>
+      { inputElement }
+    </>
+  )
+  /* wrapper ? (
     <>
       <div className={ inputClass }>
           <label htmlFor={inputConfig.id}>
@@ -73,7 +76,7 @@ function Input({wrapper,inputConfig,dispatch, error, handleBlur}) {
         <p className='error-text'>{ error }</p>
         }
     </div>
-  )
+  ) */
 }
 
 export default Input

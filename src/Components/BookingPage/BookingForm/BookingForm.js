@@ -1,5 +1,6 @@
 import './BookingForm.css'
 import Input from '../../Input/Input'
+import BookingInput from './BookingInput'
 
 function BookingForm ({dispatch, availableTimes, formStates, errors, handleBlur}) {
 
@@ -7,6 +8,23 @@ function BookingForm ({dispatch, availableTimes, formStates, errors, handleBlur}
 
   return (
     <div className='booking-form'>
+
+      <BookingInput
+        label={'Date'}
+        inputConfig={{
+          tag: 'input',
+          type: 'date',
+          name: 'date',
+          id: 'date',
+        }}
+        states={{
+          inputState: formValues['date'],
+          setState: formSetValues['date']
+        }}
+        error={errors['date']}
+        handleBlur={handleBlur}
+        dispatch={dispatch}
+      />
       <Input
         inputConfig={{
             tag: 'input',

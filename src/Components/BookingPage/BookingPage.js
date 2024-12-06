@@ -56,8 +56,7 @@ function BookingPage () {
     initializeTimes)
 
   const {errors, handleBlur} = useInputValidation()
-  const {formValues, formSetValues} = useFormValues()
-  const formStates = {formValues, formSetValues}
+  const formStates = useFormValues()
   const isDisabled = errors ? true : false
 
   const navigate = useNavigate()
@@ -72,6 +71,7 @@ function BookingPage () {
   }
 
   console.log('Renderizado de toda la BookingPage')
+  console.log(formStates.formValues)
 
   return (
     <main>
@@ -95,7 +95,7 @@ function BookingPage () {
 
           <Summary
             availableTimes={availableTimes}
-            formValues={formValues}
+            formValues={formStates.formValues}
           />
 
           <button

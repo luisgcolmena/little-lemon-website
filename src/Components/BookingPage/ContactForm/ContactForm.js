@@ -1,5 +1,6 @@
-import Input from '../../Input/Input'
 import './ContactForm.css'
+import Input from '../../Input/Input'
+import ContactInput from './ContactInput'
 
 function ContactForm ({formStates, errors, handleBlur}) {
 
@@ -11,6 +12,21 @@ function ContactForm ({formStates, errors, handleBlur}) {
       <p>You will receive an email to notify you that your reservation has been successful, and we will contact you 15 minutes before the scheduled time to confirm the reservation.</p>
 
       <div className='contact-form-divs'>
+      <ContactInput
+        label={'Full name'}
+        inputConfig={{
+          tag: 'input',
+          type: 'text',
+          name: 'name',
+          id: 'name',
+        }}
+        states={{
+          inputState: formValues['name'],
+          setState: formSetValues['name']
+        }}
+        error={errors['date']}
+        handleBlur={handleBlur}
+      />
         <Input
           inputConfig={{
             tag: 'input',
@@ -24,7 +40,7 @@ function ContactForm ({formStates, errors, handleBlur}) {
             placeHolder: 'Luis Gerardo'
           }}
           wrapper={ false }
-          errors={errors}
+          error={errors['name']}
           handleBlur={handleBlur}
         />
 
@@ -41,7 +57,7 @@ function ContactForm ({formStates, errors, handleBlur}) {
             placeHolder: 'example@email.com'
           }}
           wrapper={ false }
-          errors={errors}
+          error={errors['email']}
           handleBlur={handleBlur}
         />
 
@@ -59,7 +75,7 @@ function ContactForm ({formStates, errors, handleBlur}) {
             placeHolder: '9 7630 2016'
           }}
           wrapper={ false }
-          errors={errors}
+          error={errors['phoneNumber']}
           handleBlur={handleBlur}
         />
       </div>
@@ -77,7 +93,7 @@ function ContactForm ({formStates, errors, handleBlur}) {
           placeHolder: 'Additional notes (Optional)'
         }}
         wrapper={ false }
-        errors={errors}
+        error={errors['notes']}
         handleBlur={handleBlur}
       />
     </div>

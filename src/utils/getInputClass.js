@@ -1,9 +1,9 @@
-export const getInputClass = ({inputConfig, errors}) => {
+export const getInputClass = ({inputConfig, error}) => {
 
-  console.log(errors[inputConfig.name])
-  if (Object.keys(errors).length === 0) {
+  /* console.log(errors[inputConfig.name]) */
+  if (!error) {
     return inputConfig.styles
-  } else if ( errors[inputConfig.name] !== '') {
+  } else if ( error !== '') {
     return `${inputConfig.styles} input-error`
   } else {
     return inputConfig.styles
