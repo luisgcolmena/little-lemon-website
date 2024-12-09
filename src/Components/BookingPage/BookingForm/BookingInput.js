@@ -1,20 +1,12 @@
-import Input from "../../Input/Input"
-
-export function BookingInput({label,inputConfig,states,error,handleBlur,dispatch}) {
+export function BookingInput({label,id,error,children}) {
 
   return (
     <>
       <div className={error ? `booking-input input-error` : 'booking-input'}>
-        <label htmlFor={inputConfig.id}>
+        <label htmlFor={ id }>
           <h4>{ label }</h4>
         </label>
-        <Input
-          inputConfig={inputConfig}
-          state={states}
-          error={error}
-          handleBlur={handleBlur}
-          dispatch={dispatch}
-        />
+        { children }
       </div>
         {
         error &&

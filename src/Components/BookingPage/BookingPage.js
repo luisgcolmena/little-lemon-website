@@ -71,7 +71,6 @@ function BookingPage () {
   }
 
   console.log('Renderizado de toda la BookingPage')
-  console.log(formStates.formValues)
 
   return (
     <main>

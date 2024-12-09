@@ -1,10 +1,12 @@
 import './ContactForm.css'
 import Input from '../../Input/Input'
 import ContactInput from './ContactInput'
+import getInputConfig from '../../../utils/getInputConfig'
 
 function ContactForm ({formStates, errors, handleBlur}) {
 
   const { formValues, formSetValues } = formStates
+  const nameConfig = getInputConfig('name')
 
   return (
     <div className='contact-form'>
@@ -12,22 +14,19 @@ function ContactForm ({formStates, errors, handleBlur}) {
       <p>You will receive an email to notify you that your reservation has been successful, and we will contact you 15 minutes before the scheduled time to confirm the reservation.</p>
 
       <div className='contact-form-divs'>
-      <ContactInput
-        label={'Full name'}
-        inputConfig={{
-          tag: 'input',
-          type: 'text',
-          name: 'name',
-          id: 'name',
-        }}
-        states={{
-          inputState: formValues['name'],
-          setState: formSetValues['name']
-        }}
-        error={errors['date']}
-        handleBlur={handleBlur}
-      />
+      <ContactInput label={'Full name'} id={'name'} error={errors['name']}>
         <Input
+          inputConfig={nameConfig}
+          state={{
+            inputState: formValues['name'],
+            setState: formSetValues['name']
+          }}
+          error={errors['name']}
+          handleBlur={handleBlur}
+        />
+      </ContactInput>
+
+        {/* <Input
           inputConfig={{
             tag: 'input',
             type: 'text',
@@ -77,10 +76,10 @@ function ContactForm ({formStates, errors, handleBlur}) {
           wrapper={ false }
           error={errors['phoneNumber']}
           handleBlur={handleBlur}
-        />
+        /> */}
       </div>
 
-      <Input
+      {/* <Input
         inputConfig={{
           tag: 'textarea',
           type: 'text',
@@ -95,7 +94,7 @@ function ContactForm ({formStates, errors, handleBlur}) {
         wrapper={ false }
         error={errors['notes']}
         handleBlur={handleBlur}
-      />
+      /> */}
     </div>
   )
 }

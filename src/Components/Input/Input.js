@@ -1,16 +1,14 @@
 import './Input.css'
-import  getInputElement  from '../../utils/getInputElement'
+import getInputElement  from '../../utils/getInputElement'
 import getInputClass from '../../utils/getInputClass'
 
 function Input({inputConfig,state,dispatch,error,handleBlur}) {
 
-  console.log(state)
   const { inputState, setState} = state
   /* const { formValues, formSetValues } = formStates */
 
   const handleChange = (e) => {
     const {name, value} = e.target
-
     if (name === 'date') {
       setState(value)
       dispatch(value)
@@ -19,12 +17,12 @@ function Input({inputConfig,state,dispatch,error,handleBlur}) {
     }
   }
 
-  const inputClass = getInputClass({inputConfig, error})
-  /* console.log(inputClass) */
+  /* const inputClass = getInputClass({inputConfig, error}) */
+  /* console.log(inputConfig) */
   //Variable creada para asignar las propiedades base de cada tipo de input.
   const baseAtt ={
-    type: inputConfig.type,
     name: inputConfig.name,
+    type: inputConfig.type,
     id: inputConfig.id,
     value: inputState,
     placeholder: inputConfig.placeHolder,

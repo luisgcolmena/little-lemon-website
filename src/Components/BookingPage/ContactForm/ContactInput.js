@@ -1,22 +1,16 @@
-import Input from "../../Input/Input";
-
-export function ContactInput({label,inputConfig,states,error,handleBlur}) {
+export function ContactInput({label,children,id,error}) {
 
   return (
     <div className={ 'contact-form-div' }>
-      <label htmlFor={inputConfig.id}>
+      <label htmlFor={ id }>
         <h4>{ label }</h4>
       </label>
-      <Input
-        inputConfig={inputConfig}
-        state={states}
-        error={error}
-        handleBlur={handleBlur}
-      />
-      {
-      error &&
-      <p className='error-text'>{ error }</p>
-      }
+      <div className={error ? `contact-form-div input-error` : 'contact-form-div'}>
+        { children }
+      </div>
+      { error &&
+      <p className='error-text'>{ error }</p> }
+      {console.log(error)}
     </div>
   )
 }
