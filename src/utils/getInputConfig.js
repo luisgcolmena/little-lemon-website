@@ -9,7 +9,6 @@ export function getInputConfig(name,options) {
         name: 'date',
         id: 'date',
       }
-      console.log('Entra en el date config')
       break
     case 'time':
       inputConfig = {
@@ -43,46 +42,44 @@ export function getInputConfig(name,options) {
         type: 'text',
         name: 'name',
         id: 'name',
+        placeHolder: 'Luis Gerardo',
+        className: 'contact-form-input'
+      }
+      break
+    case 'email':
+      inputConfig={
+        tag: 'input',
+        type: 'email',
+        name: 'email',
+        id: 'email',
+        placeHolder: 'example@email.com',
+        className: 'contact-form-input'
+      }
+      break
+    case 'phoneNumber':
+      inputConfig={
+        tag: 'input',
+        type: 'number',
+        name: 'phoneNumber',
+        id: 'phoneNumber',
+        range: [10**8,10**9],
+        placeHolder: '9 7630 2016',
+        className: 'contact-form-input'
+      }
+      break
+    case 'notes':
+      inputConfig={
+        tag: 'textarea',
+        type: 'text',
+        name: 'notes',
+        id: 'notes',
+        placeHolder: 'Additional notes (Optional)',
+        className: 'contact-form-input'
       }
       break
     default:
       break
   }
   return inputConfig
-
-  /* switch(name) {
-    case 'date':
-      return ({
-        tag: 'input',
-        type: 'date',
-        name: 'date',
-        id: 'date',
-      })
-    case 'time':
-      return({
-        tag: 'select',
-        type: 'time',
-        name: 'time',
-        id: 'time',
-        options: options,
-      })
-    case 'guests':
-      return({
-        tag: 'input',
-        type: 'number',
-        name: 'guests',
-        id: 'guests',
-        range: [1,10],
-      })
-    case 'ocassion':
-      return({
-        tag: 'select',
-        name: 'ocassion',
-        id: 'ocassion',
-        options: ['Birthday','Anniversary','Engagement','Simple meal'],
-      })
-    default:
-      break
-  } */
 }
 export default getInputConfig

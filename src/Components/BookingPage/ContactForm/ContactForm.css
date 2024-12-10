@@ -41,8 +41,8 @@
   margin: 0;
   padding-bottom: 10px;
 }
-.contact-form input,
-.contact-form textarea {
+.contact-form-input,
+.contact-form-textarea {
   border-radius: 8px;
   background-color: var(--primary-gray);
   border: 0.5px solid var(--secondary-gray);
@@ -50,6 +50,9 @@
   padding: 3% 5%;
   width: 90%;
   height: 5vh;
+}
+.contact-input-error {
+  border: 1px solid red;
 }
 .contact-form-item input:focus {
   border: 1px solid red;

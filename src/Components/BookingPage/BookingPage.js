@@ -70,8 +70,6 @@ function BookingPage () {
     }
   }
 
-  console.log('Renderizado de toda la BookingPage')
-
   return (
     <main>
       <HeroSection />
