@@ -54,12 +54,22 @@ function BookingPage () {
   const [availableTimes, dispatch] = useReducer(
     updateTimes,
     initializeTimes)
-
   const {errors, handleBlur} = useInputValidation()
   const formStates = useFormValues()
-  const isDisabled = errors ? true : false
-
   const navigate = useNavigate()
+
+  const checkEnabled = () => {
+    if (Object.values(errors).length === 0) {
+      return false
+    } else {
+      return Object.values(errors).every((item) => item === '') ? false : true
+    }
+  }
+  const checkValues = (states) => {
+    return states.every((state) => state !== '')
+  }
+  const isEnabled = checkEnabled()
+  /* const isEnabled = !checkEnabled() || checkValues(Object.values(formStates.formValues)) */
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -69,7 +79,9 @@ function BookingPage () {
       navigate('/confirmation')
     }
   }
-
+  console.log(isEnabled)
+  console.log(errors)
+  /* console.log(formStates.formValues) */
   return (
     <main>
       <HeroSection />
@@ -98,7 +110,7 @@ function BookingPage () {
           <button
             type='submit'
             className='yellow-button'
-            disabled={ isDisabled }
+            disabled={ true }
           >
               Make your reservation!
           </button>

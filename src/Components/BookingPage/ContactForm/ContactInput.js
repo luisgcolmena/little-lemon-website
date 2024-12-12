@@ -8,7 +8,6 @@ export function ContactInput({label,children,id,error}) {
       { children }
       { error &&
       <p className='error-text'>{ error }</p> }
-      {console.log(error)}
     </div>
   )
 }
