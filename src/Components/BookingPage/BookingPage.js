@@ -69,7 +69,7 @@ function BookingPage () {
       navigate('/confirmation')
     }
   }
-  console.log(isDisabled.checkValues)
+  /* console.log(isDisabled.checkValues) */
   /* console.log(formStates.formValues) */
   return (
     <main>

@@ -1,6 +1,8 @@
 export function checkIsDisabled(states, errors) {
+  const {notes, ...statesValues} = states
   const errorsValues = Object.values(errors)
-  const statesValues = Object.values(states)
+  const requiredStates = Object.values(statesValues)
+
   let checkErrors
   let checkValues
 
@@ -8,18 +10,20 @@ export function checkIsDisabled(states, errors) {
   if (errorsValues.length === 0) {
     checkErrors = false
   } else {
-    return Object.values(errors).every((item) => item === '') ? false : true
+    checkErrors = Object.values(errors).every((item) => item === '') ? true : true
   }
-  
-  if (statesValues.every((state) => state !== '')) {
-    checkValues = false
+
+  if (requiredStates.every((state) => state !== '')) {
+    checkValues = 'Todos los estados tienen contenido'
   } else {
-    checkValues = true
+    checkValues = 'Por lo menos uno está vacío'
   }
-  console.log(errorsValues)
-  console.log(checkValues)
+  checkValues = requiredStates.every((state) => {
+    return state !== ''
+  }) ? 'Todos los estados tienen contenido' : 'Por lo menos uno está vacío'
+  /* console.log(errorsValues) */
+  console.log(`Checking states: ${checkValues}`)
   return (
-    /* checkErrors || checkValues */ 
     { checkErrors, checkValues }
   )
 }
