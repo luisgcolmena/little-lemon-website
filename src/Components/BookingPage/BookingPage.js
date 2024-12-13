@@ -7,6 +7,7 @@ import { useReducer } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useFormValues } from '../../hooks/useFormValues'
 import useInputValidation from '../../hooks/useInputValidation'
+import checkIsDisabled from '../../utils/checkIsDisabled'
 
 // API del curso para obtener listado de horas de acuerdo a la fecha.
 const seededRandom = function (seed) {
@@ -58,18 +59,7 @@ function BookingPage () {
   const formStates = useFormValues()
   const navigate = useNavigate()
 
-  const checkEnabled = () => {
-    if (Object.values(errors).length === 0) {
-      return false
-    } else {
-      return Object.values(errors).every((item) => item === '') ? false : true
-    }
-  }
-  const checkValues = (states) => {
-    return states.every((state) => state !== '')
-  }
-  const isEnabled = checkEnabled()
-  /* const isEnabled = !checkEnabled() || checkValues(Object.values(formStates.formValues)) */
+  const isDisabled = checkIsDisabled(formStates.formValues, errors)
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -79,8 +69,7 @@ function BookingPage () {
       navigate('/confirmation')
     }
   }
-  console.log(isEnabled)
-  console.log(errors)
+  console.log(isDisabled.checkValues)
   /* console.log(formStates.formValues) */
   return (
     <main>
@@ -110,7 +99,7 @@ function BookingPage () {
           <button
             type='submit'
             className='yellow-button'
-            disabled={ true }
+            disabled={ isDisabled }
           >
               Make your reservation!
           </button>
