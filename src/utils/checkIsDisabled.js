@@ -1,30 +1,30 @@
 export function checkIsDisabled(states, errors) {
+  //Copiando el objeto que contiene los estados y removiendo los que no son required
   const {notes, ...statesValues} = states
   const errorsValues = Object.values(errors)
   const requiredStates = Object.values(statesValues)
 
-  let checkErrors
-  let checkValues
+  let isThereErrors
+  let isThereValues
 
   //Chequear si existen errores (array de values de errores lleno de '')
   if (errorsValues.length === 0) {
-    checkErrors = false
+    //Estado inicial de la página
+    isThereErrors = true /* 'Estado inicial de la página, no hay errores' */
   } else {
-    checkErrors = Object.values(errors).every((item) => item === '') ? true : true
+    isThereErrors = Object.values(errors).every((item) => item === '')
+      ? false /* 'Ya no hay errores' */
+      : true /* 'Todavía hay algún error' */
   }
+  console.log(`Checking for errors: ${isThereErrors}`)
 
-  if (requiredStates.every((state) => state !== '')) {
-    checkValues = 'Todos los estados tienen contenido'
-  } else {
-    checkValues = 'Por lo menos uno está vacío'
-  }
-  checkValues = requiredStates.every((state) => {
-    return state !== ''
-  }) ? 'Todos los estados tienen contenido' : 'Por lo menos uno está vacío'
-  /* console.log(errorsValues) */
-  console.log(`Checking states: ${checkValues}`)
+  isThereValues = requiredStates.every((state) => state !== '')
+    ? true /* 'Todos los estados tienen contenido' */
+    : false /* 'Por lo menos uno está vacío' */
+  console.log(`Checking states: ${isThereValues}`)
+
   return (
-    { checkErrors, checkValues }
+    (isThereErrors === true) && (isThereValues=== false) ? true : false
   )
 }
 
