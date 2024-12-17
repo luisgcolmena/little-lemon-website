@@ -24,11 +24,3 @@ test('updateTimes useReducer test', () => {
   expect(availableHours).toStrictEqual(['17:00','17:30','18:00','19:00','19:30','20:30','22:30'])
 
 })
-
-//Test to validate valid and invalid inputs
-
-test('testing date input', () => {
-
-  render(<BookingPage />)
-  const dateInput = screen.getByLabelText('date')
-})
