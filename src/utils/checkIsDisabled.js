@@ -16,12 +16,12 @@ export function checkIsDisabled(states, errors) {
       ? false /* 'Ya no hay errores' */
       : true /* 'Todavía hay algún error' */
   }
-  console.log(`Checking for errors: ${isThereErrors}`)
+  /* console.log(`Checking for errors: ${isThereErrors}`) */
 
   isThereValues = requiredStates.every((state) => state !== '')
     ? true /* 'Todos los estados tienen contenido' */
     : false /* 'Por lo menos uno está vacío' */
-  console.log(`Checking states: ${isThereValues}`)
+  /* console.log(`Checking states: ${isThereValues}`) */
 
   return (
     (isThereErrors === true) && (isThereValues=== false) ? true : false

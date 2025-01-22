@@ -1,7 +1,7 @@
 import { useState } from "react"
 
 export function useFormValues() {
-  const [name, setName] = useState('')
+  const [name, setName] = useState('Luis G')
   const [date, setDate] = useState('')
   const [time, setTime] = useState('00:00')
   const [phoneNumber, setPhoneNumber] = useState('')

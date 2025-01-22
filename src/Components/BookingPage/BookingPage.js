@@ -4,10 +4,10 @@ import BookingForm from './BookingForm/BookingForm'
 import ContactForm from './ContactForm/ContactForm'
 import Summary from './Summary/Summary'
 import { useReducer } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { useFormValues } from '../../hooks/useFormValues'
 import useInputValidation from '../../hooks/useInputValidation'
 import checkIsDisabled from '../../utils/checkIsDisabled'
+import { useNavigate } from 'react-router-dom'
 
 // API del curso para obtener listado de horas de acuerdo a la fecha.
 const seededRandom = function (seed) {
