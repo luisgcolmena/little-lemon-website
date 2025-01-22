@@ -8,8 +8,12 @@ const getInputByLabel = (inputLabel) => {
   return inputElement
 }
 
-describe('booking page form testing', () => {
-  
+//call onSubmit with the correct data when form is submitted
+
+//does not call onSubmit if the form is incomplete
+
+describe('renders form with initial values', () => {
+
   function MemoBookingPage () {
     return (
       <MemoryRouter>
@@ -17,33 +21,57 @@ describe('booking page form testing', () => {
       </MemoryRouter>
     )
   }
-  
 
-  test('renders form with initial values', () => {
+
+  test('date input', () => {
 
     render(<MemoBookingPage />)
 
     const dateInput = getInputByLabel('Date')
     expect(dateInput).toHaveValue('')
-
-    const nameInput = getInputByLabel('Full name')
-    expect(nameInput).toHaveValue('Luis G')
-
   })
 
-  test('update states when typing inputs', async () => {
+  test('name input', () => {
 
     render(<MemoBookingPage />)
 
+    const nameInput = getInputByLabel('Full name')
+    expect(nameInput).toHaveValue('Luis G')
+  })
+})
+
+describe ('update states when typing inputs', () => {
+
+  function MemoBookingPage () {
+    return (
+      <MemoryRouter>
+        <BookingPage />
+      </MemoryRouter>
+    )
+  }
+
+  test('date input', async () => {
+
+    render(<MemoBookingPage />)
+
+    //Date input
     const dateInput = getInputByLabel('Date')
     await userEvent.clear(dateInput)
-    /* await userEvent.type(dateInput, '25-07-2025') */
-    fireEvent.change(dateInput, { target: { value: '25-07-2025' }})
-    expect(dateInput).toBe('25-07-2025')
+    await userEvent.type(dateInput, '2025-07-25')
+    expect(dateInput.value).toBe('2025-07-25')
 
+  })
+
+  test('name input', async () => {
+
+    render(<MemoBookingPage />)
+
+    //Full name input
     const nameInput = getInputByLabel('Full name')
     await userEvent.clear(nameInput)
     await userEvent.type(nameInput, 'Luis Gerardo')
     expect(nameInput.value).toBe('Luis Gerardo')
-  })
+    })
+
 })
+

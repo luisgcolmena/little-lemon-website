@@ -46,7 +46,6 @@ export const updateTimes = (times, date) => {
   if (date) {
     return timesByDate
   }
-
 }
 
 function BookingPage () {
