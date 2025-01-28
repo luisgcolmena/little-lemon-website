@@ -100,7 +100,7 @@ function BookingPage () {
             className='yellow-button'
             disabled={ isDisabled }
           >
-              Make your reservation!
+            Make your reservation!
           </button>
         </form>
     </main>

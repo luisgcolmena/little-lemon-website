@@ -1,5 +1,5 @@
 import BookingPage from "./BookingPage"
-import {render, screen } from '@testing-library/react'
+import {getDefaultNormalizer, render, screen } from '@testing-library/react'
 import { MemoryRouter } from "react-router-dom"
 import { userEvent } from '@testing-library/user-event'
 
@@ -8,19 +8,17 @@ const getInputByLabel = (inputLabel) => {
   return inputElement
 }
 
+function MemoBookingPage () {
+  return (
+    <MemoryRouter>
+      <BookingPage />
+    </MemoryRouter>
+  )}
 //call onSubmit with the correct data when form is submitted
 
 //does not call onSubmit if the form is incomplete
 
 /* describe('renders form with initial values', () => {
-
-  function MemoBookingPage () {
-    return (
-      <MemoryRouter>
-        <BookingPage />
-      </MemoryRouter>
-    )
-  }
 
   test('date input', () => {
     render(<MemoBookingPage />)
@@ -49,7 +47,7 @@ const getInputByLabel = (inputLabel) => {
   test('name input', () => {
     render(<MemoBookingPage />)
     const nameInput = getInputByLabel('Full name')
-    expect(nameInput).toHaveValue('Luis G')
+    expect(nameInput).toHaveValue('')
   })
 
   test('email input', () => {
@@ -65,25 +63,26 @@ const getInputByLabel = (inputLabel) => {
   })
 }) */
 
-describe ('update states when typing inputs', () => {
-
-  function MemoBookingPage () {
-    return (
-      <MemoryRouter>
-        <BookingPage />
-      </MemoryRouter>
-    )
-  }
+/* describe ('update states when typing inputs', () => {
 
   //Date input
   test('date input', async () => {
-
     render(<MemoBookingPage />)
     const dateInput = getInputByLabel('Date')
     await userEvent.clear(dateInput)
     await userEvent.type(dateInput, '2025-07-25')
     expect(dateInput.value).toBe('2025-07-25')
 
+  })
+
+  //Time input
+  test('time input', async () => {
+    render(<MemoBookingPage />)
+    const dateInput = getInputByLabel('Date')
+    await userEvent.type(dateInput, '2025-07-25')
+    const timeInput = getInputByLabel('Time')
+    await userEvent.selectOptions(timeInput, '19:00')
+    expect(timeInput.value).toBe('19:00')
   })
 
   //Guests input
@@ -120,12 +119,65 @@ describe ('update states when typing inputs', () => {
     expect(emailInput.value).toBe('luiscol620@gmail.com')
   })
 
+  //Phone number input
   test('phone number input', async () => {
     render(<MemoBookingPage />)
     const phoneInput = getInputByLabel('Phone number')
-    await userEvent.type(phoneInput, 'boop')
-    expect(phoneInput.value).toBe('9765')
+    await userEvent.type(phoneInput, '12345')
+    expect(phoneInput.value).toBe('12345')
+  })
+
+  //Additional notes input
+  test('additional notes input', async () => {
+    render(<MemoBookingPage />)
+    const notesInput = getInputByLabel('Additional notes')
+    await userEvent.type(notesInput, 'Sombri es hermoso')
+    expect(notesInput.value).toBe('Sombri es hermoso')
+  })
+
+}) */
+
+describe('call onSubmit with the correct data when form is submitted', () => {
+
+  test('submit button renders', () => {
+    render(<MemoBookingPage />)
+    const submitButton = screen.getByRole('button', {name: 'Make your reservation!'})
+    expect(submitButton).toBeInTheDocument()
+  })
+
+  test('subtmit button to be disabled', () => {
+    render(<MemoBookingPage />)
+    const submitButton = screen.getByRole('button', {name: 'Make your reservation!'})
+    userEvent.click(submitButton)
+    expect(submitButton).toBeDisabled()
+  })
+
+  test('submit button to be enabled', async () => {
+    render(<MemoBookingPage />)
+
+    const dateInput = screen.getByLabelText('Date')
+    await userEvent.type(dateInput, '2025-07-25')
+
+    const timeInput = screen.getByLabelText('Time')
+    await userEvent.type(timeInput, '20:30')
+
+    const guestsInput = screen.getByLabelText('Guests')
+    await userEvent.type(guestsInput, '5')
+
+    const ocassionInput = screen.getByLabelText('Ocassion')
+    await userEvent.selectOptions(ocassionInput, 'Simple meal')
+
+    const nameInput = screen.getByLabelText('Full name')
+    await userEvent.type(nameInput, 'Luis Gerardo')
+
+    const emailInput = screen.getByLabelText('Email')
+    await userEvent.type(emailInput, 'luiscol62@gmail.com')
+
+    const phoneInput = screen.getByLabelText('Phone number')
+    await userEvent.type(phoneInput, '976302616')
+
+    const submitButton = screen.getByRole('button', {name: 'Make your reservation!'})
+    expect(submitButton).not.toBeDisabled()
   })
 
 })
-

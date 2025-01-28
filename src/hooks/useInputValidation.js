@@ -8,11 +8,10 @@ const validateFunc = (name, value) => {
 
   if (name === 'name') {
     if (value.length < 3) return 'This field requires at least 3 characters.'
-    if (value.length > 25) return 'This field cannot exceed X characters.'
+    if (value.length > 25) return 'This field cannot exceed 25 characters.'
   }
 
   if (name === 'notes') {
-    console.log('Error de notillas')
     return value ? 'Boop' : 'Error de notas'
   }
   return ''
