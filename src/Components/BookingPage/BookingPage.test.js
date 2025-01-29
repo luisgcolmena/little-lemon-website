@@ -1,7 +1,8 @@
 import BookingPage from "./BookingPage"
 import {getDefaultNormalizer, render, screen } from '@testing-library/react'
-import { MemoryRouter } from "react-router-dom"
+import { MemoryRouter, useNavigate } from "react-router-dom"
 import { userEvent } from '@testing-library/user-event'
+import '@testing-library/jest-dom'
 
 const getInputByLabel = (inputLabel) => {
   const inputElement = screen.getByLabelText(inputLabel)
@@ -14,6 +15,11 @@ function MemoBookingPage () {
       <BookingPage />
     </MemoryRouter>
   )}
+
+  jest.mock('react-router-dom', () => ({
+    ...jest.requireActual('react-router-dom'),
+    useNavigate: jest.fn()
+  }))
 //call onSubmit with the correct data when form is submitted
 
 //does not call onSubmit if the form is incomplete
@@ -177,7 +183,39 @@ describe('call onSubmit with the correct data when form is submitted', () => {
     await userEvent.type(phoneInput, '976302616')
 
     const submitButton = screen.getByRole('button', {name: 'Make your reservation!'})
-    expect(submitButton).not.toBeDisabled()
+    expect(submitButton).toBeEnabled()
+  })
+
+  test('submit button redirects correctly to confirmation page', async () => {
+
+    const navigate = jest.fn()
+    useNavigate.mockReturnValue(navigate)
+
+    render(<MemoBookingPage />)
+    const dateInput = screen.getByLabelText('Date')
+    await userEvent.type(dateInput, '2025-07-25')
+
+    const timeInput = screen.getByLabelText('Time')
+    await userEvent.type(timeInput, '20:30')
+
+    const guestsInput = screen.getByLabelText('Guests')
+    await userEvent.type(guestsInput, '5')
+
+    const ocassionInput = screen.getByLabelText('Ocassion')
+    await userEvent.selectOptions(ocassionInput, 'Simple meal')
+
+    const nameInput = screen.getByLabelText('Full name')
+    await userEvent.type(nameInput, 'Luis Gerardo')
+
+    const emailInput = screen.getByLabelText('Email')
+    await userEvent.type(emailInput, 'luiscol62@gmail.com')
+
+    const phoneInput = screen.getByLabelText('Phone number')
+    await userEvent.type(phoneInput, '976302616')
+
+    const submitButton = screen.getByRole('button', {name: 'Make your reservation!'})
+    await userEvent.click(submitButton)
+    expect(navigate).toHaveBeenCalledWith('/confirmation')
   })
 
 })
