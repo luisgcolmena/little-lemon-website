@@ -63,11 +63,10 @@ function BookingPage () {
   const handleSubmit = (e) => {
     e.preventDefault()
     const formSubmitted = submitAPI()
-    navigate('/confirmation')
 
-    /* if (formSubmitted) {
-      
-    } */
+    if (formSubmitted) {
+      navigate('/confirmation')
+    }
   }
   /* console.log(isDisabled.checkValues) */
   /* console.log(formStates.formValues) */
