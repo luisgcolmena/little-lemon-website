@@ -1,5 +1,5 @@
 import BookingPage from "./BookingPage"
-import {getDefaultNormalizer, render, screen } from '@testing-library/react'
+import {fireEvent, render, screen } from '@testing-library/react'
 import { MemoryRouter, useNavigate } from "react-router-dom"
 import { userEvent } from '@testing-library/user-event'
 import '@testing-library/jest-dom'
@@ -20,11 +20,8 @@ function MemoBookingPage () {
     ...jest.requireActual('react-router-dom'),
     useNavigate: jest.fn()
   }))
-//call onSubmit with the correct data when form is submitted
 
-//does not call onSubmit if the form is incomplete
-
-/* describe('renders form with initial values', () => {
+describe('renders form with initial values', () => {
 
   test('date input', () => {
     render(<MemoBookingPage />)
@@ -67,9 +64,9 @@ function MemoBookingPage () {
     const phoneNumberInput = getInputByLabel('Phone number')
     expect(phoneNumberInput.value).toBe("")
   })
-}) */
+})
 
-/* describe ('update states when typing inputs', () => {
+describe ('update states when typing inputs', () => {
 
   //Date input
   test('date input', async () => {
@@ -141,7 +138,7 @@ function MemoBookingPage () {
     expect(notesInput.value).toBe('Sombri es hermoso')
   })
 
-}) */
+})
 
 describe('call onSubmit with the correct data when form is submitted', () => {
 
@@ -218,4 +215,30 @@ describe('call onSubmit with the correct data when form is submitted', () => {
     expect(navigate).toHaveBeenCalledWith('/confirmation')
   })
 
+})
+
+describe('error text', () => {
+
+  test('when date input is empty after onBlur', async () => {
+    render(<MemoBookingPage />)
+    const dateInput = screen.getByLabelText('Date')
+    await userEvent.click(dateInput)
+    await userEvent.tab()
+    const errorText = await screen.findByText('Field required')
+    expect(errorText).toBeInTheDocument()
+  })
+
+  test('when name input is empty after onBlur', async () => {
+    render(<MemoBookingPage />)
+    const nameInput = screen.getByLabelText('Full name')
+    fireEvent.blur(nameInput)
+    const errorText = await screen.findByText('Field required')
+    expect(errorText).toBeInTheDocument()
+  })
+
+  test('before error occurs', () => {
+    render(<MemoBookingPage />)
+    const errorText = screen.queryByText('Field required')
+    expect(errorText).toBeNull()
+  })
 })
